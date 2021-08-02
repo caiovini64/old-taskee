@@ -4,35 +4,38 @@ import 'package:taskee/ui/helpers/app_colors.dart';
 class CustomTheme {
   static ThemeData get darkTheme {
     return ThemeData(
+      scaffoldBackgroundColor: primaryColor,
       backgroundColor: backgroundColor,
       buttonColor: primaryColor,
       primaryColor: primaryColor,
       textTheme: TextTheme(
-          headline1: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-            fontSize: 42,
-          ),
-          headline2: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-            fontSize: 32,
-          ),
-          headline3: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-            fontSize: 18,
-          ),
-          bodyText1: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-            fontSize: 14,
-          )),
+        headline1: TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+          fontSize: 42,
+        ),
+        headline2: TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+          fontSize: 32,
+        ),
+        headline3: TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+          fontSize: 18,
+        ),
+        bodyText1: TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+          fontSize: 14,
+        ),
+      ),
     );
   }
 
   static ThemeData get lightTheme {
     return ThemeData(
+      scaffoldBackgroundColor: primaryColor,
       backgroundColor: Colors.white,
       buttonColor: primaryColor,
       primaryColor: primaryColor,
