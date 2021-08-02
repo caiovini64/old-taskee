@@ -1,4 +1,4 @@
-part of 'login_cubit.dart';
+part of 'login_controller.dart';
 
 @immutable
 abstract class LoginState {}
