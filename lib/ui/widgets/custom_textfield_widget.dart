@@ -7,6 +7,7 @@ class CustomTextFieldWidget extends StatelessWidget {
   final TextInputType inputType;
   final bool obscureText;
   final String semanticsLabel;
+  final String? Function(String?) validator;
 
   const CustomTextFieldWidget({
     Key? key,
@@ -15,6 +16,7 @@ class CustomTextFieldWidget extends StatelessWidget {
     required this.inputType,
     required this.obscureText,
     required this.semanticsLabel,
+    required this.validator,
   }) : super(key: key);
 
   @override
@@ -24,7 +26,9 @@ class CustomTextFieldWidget extends StatelessWidget {
       child: TextFormField(
         keyboardType: inputType,
         controller: controller,
+        validator: validator,
         obscureText: obscureText,
+        style: Theme.of(context).textTheme.bodyText1,
         decoration: InputDecoration(
           labelText: labelText,
           labelStyle: Theme.of(context).textTheme.bodyText1,
