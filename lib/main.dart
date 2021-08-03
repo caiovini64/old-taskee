@@ -6,7 +6,11 @@ import 'package:taskee/ui/pages/login/login_page.dart';
 import 'package:taskee/injection_container.dart' as dependencies;
 
 void main() {
-  dependencies.init();
+  dependencies.initControllers();
+  dependencies.initUsecases();
+  dependencies.initRepositories();
+  dependencies.initDatasources();
+  dependencies.initServices();
   runApp(MyApp());
 }
 

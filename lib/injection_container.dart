@@ -12,19 +12,27 @@ import 'infra/helpers/helpers.dart';
 
 final serviceLocator = GetIt.instance;
 
-void init() {
+void initControllers() {
   serviceLocator.registerLazySingleton(
       () => LoginController(serviceLocator<LoginUsecase>()));
+}
 
+void initUsecases() {
   serviceLocator.registerLazySingleton<LoginUsecase>(
       () => LoginUsecase(serviceLocator<ILoginRepository>()));
+}
 
+void initRepositories() {
   serviceLocator.registerLazySingleton<ILoginRepository>(
       () => LoginRepository(serviceLocator<ILoginDatasource>()));
+}
 
+void initDatasources() {
   serviceLocator.registerLazySingleton<ILoginDatasource>(() => LoginDatasource(
       client: serviceLocator<IConnectionClient>(),
       url: FirebaseEndpoints.login('signInWithPassword')));
+}
 
+void initServices() {
   serviceLocator.registerLazySingleton<IConnectionClient>(() => HttpClient());
 }
