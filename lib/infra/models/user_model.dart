@@ -2,14 +2,10 @@ import 'package:equatable/equatable.dart';
 import 'package:taskee/domain/entities/entities.dart';
 
 class UserModel extends UserEntity {
-  final String id;
-  final String token;
-  final String email;
-
   UserModel({
-    required this.id,
-    required this.token,
-    required this.email,
+    required String id,
+    required String token,
+    required String email,
   }) : super(id: id, email: email, token: token);
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
