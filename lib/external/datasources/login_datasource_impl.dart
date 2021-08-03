@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:http/http.dart';
 import 'package:taskee/infra/datasources/datasources.dart';
 import 'package:taskee/infra/helpers/helpers.dart';
 import 'package:taskee/infra/models/models.dart';
@@ -20,6 +23,8 @@ class LoginDatasource implements ILoginDatasource {
         "returnSecureToken": true,
       },
     );
-    return response.data;
+    final json = jsonDecode(response.data);
+    final user = UserModel.fromJson(json);
+    return user;
   }
 }

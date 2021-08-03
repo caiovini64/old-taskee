@@ -32,8 +32,20 @@ void main() {
               "returnSecureToken": true,
             }))
         .thenAnswer(
-            (_) async => HttpResponse(data: kUserModel, statusCode: 200));
+            (_) async => HttpResponse(data: kUserJson, statusCode: 200));
     final result = await datasource.login(email, password);
     expect(result, kUserModel);
+  });
+
+  test('should returns a AuthenticationException when statusCode was 400',
+      () async {
+    when(() => client.post(any(), body: {
+          "email": email,
+          "password": password,
+          "returnSecureToken": true,
+        })).thenAnswer((_) async => HttpResponse(data: '', statusCode: 400));
+    final result = await datasource.login(email, password);
+    expect(
+        result, AuthenticationException(code: 404, message: 'INVALID_EMAIL'));
   });
 }

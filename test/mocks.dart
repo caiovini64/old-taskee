@@ -12,3 +12,11 @@ final kUserModel = UserModel(
   id: '123',
   token: 'alskdlasdw',
 );
+
+final kUserJson = """{
+  "kind": "identitytoolkit#VerifyPasswordResponse",
+  "localId": "123", 
+  "email": "email@email.com", 
+  "displayName": "", 
+  "idToken": "alskdlasdw"
+}""";
