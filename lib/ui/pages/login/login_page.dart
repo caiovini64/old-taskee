@@ -7,10 +7,19 @@ import 'package:taskee/ui/widgets/widgets.dart';
 
 import 'controller/login_controller.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
+
   final emailController = TextEditingController();
+
   final passwordController = TextEditingController();
+
+  bool obscureText = true;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +50,7 @@ class LoginPage extends StatelessWidget {
                       child: Container(
                         height: MediaQuery.of(context).size.height,
                         padding: EdgeInsets.all(20),
-                        color: backgroundColor,
+                        color: Theme.of(context).backgroundColor,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
@@ -69,7 +78,18 @@ class LoginPage extends StatelessWidget {
                               semanticsLabel: 'Password text field',
                               inputType: TextInputType.visiblePassword,
                               controller: passwordController,
-                              obscureText: true,
+                              obscureText: obscureText,
+                              suffixIcon: GestureDetector(
+                                onTap: () {
+                                  obscureText = !obscureText;
+                                  setState(() {});
+                                },
+                                child: Icon(
+                                  obscureText
+                                      ? Icons.visibility_off
+                                      : Icons.visibility,
+                                ),
+                              ),
                               validator: (value) =>
                                   controller.validatePassword(value),
                             ),

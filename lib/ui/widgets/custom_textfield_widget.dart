@@ -8,6 +8,7 @@ class CustomTextFieldWidget extends StatelessWidget {
   final bool obscureText;
   final String semanticsLabel;
   final String? Function(String?) validator;
+  final Widget? suffixIcon;
 
   const CustomTextFieldWidget({
     Key? key,
@@ -17,6 +18,7 @@ class CustomTextFieldWidget extends StatelessWidget {
     required this.obscureText,
     required this.semanticsLabel,
     required this.validator,
+    this.suffixIcon,
   }) : super(key: key);
 
   @override
@@ -30,6 +32,7 @@ class CustomTextFieldWidget extends StatelessWidget {
         obscureText: obscureText,
         style: Theme.of(context).textTheme.bodyText1,
         decoration: InputDecoration(
+          suffixIcon: suffixIcon,
           labelText: labelText,
           labelStyle: Theme.of(context).textTheme.bodyText1,
           border: OutlineInputBorder(
