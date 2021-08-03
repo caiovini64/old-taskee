@@ -37,15 +37,18 @@ void main() {
     expect(result, kUserModel);
   });
 
-  test('should returns a AuthenticationException when statusCode was 400',
+  test('should returns an AuthenticationException when statusCode was 400',
       () async {
     when(() => client.post(any(), body: {
-          "email": email,
-          "password": password,
-          "returnSecureToken": true,
-        })).thenAnswer((_) async => HttpResponse(data: '', statusCode: 400));
-    final result = await datasource.login(email, password);
+              "email": email,
+              "password": password,
+              "returnSecureToken": true,
+            }))
+        .thenAnswer(
+            (_) async => HttpResponse(data: dataErrorJson, statusCode: 400));
     expect(
-        result, AuthenticationException(code: 404, message: 'INVALID_EMAIL'));
+      datasource.login(email, password),
+      throwsA(isA<AuthenticationException>()),
+    );
   });
 }

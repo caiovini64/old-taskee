@@ -20,3 +20,17 @@ final kUserJson = """{
   "displayName": "", 
   "idToken": "alskdlasdw"
 }""";
+
+final dataErrorJson = '''{
+    "error": {
+    "code": 400,
+    "message": "INVALID_EMAIL",
+    "errors": [
+        {
+            "message": "INVALID_EMAIL",
+            "domain": "global",
+            "reason": "invalid"
+        }
+    ]
+}
+}''';
