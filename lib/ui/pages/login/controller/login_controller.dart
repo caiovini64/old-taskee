@@ -1,14 +1,17 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
+import 'package:taskee/domain/usecases/login_usecase.dart';
 
 part 'login_state.dart';
 
 class LoginController extends Cubit<LoginState> {
-  LoginController() : super(LoginInitial());
+  final LoginUsecase loginUsecase;
+  LoginController(this.loginUsecase) : super(LoginInitial());
 
   //TODO: Implemented login method
   void login(String email, String password) {
     emit(LoginLoading());
+    loginUsecase(email, password);
   }
 
   String? validatePassword(String? value) {

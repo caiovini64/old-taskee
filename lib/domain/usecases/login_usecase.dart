@@ -8,8 +8,9 @@ class LoginUsecase implements AuthUsecase {
   LoginUsecase(this.repository);
 
   @override
-  Future<Either<Failure, UserEntity>> call(String email, String password) {
-    final result = repository.login(email, password);
+  Future<Either<Failure, UserEntity>> call(
+      String email, String password) async {
+    final result = await repository.login(email, password);
     return result;
   }
 }

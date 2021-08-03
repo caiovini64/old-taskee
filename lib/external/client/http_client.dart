@@ -17,7 +17,7 @@ class HttpClient implements IConnectionClient {
       {required Map<String, dynamic> body}) async {
     final http.Response response = await client.post(
       Uri.parse(url),
-      body: body,
+      body: jsonEncode(body),
     );
     return HttpResponse(data: response.body, statusCode: response.statusCode);
   }

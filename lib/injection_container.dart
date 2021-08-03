@@ -4,6 +4,7 @@ import 'package:taskee/external/client/http_client.dart';
 import 'package:taskee/external/datasources/login_datasource_impl.dart';
 import 'package:taskee/infra/helpers/endpoints/firebase_endpoints.dart';
 import 'package:taskee/infra/repositories/login_repository_impl.dart';
+import 'package:taskee/ui/pages/login/controller/login_controller.dart';
 
 import 'domain/repositories/repositories.dart';
 import 'infra/datasources/datasources.dart';
@@ -13,6 +14,9 @@ final serviceLocator = GetIt.instance;
 
 void init() {
   serviceLocator.registerLazySingleton(
+      () => LoginController(serviceLocator<LoginUsecase>()));
+
+  serviceLocator.registerLazySingleton<LoginUsecase>(
       () => LoginUsecase(serviceLocator<ILoginRepository>()));
 
   serviceLocator.registerLazySingleton<ILoginRepository>(
