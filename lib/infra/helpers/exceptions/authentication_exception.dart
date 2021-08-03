@@ -1,16 +1,16 @@
 import 'package:taskee/domain/helpers/failures/failure.dart';
 
-class AuthenticationFailure extends Failure {
+class AuthenticationException extends Failure implements Exception {
   final int code;
   final String message;
 
-  AuthenticationFailure({
+  AuthenticationException({
     required this.code,
     required this.message,
   });
 
-  factory AuthenticationFailure.fromJson(Map<String, dynamic> json) {
-    return AuthenticationFailure(
+  factory AuthenticationException.fromJson(Map<String, dynamic> json) {
+    return AuthenticationException(
       code: json['error']['code'],
       message: json['error']['message'],
     );

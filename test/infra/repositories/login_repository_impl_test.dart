@@ -5,6 +5,7 @@ import 'package:mocktail/mocktail.dart';
 import 'package:taskee/domain/helpers/failures/failures.dart';
 import 'package:taskee/domain/repositories/repositories.dart';
 import 'package:taskee/infra/datasources/datasources.dart';
+import 'package:taskee/infra/helpers/exceptions/exceptions.dart';
 import 'package:taskee/infra/helpers/exceptions/server_exception.dart';
 import 'package:taskee/infra/repositories/login_repository_impl.dart';
 
@@ -38,5 +39,15 @@ void main() {
     when(() => datasource.login(any(), any())).thenThrow(ServerException());
     final result = await repository.login(email, password);
     expect(result, Left(ServerFailure()));
+  });
+
+  test(
+      'should returns a AuthenticationFailure when calls to datasource throws a AuthenticationException',
+      () async {
+    when(() => datasource.login(any(), any())).thenThrow(
+        AuthenticationException(code: 404, message: 'INVALID_EMAIL'));
+    final result = await repository.login(email, password);
+    expect(result,
+        Left(AuthenticationFailure(code: 404, message: 'INVALID_EMAIL')));
   });
 }
