@@ -15,7 +15,17 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = context.read<LoginController>();
-    return BlocBuilder<LoginController, LoginState>(
+    return BlocConsumer<LoginController, LoginState>(
+      listener: (context, state) {
+        if (state is LoginError) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              backgroundColor: Colors.redAccent,
+              content: Text(controller.failureMessage),
+            ),
+          );
+        }
+      },
       builder: (context, state) {
         return Scaffold(
           resizeToAvoidBottomInset: false,
@@ -84,6 +94,8 @@ class LoginPage extends StatelessWidget {
                                   final password =
                                       passwordController.value.text;
                                   controller.login(email, password);
+                                  FocusScope.of(context)
+                                      .requestFocus(new FocusNode());
                                 }
                               },
                             ),
