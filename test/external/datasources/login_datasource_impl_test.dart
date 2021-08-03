@@ -51,4 +51,18 @@ void main() {
       throwsA(isA<AuthenticationException>()),
     );
   });
+
+  test('should returns a ServerException when dont succeed', () async {
+    when(() => client.post(any(), body: {
+              "email": email,
+              "password": password,
+              "returnSecureToken": true,
+            }))
+        .thenAnswer(
+            (_) async => HttpResponse(data: dataErrorJson, statusCode: 404));
+    expect(
+      datasource.login(email, password),
+      throwsA(isA<ServerException>()),
+    );
+  });
 }
