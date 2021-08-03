@@ -79,7 +79,7 @@ class LoginPage extends StatelessWidget {
                                   ? CircularProgressIndicator(
                                       color: Colors.white,
                                     )
-                                  : Text('Login'),
+                                  : Text('Sign in'),
                               style: ElevatedButton.styleFrom(
                                 minimumSize: Size(400, 60),
                                 primary: primaryColor,
