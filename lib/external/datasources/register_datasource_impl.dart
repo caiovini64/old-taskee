@@ -23,8 +23,19 @@ class RegisterDatasource implements IRegisterDatasource {
         "returnSecureToken": true,
       },
     );
-    final json = jsonDecode(response.data);
-    final user = UserModel.fromJson(json);
-    return user;
+    if (response.statusCode == 200) {
+      final json = jsonDecode(response.data);
+      final user = UserModel.fromJson(json);
+      return user;
+    } else if (response.statusCode == 400) {
+      final exception =
+          AuthenticationException.fromJson(jsonDecode(response.data));
+      throw AuthenticationException(
+        code: response.statusCode,
+        message: exception.message,
+      );
+    } else {
+      throw ServerException();
+    }
   }
 }

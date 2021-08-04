@@ -36,4 +36,33 @@ void main() {
     final result = await datasource.register(email, password);
     expect(result, kUserModel);
   });
+
+  test('should returns an AuthenticationException when statusCode was 400',
+      () async {
+    when(() => client.post(any(), body: {
+              "email": email,
+              "password": password,
+              "returnSecureToken": true,
+            }))
+        .thenAnswer(
+            (_) async => HttpResponse(data: dataErrorJson, statusCode: 400));
+    expect(
+      datasource.register(email, password),
+      throwsA(isA<AuthenticationException>()),
+    );
+  });
+
+  test('should returns a ServerException when dont succeed', () async {
+    when(() => client.post(any(), body: {
+              "email": email,
+              "password": password,
+              "returnSecureToken": true,
+            }))
+        .thenAnswer(
+            (_) async => HttpResponse(data: dataErrorJson, statusCode: 404));
+    expect(
+      datasource.register(email, password),
+      throwsA(isA<ServerException>()),
+    );
+  });
 }
