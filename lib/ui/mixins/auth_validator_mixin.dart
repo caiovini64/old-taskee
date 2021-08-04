@@ -11,4 +11,10 @@ mixin AuthValidator {
     if (!emailValid) return 'Invalid email!';
     return null;
   }
+
+  String? confirmPassword(String? password1, String? password2) {
+    if (password1 != password2)
+      return 'Those passwords didn’t match. Try again';
+    return null;
+  }
 }

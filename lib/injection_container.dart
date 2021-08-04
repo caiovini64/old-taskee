@@ -12,12 +12,15 @@ import 'external/datasources/datasources.dart';
 import 'infra/datasources/datasources.dart';
 import 'infra/helpers/helpers.dart';
 import 'infra/repositories/repositories.dart';
+import 'ui/pages/register/controller/register_controller.dart';
 
 final serviceLocator = GetIt.instance;
 
 void initControllers() {
   serviceLocator.registerLazySingleton(
       () => LoginController(serviceLocator<LoginUsecase>()));
+  serviceLocator.registerLazySingleton(
+      () => RegisterController(serviceLocator<RegisterUsecase>()));
 }
 
 void initUsecases() {

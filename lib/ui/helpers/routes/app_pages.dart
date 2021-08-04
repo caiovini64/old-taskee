@@ -12,6 +12,7 @@ class AppPages {
     GetPage(
       name: Routes.REGISTER,
       page: () => RegisterPage(),
+      transition: Transition.cupertino,
     ),
   ];
 }

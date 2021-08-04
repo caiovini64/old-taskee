@@ -4,11 +4,12 @@ import 'package:flutter_signin_button/button_view.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:get/get.dart';
 import 'package:taskee/ui/helpers/helpers.dart';
+import 'package:taskee/ui/mixins/auth_validator_mixin.dart';
 import 'package:taskee/ui/widgets/widgets.dart';
 
 import 'controller/login_controller.dart';
 
-class LoginPage extends StatefulWidget {
+class LoginPage extends StatefulWidget with AuthValidator {
   static const route = '/login';
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -71,8 +72,7 @@ class _LoginPageState extends State<LoginPage> {
                               inputType: TextInputType.emailAddress,
                               controller: emailController,
                               obscureText: false,
-                              validator: (value) =>
-                                  controller.validateEmail(value),
+                              validator: (value) => widget.validateEmail(value),
                             ),
                             SizedBox(height: 35),
                             CustomTextFieldWidget(
@@ -93,7 +93,7 @@ class _LoginPageState extends State<LoginPage> {
                                 ),
                               ),
                               validator: (value) =>
-                                  controller.validatePassword(value),
+                                  widget.validatePassword(value),
                             ),
                             SizedBox(height: 35),
                             ElevatedButton(
