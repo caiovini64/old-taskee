@@ -1,35 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_signin_button/button_view.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:get/get.dart';
 import 'package:taskee/ui/helpers/helpers.dart';
 import 'package:taskee/ui/mixins/auth_validator_mixin.dart';
+import 'package:taskee/ui/pages/register/controller/register_controller.dart';
 import 'package:taskee/ui/widgets/widgets.dart';
 
-import 'controller/login_controller.dart';
+class RegisterPage extends StatefulWidget with AuthValidator {
+  static const route = '/register';
+  const RegisterPage({Key? key}) : super(key: key);
 
-class LoginPage extends StatefulWidget with AuthValidator {
-  static const route = '/login';
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _RegisterPageState createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
   final _formKey = GlobalKey<FormState>();
 
   final emailController = TextEditingController();
 
   final passwordController = TextEditingController();
 
-  bool obscureText = true;
+  final confirmPasswordController = TextEditingController();
 
+  bool obscureText = true;
   @override
   Widget build(BuildContext context) {
-    final controller = context.read<LoginController>();
-    return BlocConsumer<LoginController, LoginState>(
+    final controller = context.read<RegisterController>();
+    return BlocConsumer<RegisterController, RegisterState>(
       listener: (context, state) {
-        if (state is LoginError) {
+        if (state is RegisterError) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               backgroundColor: Colors.redAccent,
@@ -46,7 +47,24 @@ class _LoginPageState extends State<LoginPage> {
               key: _formKey,
               child: Column(
                 children: [
-                  SizedBox(height: 100),
+                  SizedBox(
+                    height: 100,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        SizedBox(width: 10),
+                        IconButton(
+                          icon: Icon(
+                            Icons.arrow_back_ios,
+                            color: Colors.white,
+                          ),
+                          onPressed: () {
+                            Get.back();
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
                   Expanded(
                     child: SingleChildScrollView(
                       scrollDirection: Axis.vertical,
@@ -61,13 +79,13 @@ class _LoginPageState extends State<LoginPage> {
                             Align(
                               alignment: Alignment.topLeft,
                               child: Text(
-                                'Wellcome!',
+                                'Create your account',
                                 style: Theme.of(context).textTheme.headline1,
                               ),
                             ),
                             SizedBox(height: 100),
                             CustomTextFieldWidget(
-                              labelText: 'Login',
+                              labelText: 'Email',
                               semanticsLabel: 'Email text field',
                               inputType: TextInputType.emailAddress,
                               controller: emailController,
@@ -96,12 +114,34 @@ class _LoginPageState extends State<LoginPage> {
                                   widget.validatePassword(value),
                             ),
                             SizedBox(height: 35),
+                            CustomTextFieldWidget(
+                              labelText: 'Confirm your password',
+                              semanticsLabel:
+                                  'Confirm your password text field',
+                              inputType: TextInputType.visiblePassword,
+                              controller: confirmPasswordController,
+                              obscureText: obscureText,
+                              suffixIcon: GestureDetector(
+                                onTap: () {
+                                  obscureText = !obscureText;
+                                  setState(() {});
+                                },
+                                child: Icon(
+                                  obscureText
+                                      ? Icons.visibility_off
+                                      : Icons.visibility,
+                                ),
+                              ),
+                              validator: (value) => widget.confirmPassword(
+                                  value, passwordController.value.text),
+                            ),
+                            SizedBox(height: 35),
                             ElevatedButton(
-                              child: state is LoginLoading
+                              child: state is RegisterLoading
                                   ? CircularProgressIndicator(
                                       color: Colors.white,
                                     )
-                                  : Text('Sign in'),
+                                  : Text('Sign up'),
                               style: ElevatedButton.styleFrom(
                                 minimumSize: Size(400, 60),
                                 primary: primaryColor,
@@ -120,28 +160,6 @@ class _LoginPageState extends State<LoginPage> {
                                       .requestFocus(new FocusNode());
                                 }
                               },
-                            ),
-                            SizedBox(height: 35),
-                            ElevatedButton(
-                              child: Text('Create new account'),
-                              style: ElevatedButton.styleFrom(
-                                side: BorderSide(width: 2, color: primaryColor),
-                                minimumSize: Size(400, 60),
-                                primary: Colors.transparent,
-                                elevation: 0,
-                                onPrimary: primaryColor,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                              ),
-                              onPressed: () => Get.toNamed('/register'),
-                            ),
-                            SizedBox(height: 35),
-                            SignInButton(
-                              Buttons.Google,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10)),
-                              onPressed: () {},
                             ),
                           ],
                         ),
