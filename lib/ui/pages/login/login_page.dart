@@ -125,11 +125,14 @@ class _LoginPageState extends State<LoginPage> {
                             ElevatedButton(
                               child: Text('Create new account'),
                               style: ElevatedButton.styleFrom(
+                                side: BorderSide(width: 2, color: primaryColor),
                                 minimumSize: Size(400, 60),
-                                primary: primaryColorDark,
+                                primary: Colors.transparent,
+                                elevation: 0,
                                 onPrimary: primaryColor,
                                 shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10)),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
                               ),
                               onPressed: () => Get.toNamed('/register'),
                             ),
