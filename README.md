@@ -2,6 +2,10 @@
     📌<a> Taskee </a>
 </h1>
 
+ <div align="center"><img alt="Codemagic build badge" src="https://api.codemagic.io/apps/610a8cf053f857d6d492dd2b/610a8cf053f857d6d492dd2a/status_badge.svg"> <img alt="License badge" src="https://img.shields.io/static/v1?label=license&message=MIT&color=blue"></div>
+
+
+
 <h3 align="center">
     Taskee is an App where you will manage and organize your tasks.
 </h3>
