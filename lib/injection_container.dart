@@ -7,8 +7,11 @@ import 'package:taskee/infra/repositories/login_repository_impl.dart';
 import 'package:taskee/ui/pages/login/controller/login_controller.dart';
 
 import 'domain/repositories/repositories.dart';
+import 'domain/usecases/register_usecase.dart';
+import 'external/datasources/datasources.dart';
 import 'infra/datasources/datasources.dart';
 import 'infra/helpers/helpers.dart';
+import 'infra/repositories/repositories.dart';
 
 final serviceLocator = GetIt.instance;
 
@@ -20,17 +23,25 @@ void initControllers() {
 void initUsecases() {
   serviceLocator.registerLazySingleton<LoginUsecase>(
       () => LoginUsecase(serviceLocator<ILoginRepository>()));
+  serviceLocator.registerLazySingleton<RegisterUsecase>(
+      () => RegisterUsecase(serviceLocator<IRegisterRepository>()));
 }
 
 void initRepositories() {
   serviceLocator.registerLazySingleton<ILoginRepository>(
       () => LoginRepository(serviceLocator<ILoginDatasource>()));
+  serviceLocator.registerLazySingleton<IRegisterRepository>(
+      () => RegisterRepository(serviceLocator<IRegisterDatasource>()));
 }
 
 void initDatasources() {
   serviceLocator.registerLazySingleton<ILoginDatasource>(() => LoginDatasource(
       client: serviceLocator<IConnectionClient>(),
       url: FirebaseEndpoints.login('signInWithPassword')));
+  serviceLocator.registerLazySingleton<IRegisterDatasource>(() =>
+      RegisterDatasource(
+          client: serviceLocator<IConnectionClient>(),
+          url: FirebaseEndpoints.login('signUp')));
 }
 
 void initServices() {
