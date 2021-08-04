@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
+import 'package:get/get.dart';
 import 'package:meta/meta.dart';
 import 'package:taskee/domain/entities/entities.dart';
 import 'package:taskee/domain/helpers/helpers.dart';
@@ -23,6 +24,7 @@ class LoginController extends Cubit<LoginState> {
     }, (right) {
       print(right);
       emit(LoginDone());
+      Get.toNamed('/register');
     });
   }
 
