@@ -24,7 +24,6 @@ class LoginController extends Cubit<LoginState> {
     }, (right) {
       print(right);
       emit(LoginDone());
-      Get.toNamed('/register');
     });
   }
 
