@@ -8,6 +8,7 @@ import 'package:taskee/ui/widgets/widgets.dart';
 import 'controller/login_controller.dart';
 
 class LoginPage extends StatefulWidget {
+  static const route = '/login';
   @override
   _LoginPageState createState() => _LoginPageState();
 }
