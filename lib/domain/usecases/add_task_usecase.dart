@@ -2,13 +2,13 @@ import 'package:dartz/dartz.dart';
 import 'package:taskee/domain/helpers/helpers.dart';
 import 'package:taskee/domain/repositories/repositories.dart';
 
-class AddTaskUsecase implements UsecaseWithParams {
+class AddTaskUsecase {
   final IAddTaskRepository repository;
   AddTaskUsecase(this.repository);
 
-  @override
-  Future<Either<Failure, String>> call(String title, String subtitle) async {
-    final result = await repository.addTask(title, subtitle);
+  Future<Either<Failure, String>> call(
+      String title, String subtitle, String state) async {
+    final result = await repository.addTask(title, subtitle, state);
     return result;
   }
 }

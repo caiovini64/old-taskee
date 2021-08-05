@@ -17,16 +17,16 @@ void main() {
   });
 
   test('should returns a String', () async {
-    when(() => repository.addTask('title', 'subtitle'))
+    when(() => repository.addTask('title', 'subtitle', 'todo'))
         .thenAnswer((_) async => Right(''));
-    final result = await usecase('title', 'subtitle');
+    final result = await usecase('title', 'subtitle', 'todo');
     expect(result, Right(''));
   });
 
   test('should returns a ServerFailure when dont succeed', () async {
-    when(() => repository.addTask('title', 'subtitle'))
+    when(() => repository.addTask('title', 'subtitle', 'todo'))
         .thenAnswer((_) async => Left(ServerFailure()));
-    final result = await usecase('title', 'subtitle');
+    final result = await usecase('title', 'subtitle', 'todo');
     expect(result, Left(ServerFailure()));
   });
 }

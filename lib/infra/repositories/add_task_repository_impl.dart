@@ -10,9 +10,10 @@ class AddTaskRepository implements IAddTaskRepository {
   AddTaskRepository(this.datasource);
 
   @override
-  Future<Either<Failure, String>> addTask(String title, String subtitle) async {
+  Future<Either<Failure, String>> addTask(
+      String title, String subtitle, String state) async {
     try {
-      final result = await datasource.addTask(title, subtitle);
+      final result = await datasource.addTask(title, subtitle, state);
       return Right(result);
     } on ServerException {
       return Left(ServerFailure());

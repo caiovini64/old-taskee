@@ -19,20 +19,20 @@ void main() {
   });
 
   test('should returns a TaskModel when calls the datasource', () async {
-    when(() => datasource.addTask('title', 'subtitle'))
+    when(() => datasource.addTask('title', 'subtitle', 'todo'))
         .thenAnswer((_) async => 'kTaskModel');
 
-    final result = await repository.addTask('title', 'subtitle');
+    final result = await repository.addTask('title', 'subtitle', 'todo');
     expect(result, Right('kTaskModel'));
   });
 
   test(
       'should returns a ServerFailure when the datasource throws a ServerException',
       () async {
-    when(() => datasource.addTask('title', 'subtitle'))
+    when(() => datasource.addTask('title', 'subtitle', 'todo'))
         .thenThrow(ServerException());
 
-    final result = await repository.addTask('title', 'subtitle');
+    final result = await repository.addTask('title', 'subtitle', 'todo');
     expect(result, Left(ServerFailure()));
   });
 }
