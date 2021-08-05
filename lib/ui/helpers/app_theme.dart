@@ -26,7 +26,7 @@ class CustomTheme {
         ),
         bodyText1: TextStyle(
           color: Colors.white,
-          fontWeight: FontWeight.bold,
+          fontWeight: FontWeight.normal,
           fontSize: 14,
         ),
       ),
