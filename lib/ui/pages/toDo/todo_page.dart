@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:taskee/ui/helpers/app_colors.dart';
+import 'package:taskee/ui/pages/newTask/new_task_page.dart';
 import 'package:taskee/ui/widgets/floating_action_bar_widget.dart';
 import 'package:taskee/ui/widgets/widgets.dart';
 
@@ -58,7 +60,7 @@ class ToDoPage extends StatelessWidget {
             ),
           ),
           FloatingActionWidget(
-            onTap: () => print('oi'),
+            onTap: () => Get.toNamed(NewTaskPage.route),
           ),
         ],
       ),
