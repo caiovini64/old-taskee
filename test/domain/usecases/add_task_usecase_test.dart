@@ -17,7 +17,7 @@ void main() {
     usecase = AddTaskUsecase(repository);
   });
 
-  test('should returns a TaskModel', () async {
+  test('should returns a TaskEntity', () async {
     when(() => repository.addTask('title', 'subtitle'))
         .thenAnswer((_) async => Right(kTaskEntity));
     final result = await usecase('title', 'subtitle');
