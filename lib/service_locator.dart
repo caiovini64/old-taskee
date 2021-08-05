@@ -13,18 +13,18 @@ import 'external/datasources/datasources.dart';
 import 'infra/datasources/datasources.dart';
 import 'infra/helpers/helpers.dart';
 import 'infra/repositories/repositories.dart';
+import 'ui/pages/newTask/controller/new_task_controller.dart';
 import 'ui/pages/register/controller/register_controller.dart';
 
 final serviceLocator = GetIt.instance;
 
 void initControllers() {
-  serviceLocator.registerFactory(
-    () => LoginController(
-      serviceLocator<LoginUsecase>(),
-    ),
-  );
+  serviceLocator
+      .registerFactory(() => LoginController(serviceLocator<LoginUsecase>()));
   serviceLocator.registerFactory(
       () => RegisterController(serviceLocator<RegisterUsecase>()));
+  serviceLocator.registerFactory(
+      () => NewTaskController(serviceLocator<AddTaskUsecase>()));
 }
 
 void initUsecases() {
