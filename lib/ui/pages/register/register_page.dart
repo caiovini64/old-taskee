@@ -79,14 +79,14 @@ class _RegisterPageState extends State<RegisterPage> {
                             Align(
                               alignment: Alignment.topLeft,
                               child: Text(
-                                'Create your account',
+                                'Create your account'.tr,
                                 style: Theme.of(context).textTheme.headline1,
                               ),
                             ),
                             SizedBox(height: 100),
                             CustomTextFieldWidget(
                               labelText: 'Email',
-                              semanticsLabel: 'Email text field',
+                              semanticsLabel: 'Email text field'.tr,
                               inputType: TextInputType.emailAddress,
                               controller: emailController,
                               obscureText: false,
@@ -94,8 +94,8 @@ class _RegisterPageState extends State<RegisterPage> {
                             ),
                             SizedBox(height: 35),
                             CustomTextFieldWidget(
-                              labelText: 'Password',
-                              semanticsLabel: 'Password text field',
+                              labelText: 'Password'.tr,
+                              semanticsLabel: 'Password text field'.tr,
                               inputType: TextInputType.visiblePassword,
                               controller: passwordController,
                               obscureText: obscureText,
@@ -115,9 +115,9 @@ class _RegisterPageState extends State<RegisterPage> {
                             ),
                             SizedBox(height: 35),
                             CustomTextFieldWidget(
-                              labelText: 'Confirm your password',
+                              labelText: 'Confirm your password'.tr,
                               semanticsLabel:
-                                  'Confirm your password text field',
+                                  'Confirm your password text field'.tr,
                               inputType: TextInputType.visiblePassword,
                               controller: confirmPasswordController,
                               obscureText: obscureText,
@@ -141,7 +141,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                   ? CircularProgressIndicator(
                                       color: Colors.white,
                                     )
-                                  : Text('Sign up'),
+                                  : Text('Sign up'.tr),
                               style: ElevatedButton.styleFrom(
                                 minimumSize: Size(400, 60),
                                 primary: primaryColor,

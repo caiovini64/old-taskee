@@ -61,14 +61,14 @@ class _LoginPageState extends State<LoginPage> {
                             Align(
                               alignment: Alignment.topLeft,
                               child: Text(
-                                'Welcome!',
+                                'Welcome!'.tr,
                                 style: Theme.of(context).textTheme.headline1,
                               ),
                             ),
                             SizedBox(height: 100),
                             CustomTextFieldWidget(
-                              labelText: 'Login',
-                              semanticsLabel: 'Email text field',
+                              labelText: 'Email',
+                              semanticsLabel: 'Email text field'.tr,
                               inputType: TextInputType.emailAddress,
                               controller: emailController,
                               obscureText: false,
@@ -76,8 +76,8 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                             SizedBox(height: 35),
                             CustomTextFieldWidget(
-                              labelText: 'Password',
-                              semanticsLabel: 'Password text field',
+                              labelText: 'Password'.tr,
+                              semanticsLabel: 'Password text field'.tr,
                               inputType: TextInputType.visiblePassword,
                               controller: passwordController,
                               obscureText: obscureText,
@@ -101,7 +101,7 @@ class _LoginPageState extends State<LoginPage> {
                                   ? CircularProgressIndicator(
                                       color: Colors.white,
                                     )
-                                  : Text('Sign in'),
+                                  : Text('Sign in'.tr),
                               style: ElevatedButton.styleFrom(
                                 minimumSize: Size(400, 60),
                                 primary: primaryColor,
@@ -123,7 +123,7 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                             SizedBox(height: 35),
                             ElevatedButton(
-                              child: Text('Create new account'),
+                              child: Text('Create new account'.tr),
                               style: ElevatedButton.styleFrom(
                                 side: BorderSide(width: 2, color: primaryColor),
                                 minimumSize: Size(400, 60),
