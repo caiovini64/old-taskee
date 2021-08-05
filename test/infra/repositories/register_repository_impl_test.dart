@@ -8,7 +8,7 @@ import 'package:taskee/infra/datasources/datasources.dart';
 import 'package:taskee/infra/helpers/helpers.dart';
 import 'package:taskee/infra/repositories/repositories.dart';
 
-import '../../mocks.dart';
+import '../../mock/user_mocks.dart';
 
 class MockRegisterDatasource extends Mock implements IRegisterDatasource {}
 

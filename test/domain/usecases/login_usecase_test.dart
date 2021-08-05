@@ -6,7 +6,7 @@ import 'package:taskee/domain/helpers/failures/failures.dart';
 import 'package:taskee/domain/repositories/login_repository.dart';
 import 'package:taskee/domain/usecases/login_usecase.dart';
 
-import '../../mocks.dart';
+import '../../mock/user_mocks.dart';
 
 class MockLoginRepository extends Mock implements ILoginRepository {}
 
