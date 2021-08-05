@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
+import 'package:taskee/core/translations/app_translations.dart';
+import 'package:taskee/injection_container.dart' as dependencies;
 import 'package:taskee/ui/helpers/helpers.dart';
 import 'package:taskee/ui/helpers/routes/app_pages.dart';
 import 'package:taskee/ui/pages/login/controller/login_controller.dart';
 import 'package:taskee/ui/pages/login/login_page.dart';
-import 'package:taskee/injection_container.dart' as dependencies;
 import 'package:taskee/ui/pages/register/controller/register_controller.dart';
 
 void main() async {
@@ -17,6 +18,7 @@ void main() async {
   dependencies.initDatasources();
   dependencies.initServices();
   runApp(MyApp());
+  print(Get.deviceLocale);
 }
 
 class MyApp extends StatelessWidget {
@@ -36,6 +38,8 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: CustomTheme.darkTheme,
         getPages: AppPages.pages,
+        locale: Get.deviceLocale,
+        translationsKeys: AppTranslation.translations,
         home: LoginPage(),
       ),
     );
