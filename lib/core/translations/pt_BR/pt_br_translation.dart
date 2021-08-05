@@ -4,5 +4,7 @@ final Map<String, String> ptBR = {
   'Sign in': 'Entrar',
   'Create new account': 'Criar nova conta',
   'Create your account': 'Crie sua conta',
-  'Confirm your password': 'Confirme sua senha'
+  'Confirm your password': 'Confirme sua senha',
+  'Email text field': 'Campo de email',
+  'Password text field': 'Campo de senha'
 };
