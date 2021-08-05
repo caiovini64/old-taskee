@@ -7,8 +7,6 @@ import 'package:taskee/infra/datasources/datasources.dart';
 import 'package:taskee/infra/helpers/exceptions/exceptions.dart';
 import 'package:taskee/infra/repositories/repositories.dart';
 
-import '../../mock/task_mocks.dart';
-
 class MockAddTaskDatasource extends Mock implements IAddTaskDatasource {}
 
 void main() {
@@ -22,10 +20,10 @@ void main() {
 
   test('should returns a TaskModel when calls the datasource', () async {
     when(() => datasource.addTask('title', 'subtitle'))
-        .thenAnswer((_) async => kTaskModel);
+        .thenAnswer((_) async => 'kTaskModel');
 
     final result = await repository.addTask('title', 'subtitle');
-    expect(result, Right(kTaskModel));
+    expect(result, Right('kTaskModel'));
   });
 
   test(

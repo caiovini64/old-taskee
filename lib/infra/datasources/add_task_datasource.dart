@@ -1,5 +1,3 @@
-import 'package:taskee/infra/models/models.dart';
-
 abstract class IAddTaskDatasource {
-  Future<TaskModel> addTask(String title, String subtitle);
+  Future<String> addTask(String title, String subtitle);
 }

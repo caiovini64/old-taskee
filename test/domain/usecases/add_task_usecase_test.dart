@@ -5,8 +5,6 @@ import 'package:taskee/domain/helpers/failures/failures.dart';
 import 'package:taskee/domain/repositories/repositories.dart';
 import 'package:taskee/domain/usecases/usecases.dart';
 
-import '../../mock/task_mocks.dart';
-
 class MockAddTaskRepository extends Mock implements IAddTaskRepository {}
 
 void main() {
@@ -18,11 +16,11 @@ void main() {
     usecase = AddTaskUsecase(repository);
   });
 
-  test('should returns a TaskEntity', () async {
+  test('should returns a String', () async {
     when(() => repository.addTask('title', 'subtitle'))
-        .thenAnswer((_) async => Right(kTaskEntity));
+        .thenAnswer((_) async => Right(''));
     final result = await usecase('title', 'subtitle');
-    expect(result, Right(kTaskEntity));
+    expect(result, Right(''));
   });
 
   test('should returns a ServerFailure when dont succeed', () async {

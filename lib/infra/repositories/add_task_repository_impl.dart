@@ -1,5 +1,4 @@
 import 'package:taskee/domain/helpers/failures/failure.dart';
-import 'package:taskee/domain/entities/task_entity.dart';
 import 'package:dartz/dartz.dart';
 import 'package:taskee/domain/helpers/failures/failures.dart';
 import 'package:taskee/domain/repositories/repositories.dart';
@@ -11,8 +10,7 @@ class AddTaskRepository implements IAddTaskRepository {
   AddTaskRepository(this.datasource);
 
   @override
-  Future<Either<Failure, TaskEntity>> addTask(
-      String title, String subtitle) async {
+  Future<Either<Failure, String>> addTask(String title, String subtitle) async {
     try {
       final result = await datasource.addTask(title, subtitle);
       return Right(result);

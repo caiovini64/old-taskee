@@ -7,7 +7,7 @@ class AddTaskUsecase implements UsecaseWithParams {
   AddTaskUsecase(this.repository);
 
   @override
-  Future<Either<Failure, dynamic>> call(String title, String subtitle) async {
+  Future<Either<Failure, String>> call(String title, String subtitle) async {
     final result = await repository.addTask(title, subtitle);
     return result;
   }
