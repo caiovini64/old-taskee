@@ -8,6 +8,7 @@ import 'package:taskee/ui/pages/login/controller/login_controller.dart';
 
 import 'domain/repositories/repositories.dart';
 import 'domain/usecases/register_usecase.dart';
+import 'domain/usecases/usecases.dart';
 import 'external/datasources/datasources.dart';
 import 'infra/datasources/datasources.dart';
 import 'infra/helpers/helpers.dart';
@@ -28,6 +29,8 @@ void initUsecases() {
       () => LoginUsecase(serviceLocator<ILoginRepository>()));
   serviceLocator.registerLazySingleton<RegisterUsecase>(
       () => RegisterUsecase(serviceLocator<IRegisterRepository>()));
+  serviceLocator.registerLazySingleton<AddTaskUsecase>(
+      () => AddTaskUsecase(serviceLocator<IAddTaskRepository>()));
 }
 
 void initRepositories() {
@@ -35,6 +38,8 @@ void initRepositories() {
       () => LoginRepository(serviceLocator<ILoginDatasource>()));
   serviceLocator.registerLazySingleton<IRegisterRepository>(
       () => RegisterRepository(serviceLocator<IRegisterDatasource>()));
+  serviceLocator.registerLazySingleton<IAddTaskRepository>(
+      () => AddTaskRepository(serviceLocator<IAddTaskDatasource>()));
 }
 
 void initDatasources() {
@@ -45,6 +50,10 @@ void initDatasources() {
       RegisterDatasource(
           client: serviceLocator<IConnectionClient>(),
           url: FirebaseEndpoints.login('signUp')));
+  serviceLocator.registerLazySingleton<IAddTaskDatasource>(() =>
+      AddTaskDatasource(
+          client: serviceLocator<IConnectionClient>(),
+          url: FirebaseEndpoints.realtimeDb()));
 }
 
 void initServices() {
