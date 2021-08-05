@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
-import 'package:sign_button/create_button.dart';
-import 'package:sign_button/sign_button.dart';
 import 'package:taskee/ui/helpers/helpers.dart';
 import 'package:taskee/ui/mixins/auth_validator_mixin.dart';
 import 'package:taskee/ui/widgets/widgets.dart';
