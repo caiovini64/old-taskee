@@ -61,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
                             Align(
                               alignment: Alignment.topLeft,
                               child: Text(
-                                'Wellcome!',
+                                'Welcome!',
                                 style: Theme.of(context).textTheme.headline1,
                               ),
                             ),
