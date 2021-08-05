@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:equatable/equatable.dart';
-import 'package:taskee/domain/entities/entities.dart';
 
 class TaskEntity extends Equatable {
   final int id = Random().nextInt(999999);
