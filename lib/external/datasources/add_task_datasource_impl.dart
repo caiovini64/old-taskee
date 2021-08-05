@@ -13,8 +13,9 @@ class AddTaskDatasource extends IAddTaskDatasource {
   final user = GetIt.instance.get<UserModel>();
   @override
   Future<String> addTask(String title, String subtitle, String state) async {
+    final apiUrl = url + 'tasks/' + user.id + '.json';
     final response = await client.post(
-      url + 'tasks/' + user.id,
+      apiUrl,
       body: {
         "title": title,
         "subtitle": subtitle,
