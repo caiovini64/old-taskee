@@ -6,7 +6,7 @@ import 'package:taskee/ui/helpers/helpers.dart';
 import 'package:taskee/ui/helpers/routes/app_pages.dart';
 import 'package:taskee/ui/pages/login/controller/login_controller.dart';
 import 'package:taskee/ui/pages/login/login_page.dart';
-import 'package:taskee/injection_container.dart' as dependencies;
+import 'package:taskee/service_locator.dart' as dependencies;
 import 'package:taskee/ui/pages/register/controller/register_controller.dart';
 
 void main() async {
