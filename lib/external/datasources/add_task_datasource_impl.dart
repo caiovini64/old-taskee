@@ -19,6 +19,10 @@ class AddTaskDatasource extends IAddTaskDatasource {
         "state": state,
       },
     );
-    return response.data;
+    if (response.statusCode == 200) {
+      return response.data;
+    } else {
+      throw ServerException();
+    }
   }
 }

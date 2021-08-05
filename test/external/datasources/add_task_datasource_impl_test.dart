@@ -30,4 +30,18 @@ void main() {
     final result = await datasource.addTask('title', 'subtitle', 'state');
     expect(result, '{"name":"-MgLp4Etn6NlUvFJXur5"}');
   });
+
+  test('should returns a ServerException when dont succeed', () async {
+    when(() => client.post(any(), body: {
+              "title": 'title',
+              "subtitle": 'subtitle',
+              "state": "state",
+            }))
+        .thenAnswer((_) async => HttpResponse(
+            data: '{"name":"-MgLp4Etn6NlUvFJXur5"}', statusCode: 404));
+    expect(
+      datasource.addTask('title', 'subtitle', 'state'),
+      throwsA(isA<ServerException>()),
+    );
+  });
 }
