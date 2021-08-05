@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:http/http.dart';
 import 'package:taskee/infra/datasources/datasources.dart';
 import 'package:taskee/infra/helpers/helpers.dart';
 import 'package:taskee/infra/models/models.dart';

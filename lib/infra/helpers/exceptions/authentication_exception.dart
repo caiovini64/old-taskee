@@ -17,6 +17,5 @@ class AuthenticationException extends Failure implements Exception {
   }
 
   @override
-  // TODO: implement props
   List<Object?> get props => [];
 }

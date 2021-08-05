@@ -1,4 +1,3 @@
-import 'package:equatable/equatable.dart';
 import 'package:taskee/domain/entities/entities.dart';
 
 class UserModel extends UserEntity {
