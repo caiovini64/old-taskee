@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
+import 'package:taskee/core/translations/app_translations.dart';
 import 'package:taskee/ui/helpers/helpers.dart';
 import 'package:taskee/ui/helpers/routes/app_pages.dart';
 import 'package:taskee/ui/pages/login/controller/login_controller.dart';
@@ -18,6 +19,7 @@ void main() async {
   dependencies.initDatasources();
   dependencies.initServices();
   runApp(MyApp());
+  print(Get.deviceLocale);
 }
 
 class MyApp extends StatelessWidget {
@@ -38,8 +40,10 @@ class MyApp extends StatelessWidget {
       child: GetMaterialApp(
         title: 'Taskee',
         debugShowCheckedModeBanner: false,
-        theme: CustomTheme.darkTheme,
+        theme: CustomTheme.lightTheme,
         getPages: AppPages.pages,
+        locale: Get.deviceLocale,
+        translationsKeys: AppTranslation.translations,
         home: LoginPage(),
       ),
     );
