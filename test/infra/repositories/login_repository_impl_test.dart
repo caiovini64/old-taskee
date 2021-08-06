@@ -9,7 +9,7 @@ import 'package:taskee/infra/helpers/exceptions/exceptions.dart';
 import 'package:taskee/infra/helpers/exceptions/server_exception.dart';
 import 'package:taskee/infra/repositories/login_repository_impl.dart';
 
-import '../../mocks.dart';
+import '../../mock/user_mocks.dart';
 
 class MockLoginDatasource extends Mock implements ILoginDatasource {}
 

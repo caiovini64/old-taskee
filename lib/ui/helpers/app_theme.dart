@@ -24,9 +24,19 @@ class CustomTheme {
           fontWeight: FontWeight.bold,
           fontSize: 18,
         ),
+        headline4: TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.w600,
+          fontSize: 16,
+        ),
         bodyText1: TextStyle(
           color: Colors.white,
           fontWeight: FontWeight.normal,
+          fontSize: 14,
+        ),
+        bodyText2: TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.w300,
           fontSize: 14,
         ),
       ),

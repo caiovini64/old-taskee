@@ -6,7 +6,7 @@ import 'package:taskee/infra/datasources/datasources.dart';
 import 'package:taskee/infra/helpers/client/connection_client.dart';
 import 'package:taskee/infra/helpers/helpers.dart';
 
-import '../../mocks.dart';
+import '../../mock/user_mocks.dart';
 
 class MockConnectionClient extends Mock implements IConnectionClient {}
 

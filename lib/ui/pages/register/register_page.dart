@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:taskee/ui/helpers/helpers.dart';
-import 'package:taskee/ui/mixins/auth_validator_mixin.dart';
+import 'package:taskee/ui/mixins/validator_mixin.dart';
 import 'package:taskee/ui/pages/register/controller/register_controller.dart';
 import 'package:taskee/ui/widgets/widgets.dart';
 
-class RegisterPage extends StatefulWidget with AuthValidator {
+class RegisterPage extends StatefulWidget with Validators {
   static const route = '/register';
   const RegisterPage({Key? key}) : super(key: key);
 

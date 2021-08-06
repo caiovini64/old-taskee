@@ -3,50 +3,63 @@ import 'package:taskee/domain/usecases/login_usecase.dart';
 import 'package:taskee/external/client/http_client.dart';
 import 'package:taskee/external/datasources/login_datasource_impl.dart';
 import 'package:taskee/infra/helpers/endpoints/firebase_endpoints.dart';
+import 'package:taskee/infra/models/models.dart';
 import 'package:taskee/infra/repositories/login_repository_impl.dart';
 import 'package:taskee/ui/pages/login/controller/login_controller.dart';
 
 import 'domain/repositories/repositories.dart';
 import 'domain/usecases/register_usecase.dart';
+import 'domain/usecases/usecases.dart';
 import 'external/datasources/datasources.dart';
 import 'infra/datasources/datasources.dart';
 import 'infra/helpers/helpers.dart';
 import 'infra/repositories/repositories.dart';
+import 'ui/pages/newTask/controller/new_task_controller.dart';
 import 'ui/pages/register/controller/register_controller.dart';
 
 final serviceLocator = GetIt.instance;
 
 void initControllers() {
-  serviceLocator.registerLazySingleton(
-      () => LoginController(serviceLocator<LoginUsecase>()));
-  serviceLocator.registerLazySingleton(
+  serviceLocator
+      .registerFactory(() => LoginController(serviceLocator<LoginUsecase>()));
+  serviceLocator.registerFactory(
       () => RegisterController(serviceLocator<RegisterUsecase>()));
+  serviceLocator.registerFactory(
+      () => NewTaskController(serviceLocator<AddTaskUsecase>()));
 }
 
 void initUsecases() {
-  serviceLocator.registerLazySingleton<LoginUsecase>(
+  serviceLocator.registerFactory<LoginUsecase>(
       () => LoginUsecase(serviceLocator<ILoginRepository>()));
-  serviceLocator.registerLazySingleton<RegisterUsecase>(
+  serviceLocator.registerFactory<RegisterUsecase>(
       () => RegisterUsecase(serviceLocator<IRegisterRepository>()));
+  serviceLocator.registerFactory<AddTaskUsecase>(
+      () => AddTaskUsecase(serviceLocator<IAddTaskRepository>()));
 }
 
 void initRepositories() {
-  serviceLocator.registerLazySingleton<ILoginRepository>(
+  serviceLocator.registerFactory<ILoginRepository>(
       () => LoginRepository(serviceLocator<ILoginDatasource>()));
-  serviceLocator.registerLazySingleton<IRegisterRepository>(
+  serviceLocator.registerFactory<IRegisterRepository>(
       () => RegisterRepository(serviceLocator<IRegisterDatasource>()));
+  serviceLocator.registerFactory<IAddTaskRepository>(
+      () => AddTaskRepository(serviceLocator<IAddTaskDatasource>()));
 }
 
 void initDatasources() {
-  serviceLocator.registerLazySingleton<ILoginDatasource>(() => LoginDatasource(
+  serviceLocator.registerFactory<ILoginDatasource>(() => LoginDatasource(
       client: serviceLocator<IConnectionClient>(),
       url: FirebaseEndpoints.login('signInWithPassword')));
-  serviceLocator.registerLazySingleton<IRegisterDatasource>(() =>
-      RegisterDatasource(
-          client: serviceLocator<IConnectionClient>(),
-          url: FirebaseEndpoints.login('signUp')));
+  serviceLocator.registerFactory<IRegisterDatasource>(() => RegisterDatasource(
+      client: serviceLocator<IConnectionClient>(),
+      url: FirebaseEndpoints.login('signUp')));
+  serviceLocator.registerFactory<IAddTaskDatasource>(() => AddTaskDatasource(
+        client: serviceLocator<IConnectionClient>(),
+        url: FirebaseEndpoints.realtimeDb(),
+        user: serviceLocator<UserModel>(),
+      ));
 }
 
 void initServices() {
-  serviceLocator.registerLazySingleton<IConnectionClient>(() => HttpClient());
+  serviceLocator.registerFactory<IConnectionClient>(() => HttpClient());
 }

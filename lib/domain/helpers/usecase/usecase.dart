@@ -10,6 +10,10 @@ abstract class AuthUsecase<Type, Params> {
   Future<Either<Failure, Type>> call(String email, String password);
 }
 
+abstract class UsecaseWithParams<Type, Params> {
+  Future<Either<Failure, Type>> call(String param, String param2);
+}
+
 class NoParams extends Equatable {
   @override
   List<Object?> get props => [];

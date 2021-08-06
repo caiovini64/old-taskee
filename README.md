@@ -18,9 +18,9 @@
 ## ⚙️ Functionalities
 
 - [x] The user can sign in with your account
+- [x] The user can create an account
 - [ ] The user can sign in with a Google account
-- [ ] The user can create an account
-- [ ] The user can create tasks
+- [x] The user can create tasks
 - [ ] The user can delete your tasks
 - [ ] The user can update your tasks
 - [ ] The user can update the state of your tasks 

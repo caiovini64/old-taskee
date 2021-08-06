@@ -3,11 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:taskee/core/translations/app_translations.dart';
-import 'package:taskee/injection_container.dart' as dependencies;
 import 'package:taskee/ui/helpers/helpers.dart';
 import 'package:taskee/ui/helpers/routes/app_pages.dart';
 import 'package:taskee/ui/pages/login/controller/login_controller.dart';
 import 'package:taskee/ui/pages/login/login_page.dart';
+import 'package:taskee/service_locator.dart' as dependencies;
+import 'package:taskee/ui/pages/newTask/controller/new_task_controller.dart';
 import 'package:taskee/ui/pages/register/controller/register_controller.dart';
 
 void main() async {
@@ -32,6 +33,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
             create: (context) =>
                 dependencies.serviceLocator.get<RegisterController>()),
+        BlocProvider(
+            create: (context) =>
+                dependencies.serviceLocator.get<NewTaskController>()),
       ],
       child: GetMaterialApp(
         title: 'Taskee',

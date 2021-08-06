@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:taskee/ui/helpers/helpers.dart';
-import 'package:taskee/ui/mixins/auth_validator_mixin.dart';
+import 'package:taskee/ui/mixins/validator_mixin.dart';
 import 'package:taskee/ui/widgets/widgets.dart';
 
 import 'controller/login_controller.dart';
 
-class LoginPage extends StatefulWidget with AuthValidator {
+class LoginPage extends StatefulWidget with Validators {
   static const route = '/login';
   @override
   _LoginPageState createState() => _LoginPageState();
