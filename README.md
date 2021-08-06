@@ -3,7 +3,8 @@
     📌<a> Taskee </a>
 </h1>
 
-![Frame 1](https://user-images.githubusercontent.com/45527157/128557724-a10dab43-1109-46a4-8888-b8ce2354d984.jpg)
+![Frame 1 (1)](https://user-images.githubusercontent.com/45527157/128557946-b05f0d22-1afa-452a-a6a5-5bf406b24f5b.jpg)
+
 
 
 
