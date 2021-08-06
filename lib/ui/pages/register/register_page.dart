@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:taskee/ui/helpers/helpers.dart';
 import 'package:taskee/ui/mixins/validator_mixin.dart';
+import 'package:taskee/ui/pages/newTask/components/custom_task_field.dart';
 import 'package:taskee/ui/pages/register/controller/register_controller.dart';
 import 'package:taskee/ui/widgets/widgets.dart';
 
@@ -41,40 +42,25 @@ class _RegisterPageState extends State<RegisterPage> {
       builder: (context, state) {
         return Scaffold(
           resizeToAvoidBottomInset: false,
+          appBar: AppBar(
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+          ),
           body: Container(
             child: Form(
               key: _formKey,
               child: Column(
                 children: [
-                  SizedBox(
-                    height: 100,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        SizedBox(width: 10),
-                        IconButton(
-                          icon: Icon(
-                            Icons.arrow_back_ios,
-                            color: Colors.white,
-                          ),
-                          onPressed: () {
-                            Get.back();
-                          },
-                        ),
-                      ],
-                    ),
-                  ),
                   Expanded(
                     child: SingleChildScrollView(
                       scrollDirection: Axis.vertical,
                       child: Container(
                         height: MediaQuery.of(context).size.height,
                         padding: EdgeInsets.all(20),
-                        color: Theme.of(context).backgroundColor,
+                        color: Theme.of(context).primaryColor,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            SizedBox(height: 35),
                             Align(
                               alignment: Alignment.topLeft,
                               child: Text(
@@ -83,19 +69,21 @@ class _RegisterPageState extends State<RegisterPage> {
                               ),
                             ),
                             SizedBox(height: 100),
-                            CustomTextFieldWidget(
+                            CustomTaskFieldWidget(
                               labelText: 'Email',
                               semanticsLabel: 'Email text field'.tr,
                               inputType: TextInputType.emailAddress,
                               controller: emailController,
+                              maxLines: 1,
                               obscureText: false,
                               validator: (value) => widget.validateEmail(value),
                             ),
                             SizedBox(height: 35),
-                            CustomTextFieldWidget(
+                            CustomTaskFieldWidget(
                               labelText: 'Password'.tr,
                               semanticsLabel: 'Password text field'.tr,
                               inputType: TextInputType.visiblePassword,
+                              maxLines: 1,
                               controller: passwordController,
                               obscureText: obscureText,
                               suffixIcon: GestureDetector(
@@ -113,11 +101,12 @@ class _RegisterPageState extends State<RegisterPage> {
                                   widget.validatePassword(value),
                             ),
                             SizedBox(height: 35),
-                            CustomTextFieldWidget(
+                            CustomTaskFieldWidget(
                               labelText: 'Confirm your password'.tr,
                               semanticsLabel:
                                   'Confirm your password text field'.tr,
                               inputType: TextInputType.visiblePassword,
+                              maxLines: 1,
                               controller: confirmPasswordController,
                               obscureText: obscureText,
                               suffixIcon: GestureDetector(
@@ -138,12 +127,13 @@ class _RegisterPageState extends State<RegisterPage> {
                             ElevatedButton(
                               child: state is RegisterLoading
                                   ? CircularProgressIndicator(
-                                      color: Colors.white,
+                                      color: primaryColor,
                                     )
                                   : Text('Sign up'.tr),
                               style: ElevatedButton.styleFrom(
                                 minimumSize: Size(400, 60),
-                                primary: primaryColor,
+                                primary: Colors.white,
+                                onPrimary: primaryColor,
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10)),
                               ),
