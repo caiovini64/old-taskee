@@ -34,7 +34,7 @@ class ToDoPage extends StatelessWidget {
                           Align(
                             alignment: Alignment.topLeft,
                             child: Text(
-                              'To do',
+                              'To do'.tr,
                               style: Theme.of(context).textTheme.headline1,
                             ),
                           ),
