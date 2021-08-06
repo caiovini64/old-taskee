@@ -1,4 +1,3 @@
-import 'package:get_it/get_it.dart';
 import 'package:taskee/infra/datasources/datasources.dart';
 import 'package:taskee/infra/helpers/helpers.dart';
 import 'package:taskee/infra/models/models.dart';
@@ -6,11 +5,13 @@ import 'package:taskee/infra/models/models.dart';
 class AddTaskDatasource extends IAddTaskDatasource {
   final IConnectionClient client;
   final String url;
+  final UserModel user;
   AddTaskDatasource({
     required this.client,
     required this.url,
+    required this.user,
   });
-  final user = GetIt.instance.get<UserModel>();
+
   @override
   Future<String> addTask(String title, String subtitle, String state) async {
     final apiUrl = url + 'tasks/' + user.id + '.json';

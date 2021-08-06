@@ -5,6 +5,7 @@ import 'package:taskee/external/datasources/datasources.dart';
 import 'package:taskee/infra/datasources/datasources.dart';
 import 'package:taskee/infra/helpers/client/connection_client.dart';
 import 'package:taskee/infra/helpers/helpers.dart';
+import 'package:taskee/infra/models/models.dart';
 
 class MockConnectionClient extends Mock implements IConnectionClient {}
 
@@ -12,11 +13,15 @@ void main() {
   late IAddTaskDatasource datasource;
   late IConnectionClient client;
   late String url;
+  late UserModel user;
+  late String email;
 
   setUp(() {
     client = MockConnectionClient();
     url = faker.internet.httpsUrl();
-    datasource = AddTaskDatasource(client: client, url: url);
+    email = faker.internet.email();
+    user = UserModel(email: email, id: '2', token: 'a');
+    datasource = AddTaskDatasource(client: client, url: url, user: user);
   });
 
   test('should returns a String', () async {
