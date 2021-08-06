@@ -9,6 +9,7 @@ class CustomTaskFieldWidget extends StatelessWidget {
   final String? Function(String?) validator;
   final Widget? suffixIcon;
   final double height;
+  final int maxLines;
 
   const CustomTaskFieldWidget({
     Key? key,
@@ -20,6 +21,7 @@ class CustomTaskFieldWidget extends StatelessWidget {
     required this.validator,
     this.height = 60,
     this.suffixIcon,
+    this.maxLines = 5,
   }) : super(key: key);
 
   @override
@@ -38,12 +40,12 @@ class CustomTaskFieldWidget extends StatelessWidget {
           controller: controller,
           validator: validator,
           obscureText: obscureText,
-          maxLines: 5,
+          maxLines: maxLines,
           style: Theme.of(context).textTheme.bodyText1,
           decoration: InputDecoration(
             suffixIcon: suffixIcon,
-            labelText: labelText,
-            labelStyle: Theme.of(context).textTheme.bodyText1,
+            hintText: labelText,
+            hintStyle: Theme.of(context).textTheme.bodyText1,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
             ),

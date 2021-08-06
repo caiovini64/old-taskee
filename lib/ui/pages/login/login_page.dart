@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:taskee/ui/helpers/helpers.dart';
 import 'package:taskee/ui/mixins/validator_mixin.dart';
+import 'package:taskee/ui/pages/newTask/components/custom_task_field.dart';
 import 'package:taskee/ui/widgets/widgets.dart';
 
 import 'controller/login_controller.dart';
@@ -46,97 +47,94 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   SizedBox(height: 100),
                   Expanded(
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.vertical,
-                      child: Container(
-                        height: MediaQuery.of(context).size.height,
-                        padding: EdgeInsets.all(20),
-                        color: Theme.of(context).backgroundColor,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            SizedBox(height: 35),
-                            Align(
-                              alignment: Alignment.topLeft,
-                              child: Text(
-                                'Welcome!'.tr,
-                                style: Theme.of(context).textTheme.headline1,
-                              ),
+                    child: Container(
+                      height: MediaQuery.of(context).size.height,
+                      padding: EdgeInsets.all(20),
+                      color: primaryColor,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Align(
+                            alignment: Alignment.topLeft,
+                            child: Text(
+                              'Welcome!'.tr,
+                              style: Theme.of(context).textTheme.headline1,
                             ),
-                            SizedBox(height: 100),
-                            CustomTextFieldWidget(
-                              labelText: 'Email',
-                              semanticsLabel: 'Email text field'.tr,
-                              inputType: TextInputType.emailAddress,
-                              controller: emailController,
-                              obscureText: false,
-                              validator: (value) => widget.validateEmail(value),
-                            ),
-                            SizedBox(height: 35),
-                            CustomTextFieldWidget(
-                              labelText: 'Password'.tr,
-                              semanticsLabel: 'Password text field'.tr,
-                              inputType: TextInputType.visiblePassword,
-                              controller: passwordController,
-                              obscureText: obscureText,
-                              suffixIcon: GestureDetector(
-                                onTap: () {
-                                  obscureText = !obscureText;
-                                  setState(() {});
-                                },
-                                child: Icon(
-                                  obscureText
-                                      ? Icons.visibility_off
-                                      : Icons.visibility,
-                                ),
-                              ),
-                              validator: (value) =>
-                                  widget.validatePassword(value),
-                            ),
-                            SizedBox(height: 35),
-                            ElevatedButton(
-                              child: state is LoginLoading
-                                  ? CircularProgressIndicator(
-                                      color: Colors.white,
-                                    )
-                                  : Text('Sign in'.tr),
-                              style: ElevatedButton.styleFrom(
-                                minimumSize: Size(400, 60),
-                                primary: primaryColor,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10)),
-                              ),
-                              onPressed: () {
-                                final validate =
-                                    _formKey.currentState!.validate();
-                                if (validate) {
-                                  final email = emailController.value.text;
-                                  final password =
-                                      passwordController.value.text;
-                                  controller.login(email, password);
-                                  FocusScope.of(context)
-                                      .requestFocus(new FocusNode());
-                                }
+                          ),
+                          SizedBox(height: 100),
+                          CustomTaskFieldWidget(
+                            labelText: 'Email',
+                            semanticsLabel: 'Email text field'.tr,
+                            inputType: TextInputType.emailAddress,
+                            controller: emailController,
+                            maxLines: 1,
+                            obscureText: false,
+                            validator: (value) => widget.validateEmail(value),
+                          ),
+                          SizedBox(height: 35),
+                          CustomTaskFieldWidget(
+                            labelText: 'Password'.tr,
+                            semanticsLabel: 'Password text field'.tr,
+                            inputType: TextInputType.visiblePassword,
+                            maxLines: 1,
+                            controller: passwordController,
+                            obscureText: obscureText,
+                            suffixIcon: GestureDetector(
+                              onTap: () {
+                                obscureText = !obscureText;
+                                setState(() {});
                               },
-                            ),
-                            SizedBox(height: 35),
-                            ElevatedButton(
-                              child: Text('Create new account'.tr),
-                              style: ElevatedButton.styleFrom(
-                                side: BorderSide(width: 2, color: primaryColor),
-                                minimumSize: Size(400, 60),
-                                primary: Colors.transparent,
-                                elevation: 0,
-                                onPrimary: primaryColor,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
+                              child: Icon(
+                                obscureText
+                                    ? Icons.visibility_off
+                                    : Icons.visibility,
                               ),
-                              onPressed: () => Get.toNamed('/register'),
                             ),
-                            SizedBox(height: 35),
-                          ],
-                        ),
+                            validator: (value) =>
+                                widget.validatePassword(value),
+                          ),
+                          SizedBox(height: 35),
+                          ElevatedButton(
+                            child: state is LoginLoading
+                                ? CircularProgressIndicator(
+                                    color: primaryColor,
+                                  )
+                                : Text('Sign in'.tr),
+                            style: ElevatedButton.styleFrom(
+                              minimumSize: Size(400, 60),
+                              primary: Colors.white,
+                              onPrimary: primaryColor,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10)),
+                            ),
+                            onPressed: () {
+                              final validate =
+                                  _formKey.currentState!.validate();
+                              if (validate) {
+                                final email = emailController.value.text;
+                                final password = passwordController.value.text;
+                                controller.login(email, password);
+                                FocusScope.of(context)
+                                    .requestFocus(new FocusNode());
+                              }
+                            },
+                          ),
+                          SizedBox(height: 35),
+                          ElevatedButton(
+                            child: Text('Create new account'.tr),
+                            style: ElevatedButton.styleFrom(
+                              side: BorderSide(width: 2, color: primaryColor),
+                              minimumSize: Size(400, 60),
+                              primary: backgroundColor,
+                              onPrimary: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                            onPressed: () => Get.toNamed('/register'),
+                          ),
+                          SizedBox(height: 35),
+                        ],
                       ),
                     ),
                   ),
