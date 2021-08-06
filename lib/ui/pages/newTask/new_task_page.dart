@@ -103,7 +103,6 @@ class NewTaskPage extends StatelessWidget with Validators {
                     final subtitle = subtitleController.value.text;
                     controller.addTask(title, subtitle, arguments);
                     FocusScope.of(context).requestFocus(new FocusNode());
-                    Get.back();
                   }
                 },
               ),
