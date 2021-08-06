@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:taskee/ui/helpers/helpers.dart';
 import 'package:taskee/ui/mixins/validator_mixin.dart';
 import 'package:taskee/ui/pages/newTask/components/custom_task_field.dart';
+import 'package:taskee/ui/pages/register/register_page.dart';
 import 'package:taskee/ui/widgets/widgets.dart';
 
 import 'controller/login_controller.dart';
@@ -131,7 +132,7 @@ class _LoginPageState extends State<LoginPage> {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                             ),
-                            onPressed: () => Get.toNamed('/register'),
+                            onPressed: () => Get.toNamed(RegisterPage.route),
                           ),
                           SizedBox(height: 35),
                         ],
