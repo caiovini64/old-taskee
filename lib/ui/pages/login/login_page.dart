@@ -5,7 +5,6 @@ import 'package:taskee/ui/helpers/helpers.dart';
 import 'package:taskee/ui/mixins/validator_mixin.dart';
 import 'package:taskee/ui/pages/newTask/components/custom_task_field.dart';
 import 'package:taskee/ui/pages/register/register_page.dart';
-import 'package:taskee/ui/widgets/widgets.dart';
 
 import 'controller/login_controller.dart';
 
@@ -124,9 +123,10 @@ class _LoginPageState extends State<LoginPage> {
                           ElevatedButton(
                             child: Text('Create new account'.tr),
                             style: ElevatedButton.styleFrom(
-                              side: BorderSide(width: 2, color: primaryColor),
+                              side: BorderSide(width: 1.5, color: Colors.white),
                               minimumSize: Size(400, 60),
-                              primary: backgroundColor,
+                              primary: Colors.transparent,
+                              elevation: 0,
                               onPrimary: Colors.white,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
