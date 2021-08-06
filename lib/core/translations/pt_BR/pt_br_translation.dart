@@ -9,4 +9,10 @@ final Map<String, String> ptBR = {
   'Password text field': 'Campo de senha',
   'Confirm your password text field': 'Campo de confirmar senha',
   'Sign up': 'Criar conta',
+  'To do': 'A fazer',
+  'Title': 'Título',
+  'Content': 'Conteúdo',
+  'Create new': 'Criar nova',
+  'Task': 'tarefa',
+  'Add new Task': 'Adcionar nova Tarefa',
 };

@@ -50,26 +50,37 @@ class CustomTheme {
       buttonColor: primaryColor,
       primaryColor: primaryColor,
       textTheme: TextTheme(
-          headline1: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-            fontSize: 42,
-          ),
-          headline2: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-            fontSize: 32,
-          ),
-          headline3: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-            fontSize: 18,
-          ),
-          bodyText1: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-            fontSize: 14,
-          )),
+        headline1: TextStyle(
+          color: backgroundColor,
+          fontWeight: FontWeight.bold,
+          fontSize: 42,
+        ),
+        headline2: TextStyle(
+          color: backgroundColor,
+          fontWeight: FontWeight.bold,
+          fontSize: 32,
+        ),
+        headline3: TextStyle(
+          color: backgroundColor,
+          fontWeight: FontWeight.bold,
+          fontSize: 18,
+        ),
+        headline4: TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+          fontSize: 16,
+        ),
+        bodyText1: TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+          fontSize: 14,
+        ),
+        bodyText2: TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.w300,
+          fontSize: 14,
+        ),
+      ),
     );
   }
 }

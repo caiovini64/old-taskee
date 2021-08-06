@@ -45,20 +45,26 @@ class NewTaskPage extends StatelessWidget with Validators {
                         Align(
                           alignment: Alignment.topLeft,
                           child: Text(
-                            'Create new',
-                            style: Theme.of(context).textTheme.headline1,
+                            'Create new'.tr,
+                            style: Theme.of(context)
+                                .textTheme
+                                .headline1!
+                                .copyWith(color: Colors.white),
                           ),
                         ),
                         Align(
                           alignment: Alignment.topLeft,
                           child: Text(
-                            'Task',
-                            style: Theme.of(context).textTheme.headline1,
+                            'Task'.tr,
+                            style: Theme.of(context)
+                                .textTheme
+                                .headline1!
+                                .copyWith(color: Colors.white),
                           ),
                         ),
                         SizedBox(height: 35),
                         CustomTaskFieldWidget(
-                          labelText: 'Title',
+                          labelText: 'Title'.tr,
                           controller: titleController,
                           inputType: TextInputType.text,
                           obscureText: false,
@@ -67,7 +73,7 @@ class NewTaskPage extends StatelessWidget with Validators {
                         ),
                         SizedBox(height: 35),
                         CustomTaskFieldWidget(
-                          labelText: 'Content',
+                          labelText: 'Content'.tr,
                           height: 150,
                           controller: subtitleController,
                           inputType: TextInputType.multiline,
@@ -93,7 +99,7 @@ class NewTaskPage extends StatelessWidget with Validators {
                           color: primaryColor,
                         )
                       : Text(
-                          'Add new Task',
+                          'Add new Task'.tr,
                           style: TextStyle(color: primaryColor),
                         ),
                   style: ElevatedButton.styleFrom(
