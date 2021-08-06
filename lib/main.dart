@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
       child: GetMaterialApp(
         title: 'Taskee',
         debugShowCheckedModeBanner: false,
-        theme: CustomTheme.darkTheme,
+        theme: CustomTheme.lightTheme,
         getPages: AppPages.pages,
         locale: Get.deviceLocale,
         translationsKeys: AppTranslation.translations,

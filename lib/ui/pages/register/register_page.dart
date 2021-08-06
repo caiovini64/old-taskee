@@ -5,7 +5,6 @@ import 'package:taskee/ui/helpers/helpers.dart';
 import 'package:taskee/ui/mixins/validator_mixin.dart';
 import 'package:taskee/ui/pages/newTask/components/custom_task_field.dart';
 import 'package:taskee/ui/pages/register/controller/register_controller.dart';
-import 'package:taskee/ui/widgets/widgets.dart';
 
 class RegisterPage extends StatefulWidget with Validators {
   static const route = '/register';
@@ -65,7 +64,10 @@ class _RegisterPageState extends State<RegisterPage> {
                               alignment: Alignment.topLeft,
                               child: Text(
                                 'Create your account'.tr,
-                                style: Theme.of(context).textTheme.headline1,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headline1!
+                                    .copyWith(color: Colors.white),
                               ),
                             ),
                             SizedBox(height: 100),
