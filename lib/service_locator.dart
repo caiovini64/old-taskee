@@ -3,6 +3,7 @@ import 'package:taskee/domain/usecases/login_usecase.dart';
 import 'package:taskee/external/client/http_client.dart';
 import 'package:taskee/external/datasources/login_datasource_impl.dart';
 import 'package:taskee/infra/helpers/endpoints/firebase_endpoints.dart';
+import 'package:taskee/infra/models/models.dart';
 import 'package:taskee/infra/repositories/login_repository_impl.dart';
 import 'package:taskee/ui/pages/login/controller/login_controller.dart';
 
@@ -53,8 +54,10 @@ void initDatasources() {
       client: serviceLocator<IConnectionClient>(),
       url: FirebaseEndpoints.login('signUp')));
   serviceLocator.registerFactory<IAddTaskDatasource>(() => AddTaskDatasource(
-      client: serviceLocator<IConnectionClient>(),
-      url: FirebaseEndpoints.realtimeDb()));
+        client: serviceLocator<IConnectionClient>(),
+        url: FirebaseEndpoints.realtimeDb(),
+        user: serviceLocator<UserModel>(),
+      ));
 }
 
 void initServices() {
