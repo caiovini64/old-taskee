@@ -60,7 +60,7 @@ class ToDoPage extends StatelessWidget {
             ),
           ),
           FloatingActionWidget(
-            onTap: () => Get.toNamed(NewTaskPage.route),
+            onTap: () => Get.toNamed(NewTaskPage.route, arguments: 'todo'),
           ),
         ],
       ),

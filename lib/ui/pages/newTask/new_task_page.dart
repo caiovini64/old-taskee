@@ -17,6 +17,7 @@ class NewTaskPage extends StatelessWidget with Validators {
   @override
   Widget build(BuildContext context) {
     final controller = context.read<NewTaskController>();
+    final arguments = Get.arguments;
     return BlocBuilder<NewTaskController, NewTaskState>(
       builder: (context, state) {
         return Scaffold(
@@ -100,7 +101,7 @@ class NewTaskPage extends StatelessWidget with Validators {
                   if (validate) {
                     final title = titleController.value.text;
                     final subtitle = subtitleController.value.text;
-                    controller.addTask(title, subtitle, 'todo');
+                    controller.addTask(title, subtitle, arguments);
                     FocusScope.of(context).requestFocus(new FocusNode());
                     Get.back();
                   }
