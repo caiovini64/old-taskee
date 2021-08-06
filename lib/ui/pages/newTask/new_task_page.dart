@@ -64,7 +64,7 @@ class NewTaskPage extends StatelessWidget with Validators {
                         labelText: 'Content',
                         height: 150,
                         controller: subtitleController,
-                        inputType: TextInputType.text,
+                        inputType: TextInputType.multiline,
                         obscureText: false,
                         semanticsLabel: 'Subtitle text field',
                         validator: (value) => validateField(value),

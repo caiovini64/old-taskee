@@ -38,6 +38,7 @@ class CustomTaskFieldWidget extends StatelessWidget {
           controller: controller,
           validator: validator,
           obscureText: obscureText,
+          maxLines: 5,
           style: Theme.of(context).textTheme.bodyText1,
           decoration: InputDecoration(
             suffixIcon: suffixIcon,
@@ -48,10 +49,7 @@ class CustomTaskFieldWidget extends StatelessWidget {
             ),
             enabledBorder: InputBorder.none,
             focusedBorder: InputBorder.none,
-            errorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(width: 2, color: Colors.redAccent),
-            ),
+            errorBorder: InputBorder.none,
           ),
         ),
       ),
