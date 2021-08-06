@@ -1,6 +1,11 @@
+
 <h1 align="center">
     📌<a> Taskee </a>
 </h1>
+
+![Frame 1](https://user-images.githubusercontent.com/45527157/128557724-a10dab43-1109-46a4-8888-b8ce2354d984.jpg)
+
+
 
  <div align="center"><img alt="Codemagic build badge" src="https://api.codemagic.io/apps/610a8cf053f857d6d492dd2b/610a8cf053f857d6d492dd2a/status_badge.svg"> <img alt="License badge" src="https://img.shields.io/static/v1?label=license&message=MIT&color=blue"></div>
 
