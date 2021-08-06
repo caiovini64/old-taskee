@@ -6,7 +6,7 @@ import 'package:taskee/domain/helpers/helpers.dart';
 import 'package:taskee/domain/repositories/repositories.dart';
 import 'package:taskee/domain/usecases/register_usecase.dart';
 
-import '../../mocks.dart';
+import '../../mock/user_mocks.dart';
 
 class MockRegisterRepository extends Mock implements IRegisterRepository {}
 
