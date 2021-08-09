@@ -1,6 +1,12 @@
+
 <h1 align="center">
     📌<a> Taskee </a>
 </h1>
+
+![Frame 1 (1)](https://user-images.githubusercontent.com/45527157/128557946-b05f0d22-1afa-452a-a6a5-5bf406b24f5b.jpg)
+
+
+
 
  <div align="center"><img alt="Codemagic build badge" src="https://api.codemagic.io/apps/610a8cf053f857d6d492dd2b/610a8cf053f857d6d492dd2a/status_badge.svg"> <img alt="License badge" src="https://img.shields.io/static/v1?label=license&message=MIT&color=blue"></div>
 
@@ -50,6 +56,6 @@ All the Firebase communications were made with Rest API to avoid coupling with t
 
 ## 💻 Development Technologies
 - **[Cubit](https://pub.dev/packages/flutter_bloc)** - A bloc based state management with Cubit
-- **[Get_it](https://pub.dev/packages/get_it)** - A service locator to dependency injection and singleton management
+- **[Get_it](https://pub.dev/packages/get_it)** - A service locator and singleton management
 - **[DartZ](https://pub.dev/packages/dartz)** - To functional programming
 - **[Mocktail](https://pub.dev/packages/mocktail)** - To unity tests
