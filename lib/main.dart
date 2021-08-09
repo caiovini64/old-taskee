@@ -15,7 +15,6 @@ void main() async {
   await dotenv.load(fileName: ".env");
   dependencies.initControllers();
   dependencies.initUsecases();
-  dependencies.initRepositories();
   dependencies.initDatasources();
   dependencies.initServices();
   runApp(MyApp());

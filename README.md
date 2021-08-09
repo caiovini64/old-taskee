@@ -31,20 +31,16 @@
 - [ ] The user can update your tasks
 - [ ] The user can update the state of your tasks 
 
-## 📐 Architecture 
-   The project is being done using Clean Architecture, TDD, and Conventional Commits.
-   
-   Your structure is divided into four principal layers:
-   - Domain: The heart of the application, business rules, and use cases are here, as well as the repositories interfaces.
-   - Infra: In here are the repositories implementations, models, and data sources interfaces.
-   - External: In here are the external connection behind data sources implementations.
+## 📐 Architecture
+
+   The project structure is divided into four principal layers:
+   - Domain: The heart of the application, business rules, and use cases are here, as well as the datasources interfaces.
+   - Data: In here are the external connection behind data sources implementations.
    - UI: All pages of the app with your controllers and components.
    
-
-
 ## 🎨 Layout
 
-O layout da aplicação pode ser acessado no [Figma](https://www.figma.com/file/of21LcDFLXU6aTN2GiSSyh/Taskee?node-id=0%3A1).
+The application layout could be accessed in the [Figma](https://www.figma.com/file/of21LcDFLXU6aTN2GiSSyh/Taskee?node-id=0%3A1).
 
 ## 🛠 Technologies
 
