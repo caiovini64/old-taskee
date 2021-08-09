@@ -5,6 +5,7 @@ import 'package:get_it/get_it.dart';
 import 'package:meta/meta.dart';
 import 'package:taskee/domain/entities/entities.dart';
 import 'package:taskee/domain/helpers/helpers.dart';
+import 'package:taskee/domain/repositories/login_repository.dart';
 import 'package:taskee/domain/usecases/login_usecase.dart';
 import 'package:taskee/infra/models/models.dart';
 import 'package:taskee/ui/pages/toDo/todo_page.dart';
@@ -12,8 +13,8 @@ import 'package:taskee/ui/pages/toDo/todo_page.dart';
 part 'login_state.dart';
 
 class LoginController extends Cubit<LoginState> {
-  final LoginUsecase loginUsecase;
-  LoginController(this.loginUsecase) : super(LoginInitial());
+  final ILoginRepository _loginRepository;
+  LoginController(this._loginRepository) : super(LoginInitial());
 
   GetIt serviceLocator = GetIt.instance;
 
@@ -22,7 +23,7 @@ class LoginController extends Cubit<LoginState> {
   Future<void> login(String email, String password) async {
     emit(LoginLoading());
     final Either<Failure, UserEntity> result =
-        await loginUsecase(email, password);
+        await _loginRepository.login(email, password);
     result.fold((failure) {
       emit(LoginError());
       failureMessage = failure.message;

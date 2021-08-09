@@ -20,8 +20,8 @@ import 'ui/pages/register/controller/register_controller.dart';
 final serviceLocator = GetIt.instance;
 
 void initControllers() {
-  serviceLocator
-      .registerFactory(() => LoginController(serviceLocator<LoginUsecase>()));
+  serviceLocator.registerFactory(
+      () => LoginController(serviceLocator<ILoginRepository>()));
   serviceLocator.registerFactory(
       () => RegisterController(serviceLocator<RegisterUsecase>()));
   serviceLocator.registerFactory(
@@ -29,8 +29,8 @@ void initControllers() {
 }
 
 void initUsecases() {
-  serviceLocator.registerFactory<LoginUsecase>(
-      () => LoginUsecase(serviceLocator<ILoginRepository>()));
+  // serviceLocator.registerFactory<LoginUsecase>(
+  //     () => LoginUsecase(serviceLocator<ILoginRepository>()));
   serviceLocator.registerFactory<RegisterUsecase>(
       () => RegisterUsecase(serviceLocator<IRegisterRepository>()));
   // serviceLocator.registerFactory<AddTaskUsecase>(
