@@ -1,5 +1,5 @@
 import 'package:taskee/domain/entities/entities.dart';
-import 'package:taskee/infra/models/models.dart';
+import 'package:taskee/data/models/models.dart';
 
 final kTaskEntity = TaskEntity(
   id: 1,
