@@ -25,7 +25,7 @@ void initControllers() {
   serviceLocator.registerFactory(
       () => RegisterController(serviceLocator<RegisterUsecase>()));
   serviceLocator.registerFactory(
-      () => NewTaskController(serviceLocator<AddTaskUsecase>()));
+      () => NewTaskController(serviceLocator<IAddTaskRepository>()));
 }
 
 void initUsecases() {
@@ -33,8 +33,8 @@ void initUsecases() {
       () => LoginUsecase(serviceLocator<ILoginRepository>()));
   serviceLocator.registerFactory<RegisterUsecase>(
       () => RegisterUsecase(serviceLocator<IRegisterRepository>()));
-  serviceLocator.registerFactory<AddTaskUsecase>(
-      () => AddTaskUsecase(serviceLocator<IAddTaskRepository>()));
+  // serviceLocator.registerFactory<AddTaskUsecase>(
+  //     () => AddTaskUsecase(serviceLocator<IAddTaskRepository>()));
 }
 
 void initRepositories() {
