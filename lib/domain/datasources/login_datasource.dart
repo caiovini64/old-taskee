@@ -1,5 +1,5 @@
-import 'package:taskee/data/models/models.dart';
+import 'package:taskee/domain/entities/entities.dart';
 
 abstract class ILoginDatasource {
-  Future<UserModel> login(String email, String password);
+  Future<UserEntity> login(String email, String password);
 }

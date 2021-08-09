@@ -1,5 +1,5 @@
-import 'package:taskee/data/models/models.dart';
+import 'package:taskee/domain/entities/entities.dart';
 
 abstract class IRegisterDatasource {
-  Future<UserModel> register(String email, String password);
+  Future<UserEntity> register(String email, String password);
 }

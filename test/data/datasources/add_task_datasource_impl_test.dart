@@ -1,10 +1,12 @@
 import 'package:faker/faker.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:taskee/domain/client/connection_client.dart';
 import 'package:taskee/domain/datasources/datasources.dart';
 import 'package:taskee/data/datasources/datasources.dart';
 import 'package:taskee/data/helpers/helpers.dart';
 import 'package:taskee/data/models/models.dart';
+import 'package:taskee/domain/helpers/helpers.dart';
 
 class MockConnectionClient extends Mock implements IConnectionClient {}
 

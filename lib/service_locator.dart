@@ -1,8 +1,8 @@
 import 'package:get_it/get_it.dart';
+import 'package:taskee/domain/client/connection_client.dart';
 import 'package:taskee/domain/datasources/datasources.dart';
 import 'package:taskee/data/client/http_client.dart';
 import 'package:taskee/data/datasources/login_datasource_impl.dart';
-import 'package:taskee/data/helpers/client/connection_client.dart';
 import 'package:taskee/data/helpers/endpoints/firebase_endpoints.dart';
 import 'package:taskee/data/usecases/usecases.dart';
 import 'package:taskee/ui/pages/login/controller/login_controller.dart';
