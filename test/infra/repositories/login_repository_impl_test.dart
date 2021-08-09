@@ -3,25 +3,25 @@ import 'package:faker/faker.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:taskee/domain/helpers/failures/failures.dart';
-import 'package:taskee/domain/repositories/repositories.dart';
+import 'package:taskee/domain/repositories/usecase.dart';
 import 'package:taskee/infra/datasources/datasources.dart';
 import 'package:taskee/infra/helpers/exceptions/exceptions.dart';
 import 'package:taskee/infra/helpers/exceptions/server_exception.dart';
-import 'package:taskee/infra/repositories/login_repository_impl.dart';
+import 'package:taskee/infra/repositories/login_usecase_impl.dart';
 
 import '../../mock/user_mocks.dart';
 
 class MockLoginDatasource extends Mock implements ILoginDatasource {}
 
 void main() {
-  late ILoginRepository repository;
+  late ILoginUsecase usecase;
   late ILoginDatasource datasource;
   late String email;
   late String password;
 
   setUp(() {
     datasource = MockLoginDatasource();
-    repository = LoginRepository(datasource);
+    usecase = LoginUsecase(datasource);
     email = faker.internet.email();
     password = faker.internet.password();
   });
@@ -29,7 +29,7 @@ void main() {
   test('should returns an UserModel when calls the datasource', () async {
     when(() => datasource.login(any(), any()))
         .thenAnswer((_) async => kUserModel);
-    final result = await repository.login(email, password);
+    final result = await usecase.login(email, password);
     expect(result, Right(kUserModel));
   });
 
@@ -37,7 +37,7 @@ void main() {
       'should returns a ServerFailure when calls to datasource throws a ServerException',
       () async {
     when(() => datasource.login(any(), any())).thenThrow(ServerException());
-    final result = await repository.login(email, password);
+    final result = await usecase.login(email, password);
     expect(result, Left(ServerFailure()));
   });
 
@@ -46,7 +46,7 @@ void main() {
       () async {
     when(() => datasource.login(any(), any())).thenThrow(
         AuthenticationException(code: 404, message: 'INVALID_EMAIL'));
-    final result = await repository.login(email, password);
+    final result = await usecase.login(email, password);
     expect(result,
         Left(AuthenticationFailure(code: 404, message: 'INVALID_EMAIL')));
   });
