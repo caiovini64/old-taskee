@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:taskee/infra/datasources/datasources.dart';
-import 'package:taskee/infra/helpers/helpers.dart';
-import 'package:taskee/infra/models/models.dart';
+import 'package:taskee/domain/datasources/datasources.dart';
+import 'package:taskee/data/helpers/helpers.dart';
+import 'package:taskee/data/models/models.dart';
 
 class RegisterDatasource implements IRegisterDatasource {
   final IConnectionClient client;

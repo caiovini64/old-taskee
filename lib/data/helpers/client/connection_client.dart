@@ -1,4 +1,4 @@
-import 'package:taskee/infra/helpers/helpers.dart';
+import 'package:taskee/data/helpers/helpers.dart';
 
 abstract class IConnectionClient {
   Future<HttpResponse> get(String url);

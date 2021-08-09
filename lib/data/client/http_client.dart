@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:taskee/infra/helpers/helpers.dart';
 import 'package:http/http.dart' as http;
+import 'package:taskee/data/helpers/helpers.dart';
 
 class HttpClient implements IConnectionClient {
   final client = http.Client();

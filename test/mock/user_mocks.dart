@@ -1,5 +1,5 @@
 import 'package:taskee/domain/entities/entities.dart';
-import 'package:taskee/infra/models/user_model.dart';
+import 'package:taskee/data/models/models.dart';
 
 final kUserEntity = UserEntity(
   email: 'email@email.com',

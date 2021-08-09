@@ -1,17 +1,16 @@
 import 'package:faker/faker.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:taskee/external/datasources/login_datasource_impl.dart';
-import 'package:taskee/infra/datasources/datasources.dart';
-import 'package:taskee/infra/helpers/client/connection_client.dart';
-import 'package:taskee/infra/helpers/helpers.dart';
+import 'package:taskee/domain/datasources/datasources.dart';
+import 'package:taskee/data/datasources/datasources.dart';
+import 'package:taskee/data/helpers/helpers.dart';
 
 import '../../mock/user_mocks.dart';
 
 class MockConnectionClient extends Mock implements IConnectionClient {}
 
 void main() {
-  late ILoginDatasource datasource;
+  late IRegisterDatasource datasource;
   late IConnectionClient client;
   late String email;
   late String password;
@@ -22,7 +21,7 @@ void main() {
     password = faker.internet.password();
     url = faker.internet.httpUrl();
     client = MockConnectionClient();
-    datasource = LoginDatasource(client: client, url: url);
+    datasource = RegisterDatasource(client: client, url: url);
   });
 
   test('should returns an UserModel', () async {
@@ -33,7 +32,7 @@ void main() {
             }))
         .thenAnswer(
             (_) async => HttpResponse(data: kUserJson, statusCode: 200));
-    final result = await datasource.login(email, password);
+    final result = await datasource.register(email, password);
     expect(result, kUserModel);
   });
 
@@ -47,7 +46,7 @@ void main() {
         .thenAnswer(
             (_) async => HttpResponse(data: dataErrorJson, statusCode: 400));
     expect(
-      datasource.login(email, password),
+      datasource.register(email, password),
       throwsA(isA<AuthenticationException>()),
     );
   });
@@ -61,7 +60,7 @@ void main() {
         .thenAnswer(
             (_) async => HttpResponse(data: dataErrorJson, statusCode: 404));
     expect(
-      datasource.login(email, password),
+      datasource.register(email, password),
       throwsA(isA<ServerException>()),
     );
   });

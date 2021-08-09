@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:taskee/domain/datasources/datasources.dart';
 import 'package:taskee/domain/helpers/failures/failures.dart';
 import 'package:taskee/domain/usecases/usecases.dart';
-import 'package:taskee/infra/datasources/datasources.dart';
-import 'package:taskee/infra/helpers/exceptions/exceptions.dart';
-import 'package:taskee/infra/repositories/usecases.dart';
+import 'package:taskee/data/helpers/helpers.dart';
+import 'package:taskee/data/usecases/usecases.dart';
 
 class MockAddTaskDatasource extends Mock implements IAddTaskDatasource {}
 
