@@ -5,7 +5,7 @@ import 'package:get_it/get_it.dart';
 import 'package:meta/meta.dart';
 import 'package:taskee/domain/entities/entities.dart';
 import 'package:taskee/domain/helpers/helpers.dart';
-import 'package:taskee/domain/repositories/usecase.dart';
+import 'package:taskee/domain/usecases/usecases.dart';
 import 'package:taskee/infra/models/models.dart';
 import 'package:taskee/ui/pages/toDo/todo_page.dart';
 

@@ -2,7 +2,7 @@ import 'package:taskee/domain/helpers/failures/failure.dart';
 import 'package:taskee/domain/entities/user_entity.dart';
 import 'package:dartz/dartz.dart';
 import 'package:taskee/domain/helpers/failures/failures.dart';
-import 'package:taskee/domain/repositories/usecase.dart';
+import 'package:taskee/domain/usecases/usecases.dart';
 import 'package:taskee/infra/datasources/datasources.dart';
 import 'package:taskee/infra/helpers/helpers.dart';
 

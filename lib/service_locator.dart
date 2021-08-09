@@ -6,7 +6,7 @@ import 'package:taskee/infra/models/models.dart';
 import 'package:taskee/infra/repositories/login_usecase_impl.dart';
 import 'package:taskee/ui/pages/login/controller/login_controller.dart';
 
-import 'domain/repositories/usecase.dart';
+import 'domain/usecases/usecases.dart';
 import 'external/datasources/datasources.dart';
 import 'infra/datasources/datasources.dart';
 import 'infra/helpers/helpers.dart';

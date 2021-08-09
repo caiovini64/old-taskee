@@ -3,7 +3,7 @@ import 'package:faker/faker.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:taskee/domain/helpers/helpers.dart';
-import 'package:taskee/domain/repositories/usecase.dart';
+import 'package:taskee/domain/usecases/usecases.dart';
 import 'package:taskee/infra/datasources/datasources.dart';
 import 'package:taskee/infra/helpers/helpers.dart';
 import 'package:taskee/infra/repositories/usecases.dart';
