@@ -37,6 +37,7 @@ dependencies:
   get_it: 
   flutter_dotenv: ^5.0.0
   get:
+  get_storage: ^2.0.3
 
 dev_dependencies:
   flutter_test:
