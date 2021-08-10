@@ -1,7 +1,7 @@
 import 'package:get_it/get_it.dart';
-import 'package:taskee/infra/http/connection_client.dart';
+import 'package:taskee/data/adapters/adapters.dart';
+import 'package:taskee/domain/adapters/adapters.dart';
 import 'package:taskee/domain/datasources/datasources.dart';
-import 'package:taskee/data/http/http_client.dart';
 import 'package:taskee/data/datasources/login_datasource_impl.dart';
 import 'package:taskee/data/helpers/endpoints/firebase_endpoints.dart';
 import 'package:taskee/data/usecases/usecases.dart';
@@ -42,5 +42,5 @@ void initServiceLocator() {
         user: serviceLocator<UserModel>(),
       ));
 
-  serviceLocator.registerFactory<IConnectionClient>(() => HttpClient());
+  serviceLocator.registerFactory<IConnectionClient>(() => HttpAdapter());
 }
