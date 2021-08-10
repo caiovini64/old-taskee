@@ -7,6 +7,7 @@ import 'package:taskee/domain/entities/entities.dart';
 import 'package:taskee/domain/helpers/helpers.dart';
 import 'package:taskee/domain/usecases/usecases.dart';
 import 'package:taskee/data/models/models.dart';
+import 'package:taskee/services/properties.dart';
 import 'package:taskee/ui/pages/toDo/todo_page.dart';
 
 part 'login_state.dart';
@@ -28,13 +29,8 @@ class LoginController extends Cubit<LoginState> {
       failureMessage = failure.message;
     }, (right) {
       emit(LoginDone());
-
-      serviceLocator.registerLazySingleton<UserModel>(() => UserModel(
-            email: right.email,
-            id: right.id,
-            token: right.token,
-          ));
-
+      Properties.instance.user =
+          UserModel(id: right.id, email: right.email, token: right.token);
       Get.toNamed(ToDoPage.route);
     });
   }

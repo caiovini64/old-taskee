@@ -15,25 +15,21 @@ import 'ui/pages/register/controller/register_controller.dart';
 
 final serviceLocator = GetIt.instance;
 
-void initControllers() {
+void initServiceLocator() {
   serviceLocator
       .registerFactory(() => LoginController(serviceLocator<ILoginUsecase>()));
   serviceLocator.registerFactory(
       () => RegisterController(serviceLocator<IRegisterUsecase>()));
   serviceLocator.registerFactory(
       () => NewTaskController(serviceLocator<IAddTaskUsecase>()));
-}
 
-void initUsecases() {
   serviceLocator.registerFactory<ILoginUsecase>(
       () => LoginUsecase(serviceLocator<ILoginDatasource>()));
   serviceLocator.registerFactory<IRegisterUsecase>(
       () => RegisterUsecase(serviceLocator<IRegisterDatasource>()));
   serviceLocator.registerFactory<IAddTaskUsecase>(
       () => AddTaskUsecase(serviceLocator<IAddTaskDatasource>()));
-}
 
-void initDatasources() {
   serviceLocator.registerFactory<ILoginDatasource>(() => LoginDatasource(
       client: serviceLocator<IConnectionClient>(),
       url: FirebaseEndpoints.login('signInWithPassword')));
@@ -45,8 +41,6 @@ void initDatasources() {
         url: FirebaseEndpoints.realtimeDb(),
         user: serviceLocator<UserModel>(),
       ));
-}
 
-void initServices() {
   serviceLocator.registerFactory<IConnectionClient>(() => HttpClient());
 }

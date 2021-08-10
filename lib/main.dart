@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:taskee/core/translations/app_translations.dart';
+import 'package:taskee/services/services.dart';
 import 'package:taskee/ui/helpers/helpers.dart';
 import 'package:taskee/ui/helpers/routes/app_pages.dart';
 import 'package:taskee/ui/pages/login/controller/login_controller.dart';
@@ -13,12 +14,9 @@ import 'package:taskee/ui/pages/register/controller/register_controller.dart';
 
 void main() async {
   await dotenv.load(fileName: ".env");
-  dependencies.initControllers();
-  dependencies.initUsecases();
-  dependencies.initDatasources();
-  dependencies.initServices();
+  await initServices();
+  dependencies.initServiceLocator();
   runApp(MyApp());
-  print(Get.deviceLocale);
 }
 
 class MyApp extends StatelessWidget {
