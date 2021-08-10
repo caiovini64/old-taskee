@@ -24,8 +24,8 @@ void main() {
       when(() => getStorage.remove(any())).thenAnswer((_) async => {});
   void mockWrite() =>
       when(() => getStorage.write(any(), any())).thenAnswer((_) async => {});
-  void mockRead() => when(() => getStorage.write(any(), any()))
-      .thenAnswer((_) async => {'aaa'});
+  void mockRead() =>
+      when(() => getStorage.read(any())).thenAnswer((_) async => {'aaa'});
 
   test('should call getStorage with correct values when removing', () async {
     mockRemove();
@@ -38,5 +38,11 @@ void main() {
     mockWrite();
     await storageAdapter.save(key: key, value: value);
     verify(() => getStorage.write(key, value)).called(1);
+  });
+
+  test('should call getStorage with correct values when reading', () async {
+    mockRead();
+    await storageAdapter.get(key);
+    verify(() => getStorage.read(key)).called(1);
   });
 }
