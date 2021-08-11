@@ -4,12 +4,11 @@ import 'package:get/get.dart';
 import 'package:taskee/ui/components/components.dart';
 
 import 'package:taskee/ui/helpers/theme/themes.dart';
-import 'package:taskee/core/validations/form_validations_mixin.dart';
-import 'package:taskee/ui/mixins/keyboard_manager.dart';
+import 'package:taskee/ui/mixins/mixins.dart';
 import 'package:taskee/ui/pages/controllers.dart';
 
 class NewTaskPage extends StatelessWidget
-    with FormValidations, KeyboardManager {
+    with ValidationsManager, KeyboardManager {
   static const route = '/newTask';
   NewTaskPage({Key? key}) : super(key: key);
 

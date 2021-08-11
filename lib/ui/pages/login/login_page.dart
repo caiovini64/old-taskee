@@ -5,8 +5,7 @@ import 'package:taskee/ui/components/components.dart';
 import 'package:taskee/ui/components/error_message.dart';
 
 import 'package:taskee/ui/helpers/helpers.dart';
-import 'package:taskee/core/validations/validations.dart';
-import 'package:taskee/ui/mixins/keyboard_manager.dart';
+import 'package:taskee/ui/mixins/mixins.dart';
 import 'package:taskee/ui/pages/controllers.dart';
 import 'package:taskee/ui/pages/register/register_page.dart';
 
@@ -17,7 +16,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage>
-    with KeyboardManager, FormValidations {
+    with KeyboardManager, ValidationsManager {
   final _formKey = GlobalKey<FormState>();
 
   final emailController = TextEditingController();
