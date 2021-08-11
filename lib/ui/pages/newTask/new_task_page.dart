@@ -95,7 +95,7 @@ class NewTaskPage extends StatelessWidget
               padding: const EdgeInsets.all(20.0),
               child: Hero(
                 tag: "add",
-                child: ElevatedButton(
+                child: CustomElevatedButton.principal(
                   child: state is NewTaskLoading
                       ? CircularProgressIndicator(
                           color: primaryColor,
@@ -104,12 +104,6 @@ class NewTaskPage extends StatelessWidget
                           'Add new Task'.tr,
                           style: TextStyle(color: primaryColor),
                         ),
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: Size(400, 60),
-                    primary: Colors.white,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                  ),
                   onPressed: () {
                     final validate = _formKey.currentState!.validate();
                     if (validate) {
