@@ -5,9 +5,11 @@ import 'package:taskee/ui/components/components.dart';
 
 import 'package:taskee/ui/helpers/theme/themes.dart';
 import 'package:taskee/core/validations/form_validations_mixin.dart';
+import 'package:taskee/ui/mixins/keyboard_manager.dart';
 import 'package:taskee/ui/pages/controllers.dart';
 
-class NewTaskPage extends StatelessWidget with FormValidations {
+class NewTaskPage extends StatelessWidget
+    with FormValidations, KeyboardManager {
   static const route = '/newTask';
   NewTaskPage({Key? key}) : super(key: key);
 
@@ -115,7 +117,7 @@ class NewTaskPage extends StatelessWidget with FormValidations {
                       final title = titleController.value.text;
                       final subtitle = subtitleController.value.text;
                       controller.addTask(title, subtitle, arguments);
-                      FocusScope.of(context).requestFocus(new FocusNode());
+                      hideKeyboard(context);
                     }
                   },
                 ),
