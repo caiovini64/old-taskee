@@ -2,6 +2,7 @@ import 'package:faker/faker.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:taskee/domain/adapters/http/http_client.dart';
+import 'package:taskee/domain/adapters/http/http_response.dart';
 import 'package:taskee/domain/datasources/datasources.dart';
 import 'package:taskee/data/datasources/datasources.dart';
 import 'package:taskee/data/helpers/helpers.dart';
