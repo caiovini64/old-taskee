@@ -1,7 +1,7 @@
 import 'package:get_it/get_it.dart';
-import 'package:taskee/domain/client/connection_client.dart';
+import 'package:taskee/domain/adapters/http/http_client.dart';
 import 'package:taskee/domain/datasources/datasources.dart';
-import 'package:taskee/data/client/http_client.dart';
+import 'package:taskee/data/adapters/http/http_adapter.dart';
 import 'package:taskee/data/datasources/login_datasource_impl.dart';
 import 'package:taskee/data/helpers/endpoints/firebase_endpoints.dart';
 import 'package:taskee/data/usecases/usecases.dart';
@@ -35,18 +35,18 @@ void initUsecases() {
 
 void initDatasources() {
   serviceLocator.registerFactory<ILoginDatasource>(() => LoginDatasource(
-      client: serviceLocator<IConnectionClient>(),
+      client: serviceLocator<IHttpClient>(),
       url: FirebaseEndpoints.login('signInWithPassword')));
   serviceLocator.registerFactory<IRegisterDatasource>(() => RegisterDatasource(
-      client: serviceLocator<IConnectionClient>(),
+      client: serviceLocator<IHttpClient>(),
       url: FirebaseEndpoints.login('signUp')));
   serviceLocator.registerFactory<IAddTaskDatasource>(() => AddTaskDatasource(
-        client: serviceLocator<IConnectionClient>(),
+        client: serviceLocator<IHttpClient>(),
         url: FirebaseEndpoints.realtimeDb(),
         user: serviceLocator<UserModel>(),
       ));
 }
 
 void initServices() {
-  serviceLocator.registerFactory<IConnectionClient>(() => HttpClient());
+  serviceLocator.registerFactory<IHttpClient>(() => HttpAdapter());
 }
