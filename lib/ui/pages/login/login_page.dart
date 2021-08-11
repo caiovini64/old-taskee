@@ -5,17 +5,18 @@ import 'package:taskee/ui/components/components.dart';
 import 'package:taskee/ui/components/error_message.dart';
 
 import 'package:taskee/ui/helpers/helpers.dart';
-import 'package:taskee/core/validations/validations.dart';
+import 'package:taskee/ui/mixins/mixins.dart';
 import 'package:taskee/ui/pages/controllers.dart';
 import 'package:taskee/ui/pages/register/register_page.dart';
 
-class LoginPage extends StatefulWidget with FormValidations {
+class LoginPage extends StatefulWidget {
   static const route = '/login';
   @override
   _LoginPageState createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginPageState extends State<LoginPage>
+    with KeyboardManager, ValidationsManager {
   final _formKey = GlobalKey<FormState>();
 
   final emailController = TextEditingController();
@@ -68,7 +69,7 @@ class _LoginPageState extends State<LoginPage> {
                             controller: emailController,
                             maxLines: 1,
                             obscureText: false,
-                            validator: (value) => widget.validateEmail(value),
+                            validator: (value) => validateEmail(value),
                           ),
                           SizedBox(height: 35),
                           CustomField(
@@ -89,8 +90,7 @@ class _LoginPageState extends State<LoginPage> {
                                     : Icons.visibility,
                               ),
                             ),
-                            validator: (value) =>
-                                widget.validatePassword(value),
+                            validator: (value) => validatePassword(value),
                           ),
                           SizedBox(height: 35),
                           ElevatedButton(
@@ -113,8 +113,7 @@ class _LoginPageState extends State<LoginPage> {
                                 final email = emailController.value.text;
                                 final password = passwordController.value.text;
                                 controller.login(email, password);
-                                FocusScope.of(context)
-                                    .requestFocus(new FocusNode());
+                                hideKeyboard(context);
                               }
                             },
                           ),
