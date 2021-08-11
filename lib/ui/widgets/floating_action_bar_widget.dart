@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:taskee/ui/helpers/app_colors.dart';
+import 'package:taskee/ui/helpers/theme/app_colors.dart';
 
 class FloatingActionWidget extends StatelessWidget {
   final Function onTap;

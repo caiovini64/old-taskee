@@ -1,19 +1,19 @@
 import 'package:faker/faker.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:taskee/domain/client/connection_client.dart';
+import 'package:taskee/domain/adapters/http/http_client.dart';
+import 'package:taskee/domain/adapters/http/http_response.dart';
 import 'package:taskee/domain/datasources/datasources.dart';
 import 'package:taskee/data/datasources/login_datasource_impl.dart';
 import 'package:taskee/data/helpers/helpers.dart';
-import 'package:taskee/domain/helpers/helpers.dart';
 
 import '../../mock/user_mocks.dart';
 
-class MockConnectionClient extends Mock implements IConnectionClient {}
+class MockConnectionClient extends Mock implements IHttpClient {}
 
 void main() {
   late ILoginDatasource datasource;
-  late IConnectionClient client;
+  late IHttpClient client;
   late String email;
   late String password;
   late String url;
