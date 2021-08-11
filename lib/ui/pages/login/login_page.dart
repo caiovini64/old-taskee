@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:taskee/ui/components/components.dart';
+import 'package:taskee/ui/components/error_message.dart';
 
 import 'package:taskee/ui/helpers/helpers.dart';
 import 'package:taskee/core/validations/validations.dart';
@@ -29,12 +30,7 @@ class _LoginPageState extends State<LoginPage> {
     return BlocConsumer<LoginController, LoginState>(
       listener: (context, state) {
         if (state is LoginError) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              backgroundColor: Colors.redAccent,
-              content: Text(controller.failureMessage),
-            ),
-          );
+          showErrorMessage(context, controller.failureMessage);
         }
       },
       builder: (context, state) {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:taskee/ui/components/components.dart';
+import 'package:taskee/ui/components/error_message.dart';
 
 import 'package:taskee/ui/helpers/helpers.dart';
 import 'package:taskee/core/validations/validations.dart';
@@ -31,12 +32,7 @@ class _RegisterPageState extends State<RegisterPage> {
     return BlocConsumer<RegisterController, RegisterState>(
       listener: (context, state) {
         if (state is RegisterError) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              backgroundColor: Colors.redAccent,
-              content: Text(controller.failureMessage),
-            ),
-          );
+          showErrorMessage(context, controller.failureMessage);
         }
       },
       builder: (context, state) {
