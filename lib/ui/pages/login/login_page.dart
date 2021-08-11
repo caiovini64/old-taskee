@@ -65,7 +65,7 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           ),
                           SizedBox(height: 100),
-                          CustomTaskFieldWidget(
+                          CustomField(
                             labelText: 'Email',
                             semanticsLabel: 'Email text field'.tr,
                             inputType: TextInputType.emailAddress,
@@ -75,7 +75,7 @@ class _LoginPageState extends State<LoginPage> {
                             validator: (value) => widget.validateEmail(value),
                           ),
                           SizedBox(height: 35),
-                          CustomTaskFieldWidget(
+                          CustomField(
                             labelText: 'Password'.tr,
                             semanticsLabel: 'Password text field'.tr,
                             inputType: TextInputType.visiblePassword,

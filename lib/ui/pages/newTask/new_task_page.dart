@@ -64,7 +64,7 @@ class NewTaskPage extends StatelessWidget with FormValidations {
                           ),
                         ),
                         SizedBox(height: 35),
-                        CustomTaskFieldWidget(
+                        CustomField(
                           labelText: 'Title'.tr,
                           controller: titleController,
                           inputType: TextInputType.text,
@@ -73,7 +73,7 @@ class NewTaskPage extends StatelessWidget with FormValidations {
                           validator: (value) => validateField(value),
                         ),
                         SizedBox(height: 35),
-                        CustomTaskFieldWidget(
+                        CustomField(
                           labelText: 'Content'.tr,
                           height: 150,
                           controller: subtitleController,

@@ -72,7 +72,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               ),
                             ),
                             SizedBox(height: 100),
-                            CustomTaskFieldWidget(
+                            CustomField(
                               labelText: 'Email',
                               semanticsLabel: 'Email text field'.tr,
                               inputType: TextInputType.emailAddress,
@@ -82,7 +82,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               validator: (value) => widget.validateEmail(value),
                             ),
                             SizedBox(height: 35),
-                            CustomTaskFieldWidget(
+                            CustomField(
                               labelText: 'Password'.tr,
                               semanticsLabel: 'Password text field'.tr,
                               inputType: TextInputType.visiblePassword,
@@ -104,7 +104,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                   widget.validatePassword(value),
                             ),
                             SizedBox(height: 35),
-                            CustomTaskFieldWidget(
+                            CustomField(
                               labelText: 'Confirm your password'.tr,
                               semanticsLabel:
                                   'Confirm your password text field'.tr,

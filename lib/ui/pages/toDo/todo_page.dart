@@ -39,7 +39,7 @@ class ToDoPage extends StatelessWidget {
                             ),
                           ),
                           SizedBox(height: 35),
-                          TaskCardWidget(
+                          TaskCard(
                             cardColor: orangeCardColor,
                             title: 'title',
                             subtitle: 'subtitle',
@@ -51,7 +51,7 @@ class ToDoPage extends StatelessWidget {
                               onPressed: () {},
                             ),
                           ),
-                          TaskCardWidget(
+                          TaskCard(
                             cardColor: orangeCardColor,
                             title: 'title',
                             subtitle:
@@ -64,7 +64,7 @@ class ToDoPage extends StatelessWidget {
                               onPressed: () {},
                             ),
                           ),
-                          TaskCardWidget(
+                          TaskCard(
                             cardColor: orangeCardColor,
                             title: 'title',
                             subtitle: 'subtitle',
@@ -84,7 +84,7 @@ class ToDoPage extends StatelessWidget {
               ],
             ),
           ),
-          FloatingActionWidget(
+          CustomFloatingButton(
             onTap: () => Get.toNamed(NewTaskPage.route, arguments: 'todo'),
           ),
         ],

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:taskee/ui/helpers/theme/app_colors.dart';
 
-class FloatingActionWidget extends StatelessWidget {
+class CustomFloatingButton extends StatelessWidget {
   final Function onTap;
-  const FloatingActionWidget({Key? key, required this.onTap}) : super(key: key);
+  const CustomFloatingButton({Key? key, required this.onTap}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Align(

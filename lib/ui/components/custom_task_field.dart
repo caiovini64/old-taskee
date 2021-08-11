@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CustomTaskFieldWidget extends StatelessWidget {
+class CustomField extends StatelessWidget {
   final String labelText;
   final TextEditingController controller;
   final TextInputType inputType;
@@ -11,7 +11,7 @@ class CustomTaskFieldWidget extends StatelessWidget {
   final double height;
   final int maxLines;
 
-  const CustomTaskFieldWidget({
+  const CustomField({
     Key? key,
     required this.labelText,
     required this.controller,
