@@ -123,19 +123,12 @@ class _RegisterPageState extends State<RegisterPage>
                                   value, passwordController.value.text),
                             ),
                             SizedBox(height: 35),
-                            ElevatedButton(
+                            CustomElevatedButton.principal(
                               child: state is RegisterLoading
                                   ? CircularProgressIndicator(
                                       color: primaryColor,
                                     )
                                   : Text('Sign up'.tr),
-                              style: ElevatedButton.styleFrom(
-                                minimumSize: Size(400, 60),
-                                primary: Colors.white,
-                                onPrimary: primaryColor,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10)),
-                              ),
                               onPressed: () {
                                 final validate =
                                     _formKey.currentState!.validate();

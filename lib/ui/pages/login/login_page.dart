@@ -93,19 +93,12 @@ class _LoginPageState extends State<LoginPage>
                             validator: (value) => validatePassword(value),
                           ),
                           SizedBox(height: 35),
-                          ElevatedButton(
+                          CustomElevatedButton.principal(
                             child: state is LoginLoading
                                 ? CircularProgressIndicator(
                                     color: primaryColor,
                                   )
                                 : Text('Sign in'.tr),
-                            style: ElevatedButton.styleFrom(
-                              minimumSize: Size(400, 60),
-                              primary: Colors.white,
-                              onPrimary: primaryColor,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10)),
-                            ),
                             onPressed: () {
                               final validate =
                                   _formKey.currentState!.validate();
@@ -118,18 +111,8 @@ class _LoginPageState extends State<LoginPage>
                             },
                           ),
                           SizedBox(height: 35),
-                          ElevatedButton(
+                          CustomElevatedButton.secondary(
                             child: Text('Create new account'.tr),
-                            style: ElevatedButton.styleFrom(
-                              side: BorderSide(width: 1.5, color: Colors.white),
-                              minimumSize: Size(400, 60),
-                              primary: Colors.transparent,
-                              elevation: 0,
-                              onPrimary: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                            ),
                             onPressed: () => Get.toNamed(RegisterPage.route),
                           ),
                           SizedBox(height: 35),
