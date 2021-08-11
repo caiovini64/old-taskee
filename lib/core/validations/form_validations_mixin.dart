@@ -1,4 +1,4 @@
-mixin Validators {
+mixin FormValidations {
   String? validatePassword(String? value) {
     if (value!.length < 6 && value.isEmpty)
       return 'Password should contain more than 6 characters';
