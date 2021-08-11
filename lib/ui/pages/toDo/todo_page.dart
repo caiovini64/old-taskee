@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:taskee/ui/components/components.dart';
 
 import 'package:taskee/ui/helpers/helpers.dart';
-import 'package:taskee/ui/widgets/widgets.dart';
 import 'package:taskee/ui/pages/newTask/new_task_page.dart';
 
 class ToDoPage extends StatelessWidget {

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+import 'package:taskee/ui/components/components.dart';
 
 import 'package:taskee/ui/helpers/helpers.dart';
 import 'package:taskee/core/validations/validations.dart';
 import 'package:taskee/ui/pages/controllers.dart';
-import 'package:taskee/ui/widgets/widgets.dart';
 import 'package:taskee/ui/pages/register/register_page.dart';
 
 class LoginPage extends StatefulWidget with FormValidations {
