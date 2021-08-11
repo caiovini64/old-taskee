@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
-import 'package:taskee/ui/helpers/theme/app_colors.dart';
+
+import 'package:taskee/ui/helpers/theme/themes.dart';
 import 'package:taskee/core/validations/form_validations_mixin.dart';
-import 'package:taskee/ui/pages/newTask/components/custom_task_field.dart';
-import 'package:taskee/ui/pages/newTask/controller/new_task_controller.dart';
+import 'package:taskee/ui/pages/controllers.dart';
+import 'package:taskee/ui/widgets/widgets.dart';
 
 class NewTaskPage extends StatelessWidget with FormValidations {
   static const route = '/newTask';
