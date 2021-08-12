@@ -1,4 +1,4 @@
-import 'package:taskee/core/config.dart';
+import 'package:taskee/core/enviroment/config.dart';
 
 class FirebaseEndpoints {
   static String login(String categorie) =>

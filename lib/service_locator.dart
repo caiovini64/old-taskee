@@ -1,17 +1,14 @@
 import 'package:get_it/get_it.dart';
-import 'package:taskee/domain/client/connection_client.dart';
-import 'package:taskee/domain/datasources/datasources.dart';
-import 'package:taskee/data/client/http_client.dart';
-import 'package:taskee/data/datasources/login_datasource_impl.dart';
-import 'package:taskee/data/helpers/endpoints/firebase_endpoints.dart';
-import 'package:taskee/data/usecases/usecases.dart';
-import 'package:taskee/ui/pages/login/controller/login_controller.dart';
 
-import 'domain/usecases/usecases.dart';
-import 'data/datasources/datasources.dart';
-import 'data/models/models.dart';
-import 'ui/pages/newTask/controller/new_task_controller.dart';
-import 'ui/pages/register/controller/register_controller.dart';
+import 'package:taskee/data/adapters/adapters.dart';
+import 'package:taskee/data/datasources/datasources.dart';
+import 'package:taskee/data/helpers/helpers.dart';
+import 'package:taskee/data/models/models.dart';
+import 'package:taskee/data/usecases/usecases.dart';
+import 'package:taskee/domain/adapters/adapters.dart';
+import 'package:taskee/domain/datasources/datasources.dart';
+import 'package:taskee/domain/usecases/usecases.dart';
+import 'package:taskee/ui/pages/controllers.dart';
 
 final serviceLocator = GetIt.instance;
 
@@ -35,18 +32,18 @@ void initUsecases() {
 
 void initDatasources() {
   serviceLocator.registerFactory<ILoginDatasource>(() => LoginDatasource(
-      client: serviceLocator<IConnectionClient>(),
+      client: serviceLocator<IHttpClient>(),
       url: FirebaseEndpoints.login('signInWithPassword')));
   serviceLocator.registerFactory<IRegisterDatasource>(() => RegisterDatasource(
-      client: serviceLocator<IConnectionClient>(),
+      client: serviceLocator<IHttpClient>(),
       url: FirebaseEndpoints.login('signUp')));
   serviceLocator.registerFactory<IAddTaskDatasource>(() => AddTaskDatasource(
-        client: serviceLocator<IConnectionClient>(),
+        client: serviceLocator<IHttpClient>(),
         url: FirebaseEndpoints.realtimeDb(),
         user: serviceLocator<UserModel>(),
       ));
 }
 
 void initServices() {
-  serviceLocator.registerFactory<IConnectionClient>(() => HttpClient());
+  serviceLocator.registerFactory<IHttpClient>(() => HttpAdapter());
 }

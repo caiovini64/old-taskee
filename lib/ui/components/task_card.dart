@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class TaskCardWidget extends StatelessWidget {
+class TaskCard extends StatelessWidget {
   final Color cardColor;
   final String title;
   final String subtitle;
   final Widget icon;
 
-  const TaskCardWidget({
+  const TaskCard({
     Key? key,
     required this.cardColor,
     required this.title,

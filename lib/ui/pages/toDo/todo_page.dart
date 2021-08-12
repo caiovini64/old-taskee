@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:taskee/ui/helpers/app_colors.dart';
+import 'package:taskee/ui/components/components.dart';
+
+import 'package:taskee/ui/helpers/helpers.dart';
 import 'package:taskee/ui/pages/newTask/new_task_page.dart';
-import 'package:taskee/ui/widgets/floating_action_bar_widget.dart';
-import 'package:taskee/ui/widgets/widgets.dart';
 
 class ToDoPage extends StatelessWidget {
   static const route = '/todo';
@@ -39,7 +39,7 @@ class ToDoPage extends StatelessWidget {
                             ),
                           ),
                           SizedBox(height: 35),
-                          TaskCardWidget(
+                          TaskCard(
                             cardColor: orangeCardColor,
                             title: 'title',
                             subtitle: 'subtitle',
@@ -51,7 +51,7 @@ class ToDoPage extends StatelessWidget {
                               onPressed: () {},
                             ),
                           ),
-                          TaskCardWidget(
+                          TaskCard(
                             cardColor: orangeCardColor,
                             title: 'title',
                             subtitle:
@@ -64,7 +64,7 @@ class ToDoPage extends StatelessWidget {
                               onPressed: () {},
                             ),
                           ),
-                          TaskCardWidget(
+                          TaskCard(
                             cardColor: orangeCardColor,
                             title: 'title',
                             subtitle: 'subtitle',
@@ -84,7 +84,7 @@ class ToDoPage extends StatelessWidget {
               ],
             ),
           ),
-          FloatingActionWidget(
+          CustomFloatingButton(
             onTap: () => Get.toNamed(NewTaskPage.route, arguments: 'todo'),
           ),
         ],

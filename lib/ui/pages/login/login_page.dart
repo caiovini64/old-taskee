@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+import 'package:taskee/ui/components/components.dart';
+import 'package:taskee/ui/components/error_message.dart';
+
 import 'package:taskee/ui/helpers/helpers.dart';
-import 'package:taskee/ui/mixins/validator_mixin.dart';
-import 'package:taskee/ui/pages/newTask/components/custom_task_field.dart';
+import 'package:taskee/ui/mixins/mixins.dart';
+import 'package:taskee/ui/pages/controllers.dart';
 import 'package:taskee/ui/pages/register/register_page.dart';
 
-import 'controller/login_controller.dart';
-
-class LoginPage extends StatefulWidget with Validators {
+class LoginPage extends StatefulWidget {
   static const route = '/login';
   @override
   _LoginPageState createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginPageState extends State<LoginPage>
+    with KeyboardManager, ValidationsManager {
   final _formKey = GlobalKey<FormState>();
 
   final emailController = TextEditingController();
@@ -29,12 +31,7 @@ class _LoginPageState extends State<LoginPage> {
     return BlocConsumer<LoginController, LoginState>(
       listener: (context, state) {
         if (state is LoginError) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              backgroundColor: Colors.redAccent,
-              content: Text(controller.failureMessage),
-            ),
-          );
+          showErrorMessage(context, controller.failureMessage);
         }
       },
       builder: (context, state) {
@@ -65,17 +62,17 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           ),
                           SizedBox(height: 100),
-                          CustomTaskFieldWidget(
+                          CustomField(
                             labelText: 'Email',
                             semanticsLabel: 'Email text field'.tr,
                             inputType: TextInputType.emailAddress,
                             controller: emailController,
                             maxLines: 1,
                             obscureText: false,
-                            validator: (value) => widget.validateEmail(value),
+                            validator: (value) => validateEmail(value),
                           ),
                           SizedBox(height: 35),
-                          CustomTaskFieldWidget(
+                          CustomField(
                             labelText: 'Password'.tr,
                             semanticsLabel: 'Password text field'.tr,
                             inputType: TextInputType.visiblePassword,
@@ -93,23 +90,15 @@ class _LoginPageState extends State<LoginPage> {
                                     : Icons.visibility,
                               ),
                             ),
-                            validator: (value) =>
-                                widget.validatePassword(value),
+                            validator: (value) => validatePassword(value),
                           ),
                           SizedBox(height: 35),
-                          ElevatedButton(
+                          CustomElevatedButton.principal(
                             child: state is LoginLoading
                                 ? CircularProgressIndicator(
                                     color: primaryColor,
                                   )
                                 : Text('Sign in'.tr),
-                            style: ElevatedButton.styleFrom(
-                              minimumSize: Size(400, 60),
-                              primary: Colors.white,
-                              onPrimary: primaryColor,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10)),
-                            ),
                             onPressed: () {
                               final validate =
                                   _formKey.currentState!.validate();
@@ -117,24 +106,13 @@ class _LoginPageState extends State<LoginPage> {
                                 final email = emailController.value.text;
                                 final password = passwordController.value.text;
                                 controller.login(email, password);
-                                FocusScope.of(context)
-                                    .requestFocus(new FocusNode());
+                                hideKeyboard(context);
                               }
                             },
                           ),
                           SizedBox(height: 35),
-                          ElevatedButton(
+                          CustomElevatedButton.secondary(
                             child: Text('Create new account'.tr),
-                            style: ElevatedButton.styleFrom(
-                              side: BorderSide(width: 1.5, color: Colors.white),
-                              minimumSize: Size(400, 60),
-                              primary: Colors.transparent,
-                              elevation: 0,
-                              onPrimary: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                            ),
                             onPressed: () => Get.toNamed(RegisterPage.route),
                           ),
                           SizedBox(height: 35),

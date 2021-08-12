@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
-import 'package:taskee/ui/helpers/app_colors.dart';
-import 'package:taskee/ui/mixins/validator_mixin.dart';
-import 'package:taskee/ui/pages/newTask/components/custom_task_field.dart';
-import 'package:taskee/ui/pages/newTask/controller/new_task_controller.dart';
+import 'package:taskee/ui/components/components.dart';
 
-class NewTaskPage extends StatelessWidget with Validators {
+import 'package:taskee/ui/helpers/theme/themes.dart';
+import 'package:taskee/ui/mixins/mixins.dart';
+import 'package:taskee/ui/pages/controllers.dart';
+
+class NewTaskPage extends StatelessWidget
+    with ValidationsManager, KeyboardManager {
   static const route = '/newTask';
   NewTaskPage({Key? key}) : super(key: key);
 
@@ -63,7 +65,7 @@ class NewTaskPage extends StatelessWidget with Validators {
                           ),
                         ),
                         SizedBox(height: 35),
-                        CustomTaskFieldWidget(
+                        CustomField(
                           labelText: 'Title'.tr,
                           controller: titleController,
                           inputType: TextInputType.text,
@@ -72,7 +74,7 @@ class NewTaskPage extends StatelessWidget with Validators {
                           validator: (value) => validateField(value),
                         ),
                         SizedBox(height: 35),
-                        CustomTaskFieldWidget(
+                        CustomField(
                           labelText: 'Content'.tr,
                           height: 150,
                           controller: subtitleController,
@@ -93,7 +95,7 @@ class NewTaskPage extends StatelessWidget with Validators {
               padding: const EdgeInsets.all(20.0),
               child: Hero(
                 tag: "add",
-                child: ElevatedButton(
+                child: CustomElevatedButton.principal(
                   child: state is NewTaskLoading
                       ? CircularProgressIndicator(
                           color: primaryColor,
@@ -102,19 +104,13 @@ class NewTaskPage extends StatelessWidget with Validators {
                           'Add new Task'.tr,
                           style: TextStyle(color: primaryColor),
                         ),
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: Size(400, 60),
-                    primary: Colors.white,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                  ),
                   onPressed: () {
                     final validate = _formKey.currentState!.validate();
                     if (validate) {
                       final title = titleController.value.text;
                       final subtitle = subtitleController.value.text;
                       controller.addTask(title, subtitle, arguments);
-                      FocusScope.of(context).requestFocus(new FocusNode());
+                      hideKeyboard(context);
                     }
                   },
                 ),

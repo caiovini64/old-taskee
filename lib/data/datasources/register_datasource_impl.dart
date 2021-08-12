@@ -1,12 +1,12 @@
 import 'dart:convert';
 
-import 'package:taskee/domain/client/connection_client.dart';
+import 'package:taskee/domain/adapters/adapters.dart';
 import 'package:taskee/domain/datasources/datasources.dart';
 import 'package:taskee/data/helpers/helpers.dart';
 import 'package:taskee/data/models/models.dart';
 
 class RegisterDatasource implements IRegisterDatasource {
-  final IConnectionClient client;
+  final IHttpClient client;
   final String url;
   RegisterDatasource({
     required this.client,

@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:get/get.dart';
+
 import 'package:taskee/domain/usecases/usecases.dart';
 
 part 'new_task_state.dart';
