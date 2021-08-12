@@ -143,7 +143,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                   final email = emailController.value.text;
                                   final password =
                                       passwordController.value.text;
-                                  controller.login(email, password);
+                                  controller.register(email, password);
                                   FocusScope.of(context)
                                       .requestFocus(new FocusNode());
                                 }
