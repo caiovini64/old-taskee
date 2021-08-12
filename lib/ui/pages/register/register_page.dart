@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
-import 'package:lottie/lottie.dart';
 import 'package:taskee/ui/components/components.dart';
 import 'package:taskee/ui/components/error_message.dart';
 import 'package:taskee/ui/components/success_dialog.dart';
@@ -141,7 +140,8 @@ class _RegisterPageState extends State<RegisterPage>
                                   final email = emailController.value.text;
                                   final password =
                                       passwordController.value.text;
-                                  controller.login(email, password);
+                                  controller.register(email, password);
+
                                   hideKeyboard(context);
                                 }
                               },

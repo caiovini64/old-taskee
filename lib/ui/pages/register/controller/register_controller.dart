@@ -15,10 +15,10 @@ class RegisterController extends Cubit<RegisterState> {
 
   String failureMessage = '';
 
-  Future<void> login(String email, String password) async {
+  Future<void> register(String email, String password) async {
     emit(RegisterLoading());
     final Either<Failure, UserEntity> result =
-        await _registerUsecase.register(email, password);
+        await _registerUsecase.register(email.trim(), password);
     result.fold((failure) {
       emit(RegisterError());
       failureMessage = failure.message;

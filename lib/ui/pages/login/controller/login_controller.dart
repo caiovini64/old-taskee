@@ -22,7 +22,7 @@ class LoginController extends Cubit<LoginState> {
   Future<void> login(String email, String password) async {
     emit(LoginLoading());
     final Either<Failure, UserEntity> result =
-        await _loginUsecase.login(email, password);
+        await _loginUsecase.login(email.trim(), password);
     result.fold((failure) {
       emit(LoginError());
       failureMessage = failure.message;
