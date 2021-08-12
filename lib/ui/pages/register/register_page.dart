@@ -3,12 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:taskee/ui/components/components.dart';
 import 'package:taskee/ui/components/error_message.dart';
+import 'package:taskee/ui/components/success_dialog.dart';
 
 import 'package:taskee/ui/helpers/helpers.dart';
-import 'package:taskee/core/validations/validations.dart';
+import 'package:taskee/ui/mixins/mixins.dart';
 import 'package:taskee/ui/pages/controllers.dart';
 
-class RegisterPage extends StatefulWidget with FormValidations {
+class RegisterPage extends StatefulWidget {
   static const route = '/register';
   const RegisterPage({Key? key}) : super(key: key);
 
@@ -16,7 +17,8 @@ class RegisterPage extends StatefulWidget with FormValidations {
   _RegisterPageState createState() => _RegisterPageState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
+class _RegisterPageState extends State<RegisterPage>
+    with KeyboardManager, ValidationsManager {
   final _formKey = GlobalKey<FormState>();
 
   final emailController = TextEditingController();
@@ -33,6 +35,9 @@ class _RegisterPageState extends State<RegisterPage> {
       listener: (context, state) {
         if (state is RegisterError) {
           showErrorMessage(context, controller.failureMessage);
+        }
+        if (state is RegisterDone) {
+          Get.toNamed(SuccessDialog.route);
         }
       },
       builder: (context, state) {
@@ -75,7 +80,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               controller: emailController,
                               maxLines: 1,
                               obscureText: false,
-                              validator: (value) => widget.validateEmail(value),
+                              validator: (value) => validateEmail(value),
                             ),
                             SizedBox(height: 35),
                             CustomField(
@@ -96,8 +101,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                       : Icons.visibility,
                                 ),
                               ),
-                              validator: (value) =>
-                                  widget.validatePassword(value),
+                              validator: (value) => validatePassword(value),
                             ),
                             SizedBox(height: 35),
                             CustomField(
@@ -119,23 +123,16 @@ class _RegisterPageState extends State<RegisterPage> {
                                       : Icons.visibility,
                                 ),
                               ),
-                              validator: (value) => widget.confirmPassword(
+                              validator: (value) => confirmPassword(
                                   value, passwordController.value.text),
                             ),
                             SizedBox(height: 35),
-                            ElevatedButton(
+                            CustomElevatedButton.principal(
                               child: state is RegisterLoading
                                   ? CircularProgressIndicator(
                                       color: primaryColor,
                                     )
                                   : Text('Sign up'.tr),
-                              style: ElevatedButton.styleFrom(
-                                minimumSize: Size(400, 60),
-                                primary: Colors.white,
-                                onPrimary: primaryColor,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10)),
-                              ),
                               onPressed: () {
                                 final validate =
                                     _formKey.currentState!.validate();
@@ -144,8 +141,8 @@ class _RegisterPageState extends State<RegisterPage> {
                                   final password =
                                       passwordController.value.text;
                                   controller.register(email, password);
-                                  FocusScope.of(context)
-                                      .requestFocus(new FocusNode());
+
+                                  hideKeyboard(context);
                                 }
                               },
                             ),

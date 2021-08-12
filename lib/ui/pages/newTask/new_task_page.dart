@@ -4,10 +4,11 @@ import 'package:get/get.dart';
 import 'package:taskee/ui/components/components.dart';
 
 import 'package:taskee/ui/helpers/theme/themes.dart';
-import 'package:taskee/core/validations/form_validations_mixin.dart';
+import 'package:taskee/ui/mixins/mixins.dart';
 import 'package:taskee/ui/pages/controllers.dart';
 
-class NewTaskPage extends StatelessWidget with FormValidations {
+class NewTaskPage extends StatelessWidget
+    with ValidationsManager, KeyboardManager {
   static const route = '/newTask';
   NewTaskPage({Key? key}) : super(key: key);
 
@@ -94,7 +95,7 @@ class NewTaskPage extends StatelessWidget with FormValidations {
               padding: const EdgeInsets.all(20.0),
               child: Hero(
                 tag: "add",
-                child: ElevatedButton(
+                child: CustomElevatedButton.principal(
                   child: state is NewTaskLoading
                       ? CircularProgressIndicator(
                           color: primaryColor,
@@ -103,19 +104,13 @@ class NewTaskPage extends StatelessWidget with FormValidations {
                           'Add new Task'.tr,
                           style: TextStyle(color: primaryColor),
                         ),
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: Size(400, 60),
-                    primary: Colors.white,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                  ),
                   onPressed: () {
                     final validate = _formKey.currentState!.validate();
                     if (validate) {
                       final title = titleController.value.text;
                       final subtitle = subtitleController.value.text;
                       controller.addTask(title, subtitle, arguments);
-                      FocusScope.of(context).requestFocus(new FocusNode());
+                      hideKeyboard(context);
                     }
                   },
                 ),
