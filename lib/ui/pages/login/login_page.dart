@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
-import 'package:taskee/ui/components/components.dart';
-import 'package:taskee/ui/components/error_message.dart';
 
+import 'package:taskee/ui/components/components.dart';
 import 'package:taskee/ui/helpers/helpers.dart';
 import 'package:taskee/ui/mixins/mixins.dart';
 import 'package:taskee/ui/pages/controllers.dart';
@@ -16,7 +15,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage>
-    with KeyboardManager, ValidationsManager {
+    with KeyboardManager, ValidationsManager, UIErrorManager {
   final _formKey = GlobalKey<FormState>();
 
   final emailController = TextEditingController();
@@ -31,7 +30,7 @@ class _LoginPageState extends State<LoginPage>
     return BlocConsumer<LoginController, LoginState>(
       listener: (context, state) {
         if (state is LoginError) {
-          showErrorMessage(context, controller.failureMessage);
+          showAuthErrorMessage(context, controller.failureMessage);
         }
       },
       builder: (context, state) {

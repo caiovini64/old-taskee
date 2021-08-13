@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
-import 'package:taskee/ui/components/components.dart';
-import 'package:taskee/ui/components/error_message.dart';
-import 'package:taskee/ui/components/success_dialog.dart';
 
+import 'package:taskee/ui/components/components.dart';
 import 'package:taskee/ui/helpers/helpers.dart';
 import 'package:taskee/ui/mixins/mixins.dart';
 import 'package:taskee/ui/pages/controllers.dart';
@@ -18,7 +16,7 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage>
-    with KeyboardManager, ValidationsManager {
+    with KeyboardManager, ValidationsManager, UIErrorManager {
   final _formKey = GlobalKey<FormState>();
 
   final emailController = TextEditingController();
@@ -34,7 +32,7 @@ class _RegisterPageState extends State<RegisterPage>
     return BlocConsumer<RegisterController, RegisterState>(
       listener: (context, state) {
         if (state is RegisterError) {
-          showErrorMessage(context, controller.failureMessage);
+          showAuthErrorMessage(context, controller.failureMessage);
         }
         if (state is RegisterDone) {
           Get.toNamed(SuccessDialog.route);
