@@ -15,4 +15,11 @@ final Map<String, String> ptBR = {
   'Create new': 'Criar nova',
   'Task': 'tarefa',
   'Add new Task': 'Adcionar nova Tarefa',
+  'Something wrong!': 'Algo deu errado!',
+  'The email exists': 'Email já existe.',
+  'Too many attempts, try again later!':
+      'Muitas tentativas, tente novamente mais tarde!',
+  'Email not found.': 'Email não encontrado.',
+  'Invalid password.': 'Senha incorreta.',
+  'User disabled.': 'Usuário desabilitado.',
 };
