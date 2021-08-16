@@ -25,7 +25,6 @@
 
 - [x] The user can sign in with your account
 - [x] The user can create an account
-- [ ] The user can sign in with a Google account
 - [x] The user can create tasks
 - [ ] The user can delete your tasks
 - [ ] The user can update your tasks
@@ -33,7 +32,7 @@
 
 ## 📐 Architecture
 
-   The project structure is divided into four principal layers:
+   The project structure is divided into three main layers:
    - Domain: The heart of the application, business rules, and use cases are here, as well as the datasources interfaces.
    - Data: In here are the external connection behind data sources implementations.
    - UI: All pages of the app with your controllers and components.
