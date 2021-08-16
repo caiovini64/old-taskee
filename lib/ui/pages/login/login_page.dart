@@ -6,6 +6,7 @@ import 'package:taskee/ui/components/components.dart';
 import 'package:taskee/ui/helpers/helpers.dart';
 import 'package:taskee/ui/mixins/mixins.dart';
 import 'package:taskee/ui/pages/controllers.dart';
+import 'package:taskee/ui/pages/login/cubit/login_cubit.dart';
 import 'package:taskee/ui/pages/register/register_page.dart';
 
 class LoginPage extends StatefulWidget {

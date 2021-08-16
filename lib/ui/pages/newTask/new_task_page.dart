@@ -5,7 +5,7 @@ import 'package:taskee/ui/components/components.dart';
 
 import 'package:taskee/ui/helpers/theme/themes.dart';
 import 'package:taskee/ui/mixins/mixins.dart';
-import 'package:taskee/ui/pages/controllers.dart';
+import 'package:taskee/ui/pages/newTask/cubit/new_task_controller.dart';
 
 class NewTaskPage extends StatelessWidget
     with ValidationsManager, KeyboardManager {
