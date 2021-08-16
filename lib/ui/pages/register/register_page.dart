@@ -28,8 +28,8 @@ class _RegisterPageState extends State<RegisterPage>
   bool obscureText = true;
   @override
   Widget build(BuildContext context) {
-    final controller = context.read<RegisterController>();
-    return BlocConsumer<RegisterController, RegisterState>(
+    final controller = context.read<RegisterCubit>();
+    return BlocConsumer<RegisterCubit, RegisterState>(
       listener: (context, state) {
         if (state is RegisterError) {
           showAuthErrorMessage(context, controller.failureMessage);

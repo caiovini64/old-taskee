@@ -1,4 +1,4 @@
-part of 'register_controller.dart';
+part of 'register_cubit.dart';
 
 abstract class RegisterState extends Equatable {
   const RegisterState();

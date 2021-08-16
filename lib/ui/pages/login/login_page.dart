@@ -27,8 +27,8 @@ class _LoginPageState extends State<LoginPage>
 
   @override
   Widget build(BuildContext context) {
-    final controller = context.read<LoginController>();
-    return BlocConsumer<LoginController, LoginState>(
+    final controller = context.read<LoginCubit>();
+    return BlocConsumer<LoginCubit, LoginState>(
       listener: (context, state) {
         if (state is LoginError) {
           showAuthErrorMessage(context, controller.failureMessage);

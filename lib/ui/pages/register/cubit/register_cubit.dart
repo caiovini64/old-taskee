@@ -8,10 +8,10 @@ import 'package:taskee/domain/usecases/usecases.dart';
 
 part 'register_state.dart';
 
-class RegisterController extends Cubit<RegisterState> {
+class RegisterCubit extends Cubit<RegisterState> {
   final IRegisterUsecase _registerUsecase;
 
-  RegisterController(this._registerUsecase) : super(RegisterInitial());
+  RegisterCubit(this._registerUsecase) : super(RegisterInitial());
 
   String failureMessage = '';
 

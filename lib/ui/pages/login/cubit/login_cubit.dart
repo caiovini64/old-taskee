@@ -11,9 +11,9 @@ import 'package:taskee/ui/pages/toDo/todo_page.dart';
 
 part 'login_state.dart';
 
-class LoginController extends Cubit<LoginState> {
+class LoginCubit extends Cubit<LoginState> {
   final ILoginUsecase _loginUsecase;
-  LoginController(this._loginUsecase) : super(LoginInitial());
+  LoginCubit(this._loginUsecase) : super(LoginInitial());
 
   GetIt serviceLocator = GetIt.instance;
 

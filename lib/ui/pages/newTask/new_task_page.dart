@@ -5,7 +5,7 @@ import 'package:taskee/ui/components/components.dart';
 
 import 'package:taskee/ui/helpers/theme/themes.dart';
 import 'package:taskee/ui/mixins/mixins.dart';
-import 'package:taskee/ui/pages/newTask/cubit/new_task_controller.dart';
+import 'package:taskee/ui/pages/newTask/cubit/new_task_cubit.dart';
 
 class NewTaskPage extends StatelessWidget
     with ValidationsManager, KeyboardManager {
@@ -18,9 +18,9 @@ class NewTaskPage extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    final controller = context.read<NewTaskController>();
+    final controller = context.read<NewTaskCubit>();
     final arguments = Get.arguments;
-    return BlocBuilder<NewTaskController, NewTaskState>(
+    return BlocBuilder<NewTaskCubit, NewTaskState>(
       builder: (context, state) {
         return GestureDetector(
           onVerticalDragEnd: (details) {

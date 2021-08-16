@@ -1,4 +1,4 @@
-part of 'new_task_controller.dart';
+part of 'new_task_cubit.dart';
 
 abstract class NewTaskState extends Equatable {
   const NewTaskState();
