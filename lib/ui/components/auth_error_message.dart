@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-void showErrorMessage(BuildContext context, String error) {
+void authErrorMessage(BuildContext context, String error) {
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
       backgroundColor: Colors.redAccent,
