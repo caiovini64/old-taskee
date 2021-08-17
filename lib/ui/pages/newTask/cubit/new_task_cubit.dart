@@ -17,6 +17,5 @@ class NewTaskCubit extends Cubit<NewTaskState> {
       (failure) => emit(NewTaskError(failure.message)),
       (right) => emit(NewTaskSuccess()),
     );
-    Get.back();
   }
 }

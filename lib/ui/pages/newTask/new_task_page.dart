@@ -111,6 +111,7 @@ class NewTaskPage extends StatelessWidget
                       final subtitle = subtitleController.value.text;
                       controller.addTask(title, subtitle, arguments);
                       hideKeyboard(context);
+                      Get.back();
                     }
                   },
                 ),
