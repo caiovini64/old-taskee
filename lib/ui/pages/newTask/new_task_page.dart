@@ -6,6 +6,7 @@ import 'package:taskee/ui/components/components.dart';
 import 'package:taskee/ui/helpers/theme/themes.dart';
 import 'package:taskee/ui/mixins/mixins.dart';
 import 'package:taskee/ui/pages/newTask/cubit/new_task_cubit.dart';
+import 'package:taskee/ui/pages/newTask/widgets/form_new_task.dart';
 
 class NewTaskPage extends StatelessWidget
     with ValidationsManager, KeyboardManager, UIErrorManager {
@@ -40,56 +41,10 @@ class NewTaskPage extends StatelessWidget
             body: Padding(
               padding: const EdgeInsets.only(
                   left: 20.0, right: 20, top: 10, bottom: 20),
-              child: Form(
-                key: _formKey,
-                child: Stack(
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Align(
-                          alignment: Alignment.topLeft,
-                          child: Text(
-                            'Create new'.tr,
-                            style: Theme.of(context)
-                                .textTheme
-                                .headline1!
-                                .copyWith(color: Colors.white),
-                          ),
-                        ),
-                        Align(
-                          alignment: Alignment.topLeft,
-                          child: Text(
-                            'Task'.tr,
-                            style: Theme.of(context)
-                                .textTheme
-                                .headline1!
-                                .copyWith(color: Colors.white),
-                          ),
-                        ),
-                        SizedBox(height: 35),
-                        CustomField(
-                          labelText: 'Title'.tr,
-                          controller: titleController,
-                          inputType: TextInputType.text,
-                          obscureText: false,
-                          semanticsLabel: 'Title text field',
-                          validator: (value) => validateField(value),
-                        ),
-                        SizedBox(height: 35),
-                        CustomField(
-                          labelText: 'Content'.tr,
-                          height: 150,
-                          controller: subtitleController,
-                          inputType: TextInputType.multiline,
-                          obscureText: false,
-                          semanticsLabel: 'Subtitle text field',
-                          validator: (value) => validateField(value),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+              child: FormNewTask(
+                formKey: _formKey,
+                titleController: titleController,
+                subtitleController: subtitleController,
               ),
             ),
             floatingActionButtonLocation:
