@@ -27,9 +27,6 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
             create: (context) =>
-                dependencies.serviceLocator.get<RegisterCubit>()),
-        BlocProvider(
-            create: (context) =>
                 dependencies.serviceLocator.get<NewTaskCubit>()),
       ],
       child: GetMaterialApp(
