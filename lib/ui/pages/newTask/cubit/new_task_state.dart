@@ -7,10 +7,14 @@ abstract class NewTaskState extends Equatable {
   List<Object> get props => [];
 }
 
-class NewTaskInitial extends NewTaskState {}
+class Initial extends NewTaskState {}
 
-class NewTaskLoading extends NewTaskState {}
+class Loading extends NewTaskState {}
 
-class NewTaskError extends NewTaskState {}
+class Error extends NewTaskState {
+  final String error;
 
-class NewTaskDone extends NewTaskState {}
+  Error(this.error);
+}
+
+class Success extends NewTaskState {}
