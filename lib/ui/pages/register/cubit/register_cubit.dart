@@ -11,20 +11,16 @@ part 'register_state.dart';
 class RegisterCubit extends Cubit<RegisterState> {
   final IRegisterUsecase _registerUsecase;
 
-  RegisterCubit(this._registerUsecase) : super(RegisterInitial());
-
-  String failureMessage = '';
+  RegisterCubit(this._registerUsecase) : super(Initial());
 
   Future<void> register(String email, String password) async {
-    emit(RegisterLoading());
+    emit(Loading());
     final Either<Failure, UserEntity> result =
         await _registerUsecase.register(email.trim(), password);
     result.fold((failure) {
-      emit(RegisterError());
-      failureMessage = failure.message;
+      emit(Error(failure.message));
     }, (right) {
-      print(right);
-      emit(RegisterDone());
+      emit(Success());
     });
   }
 }

@@ -31,10 +31,10 @@ class _RegisterPageState extends State<RegisterPage>
     final controller = context.read<RegisterCubit>();
     return BlocConsumer<RegisterCubit, RegisterState>(
       listener: (context, state) {
-        if (state is RegisterError) {
-          showAuthErrorMessage(context, controller.failureMessage);
+        if (state is Error) {
+          showAuthErrorMessage(context, state.error);
         }
-        if (state is RegisterDone) {
+        if (state is Success) {
           Get.toNamed(SuccessDialog.route);
         }
       },
@@ -126,7 +126,7 @@ class _RegisterPageState extends State<RegisterPage>
                             ),
                             SizedBox(height: 35),
                             CustomElevatedButton.principal(
-                              child: state is RegisterLoading
+                              child: state is Loading
                                   ? CircularProgressIndicator(
                                       color: primaryColor,
                                     )
