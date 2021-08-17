@@ -7,6 +7,7 @@ import 'package:taskee/ui/components/components.dart';
 import 'package:taskee/ui/helpers/theme/themes.dart';
 import 'package:taskee/ui/mixins/mixins.dart';
 import 'package:taskee/ui/pages/newTask/cubit/new_task_cubit.dart';
+import 'package:taskee/ui/pages/newTask/widgets/floating_button_form.dart';
 import 'package:taskee/ui/pages/newTask/widgets/form_new_task.dart';
 
 class NewTaskPage extends StatelessWidget
@@ -52,31 +53,10 @@ class NewTaskPage extends StatelessWidget
               ),
               floatingActionButtonLocation:
                   FloatingActionButtonLocation.centerDocked,
-              floatingActionButton: Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Hero(
-                  tag: "add",
-                  child: CustomElevatedButton.principal(
-                    child: state is NewTaskLoading
-                        ? CircularProgressIndicator(
-                            color: primaryColor,
-                          )
-                        : Text(
-                            'Add new Task'.tr,
-                            style: TextStyle(color: primaryColor),
-                          ),
-                    onPressed: () {
-                      final validate = _formKey.currentState!.validate();
-                      if (validate) {
-                        final title = titleController.value.text;
-                        final subtitle = subtitleController.value.text;
-                        controller.addTask(title, subtitle, arguments);
-                        hideKeyboard(context);
-                        Get.back();
-                      }
-                    },
-                  ),
-                ),
+              floatingActionButton: FloatingButtonForm(
+                formKey: _formKey,
+                titleController: titleController,
+                subtitleController: subtitleController,
               ),
             ),
           );
