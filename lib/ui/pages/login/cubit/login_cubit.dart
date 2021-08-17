@@ -17,15 +17,12 @@ class LoginCubit extends Cubit<LoginState> {
 
   GetIt serviceLocator = GetIt.instance;
 
-  String failureMessage = '';
-
   Future<void> login(String email, String password) async {
     emit(LoginLoading());
     final Either<Failure, UserEntity> result =
         await _loginUsecase.login(email.trim(), password);
     result.fold((failure) {
-      emit(LoginError());
-      failureMessage = failure.message;
+      emit(LoginError(failure.message));
     }, (right) {
       emit(LoginDone());
 

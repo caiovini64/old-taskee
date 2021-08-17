@@ -31,7 +31,7 @@ class _LoginPageState extends State<LoginPage>
     return BlocConsumer<LoginCubit, LoginState>(
       listener: (context, state) {
         if (state is LoginError) {
-          showAuthErrorMessage(context, controller.failureMessage);
+          showAuthErrorMessage(context, state.error);
         }
       },
       builder: (context, state) {
