@@ -8,7 +8,7 @@ import 'package:taskee/ui/mixins/mixins.dart';
 import 'package:taskee/ui/pages/newTask/cubit/new_task_cubit.dart';
 
 class NewTaskPage extends StatelessWidget
-    with ValidationsManager, KeyboardManager {
+    with ValidationsManager, KeyboardManager, UIErrorManager {
   static const route = '/newTask';
   NewTaskPage({Key? key}) : super(key: key);
 
@@ -20,7 +20,10 @@ class NewTaskPage extends StatelessWidget
   Widget build(BuildContext context) {
     final controller = context.read<NewTaskCubit>();
     final arguments = Get.arguments;
-    return BlocBuilder<NewTaskCubit, NewTaskState>(
+    return BlocConsumer<NewTaskCubit, NewTaskState>(
+      listener: (context, state) {
+        if (state is NewTaskError) showErrorMessage(context, state.error);
+      },
       builder: (context, state) {
         return GestureDetector(
           onVerticalDragEnd: (details) {

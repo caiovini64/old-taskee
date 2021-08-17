@@ -5,7 +5,7 @@ import 'package:taskee/ui/helpers/errors/auth_error.dart';
 mixin UIErrorManager {
   void showAuthErrorMessage(BuildContext context, String error) {
     AuthError authError = _manageError(error);
-    authErrorMessage(context, authError.description);
+    errorMessageWidget(context, authError.description);
   }
 
   AuthError _manageError(String error) {
@@ -16,5 +16,9 @@ mixin UIErrorManager {
     if (error == 'TOO_MANY_ATTEMPTS_TRY_LATER')
       return AuthError.tooManyAttempts;
     return AuthError.somethingWrong;
+  }
+
+  void showErrorMessage(BuildContext context, String error) {
+    errorMessageWidget(context, error);
   }
 }
