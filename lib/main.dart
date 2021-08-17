@@ -26,14 +26,13 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-            create: (context) =>
-                dependencies.serviceLocator.get<LoginController>()),
+            create: (context) => dependencies.serviceLocator.get<LoginCubit>()),
         BlocProvider(
             create: (context) =>
-                dependencies.serviceLocator.get<RegisterController>()),
+                dependencies.serviceLocator.get<RegisterCubit>()),
         BlocProvider(
             create: (context) =>
-                dependencies.serviceLocator.get<NewTaskController>()),
+                dependencies.serviceLocator.get<NewTaskCubit>()),
       ],
       child: GetMaterialApp(
         title: 'Taskee',

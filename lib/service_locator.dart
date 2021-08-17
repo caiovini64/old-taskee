@@ -14,11 +14,11 @@ final serviceLocator = GetIt.instance;
 
 void initControllers() {
   serviceLocator
-      .registerFactory(() => LoginController(serviceLocator<ILoginUsecase>()));
-  serviceLocator.registerFactory(
-      () => RegisterController(serviceLocator<IRegisterUsecase>()));
-  serviceLocator.registerFactory(
-      () => NewTaskController(serviceLocator<IAddTaskUsecase>()));
+      .registerFactory(() => LoginCubit(serviceLocator<ILoginUsecase>()));
+  serviceLocator
+      .registerFactory(() => RegisterCubit(serviceLocator<IRegisterUsecase>()));
+  serviceLocator
+      .registerFactory(() => NewTaskCubit(serviceLocator<IAddTaskUsecase>()));
 }
 
 void initUsecases() {

@@ -6,14 +6,16 @@ import 'package:taskee/domain/usecases/usecases.dart';
 
 part 'new_task_state.dart';
 
-class NewTaskController extends Cubit<NewTaskState> {
+class NewTaskCubit extends Cubit<NewTaskState> {
   final IAddTaskUsecase _addTaskUsecase;
-  NewTaskController(this._addTaskUsecase) : super(NewTaskInitial());
+  NewTaskCubit(this._addTaskUsecase) : super(NewTaskInitial());
 
   void addTask(String title, String subtitle, String state) async {
     emit(NewTaskLoading());
-    await _addTaskUsecase.addTask(title, subtitle, state);
-    emit(NewTaskDone());
-    Get.back();
+    final result = await _addTaskUsecase.addTask(title, subtitle, state);
+    result.fold(
+      (failure) => emit(NewTaskError(failure.message)),
+      (right) => emit(NewTaskSuccess()),
+    );
   }
 }

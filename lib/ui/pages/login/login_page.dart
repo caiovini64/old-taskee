@@ -6,6 +6,7 @@ import 'package:taskee/ui/components/components.dart';
 import 'package:taskee/ui/helpers/helpers.dart';
 import 'package:taskee/ui/mixins/mixins.dart';
 import 'package:taskee/ui/pages/controllers.dart';
+import 'package:taskee/ui/pages/login/cubit/login_cubit.dart';
 import 'package:taskee/ui/pages/register/register_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -26,11 +27,11 @@ class _LoginPageState extends State<LoginPage>
 
   @override
   Widget build(BuildContext context) {
-    final controller = context.read<LoginController>();
-    return BlocConsumer<LoginController, LoginState>(
+    final controller = context.read<LoginCubit>();
+    return BlocConsumer<LoginCubit, LoginState>(
       listener: (context, state) {
         if (state is LoginError) {
-          showAuthErrorMessage(context, controller.failureMessage);
+          showAuthErrorMessage(context, state.error);
         }
       },
       builder: (context, state) {

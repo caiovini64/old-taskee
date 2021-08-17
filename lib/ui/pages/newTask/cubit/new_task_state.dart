@@ -1,4 +1,4 @@
-part of 'new_task_controller.dart';
+part of 'new_task_cubit.dart';
 
 abstract class NewTaskState extends Equatable {
   const NewTaskState();
@@ -11,6 +11,10 @@ class NewTaskInitial extends NewTaskState {}
 
 class NewTaskLoading extends NewTaskState {}
 
-class NewTaskError extends NewTaskState {}
+class NewTaskError extends NewTaskState {
+  final String error;
 
-class NewTaskDone extends NewTaskState {}
+  NewTaskError(this.error);
+}
+
+class NewTaskSuccess extends NewTaskState {}
