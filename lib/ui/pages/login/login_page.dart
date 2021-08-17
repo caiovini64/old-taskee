@@ -7,23 +7,16 @@ import 'package:taskee/ui/pages/controllers.dart';
 import 'package:taskee/ui/pages/login/cubit/login_cubit.dart';
 import 'package:taskee/ui/pages/login/widgets/form_login.dart';
 
-class LoginPage extends StatefulWidget {
-  static const route = '/login';
-  @override
-  _LoginPageState createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage>
+class LoginPage extends StatelessWidget
     with KeyboardManager, ValidationsManager, UIErrorManager {
+  static const route = '/login';
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => serviceLocator.get<LoginCubit>(),
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        body: Container(
-          child: FormLogin(),
-        ),
+        body: FormLogin(),
       ),
     );
   }
