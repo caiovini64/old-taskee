@@ -8,14 +8,14 @@ part 'register_state.dart';
 class RegisterCubit extends Cubit<RegisterState> {
   final IRegisterUsecase _registerUsecase;
 
-  RegisterCubit(this._registerUsecase) : super(Initial());
+  RegisterCubit(this._registerUsecase) : super(RegisterInitial());
 
   Future<void> register(String email, String password) async {
-    emit(Loading());
+    emit(RegisterLoading());
     final result = await _registerUsecase.register(email.trim(), password);
     result.fold(
-      (failure) => emit(Error(failure.message)),
-      (right) => emit(Success()),
+      (failure) => emit(RegisterError(failure.message)),
+      (right) => emit(RegisterSuccess()),
     );
   }
 }

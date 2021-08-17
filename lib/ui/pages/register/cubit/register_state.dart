@@ -7,14 +7,13 @@ abstract class RegisterState extends Equatable {
   List<Object> get props => [];
 }
 
-class Initial extends RegisterState {}
+class RegisterInitial extends RegisterState {}
 
-class Loading extends RegisterState {}
+class RegisterLoading extends RegisterState {}
 
-class Error extends RegisterState {
+class RegisterError extends RegisterState {
   final String error;
-
-  Error(this.error);
+  RegisterError(this.error);
 }
 
-class Success extends RegisterState {}
+class RegisterSuccess extends RegisterState {}

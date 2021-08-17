@@ -96,7 +96,7 @@ class NewTaskPage extends StatelessWidget
               child: Hero(
                 tag: "add",
                 child: CustomElevatedButton.principal(
-                  child: state is Loading
+                  child: state is NewTaskLoading
                       ? CircularProgressIndicator(
                           color: primaryColor,
                         )

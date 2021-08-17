@@ -9,7 +9,6 @@ import 'package:taskee/domain/adapters/adapters.dart';
 import 'package:taskee/domain/datasources/datasources.dart';
 import 'package:taskee/domain/usecases/usecases.dart';
 import 'package:taskee/ui/pages/controllers.dart';
-import 'package:taskee/ui/pages/newTask/cubit/new_task_cubit.dart';
 
 final serviceLocator = GetIt.instance;
 

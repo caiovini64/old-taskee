@@ -9,7 +9,6 @@ import 'package:taskee/ui/helpers/helpers.dart';
 import 'package:taskee/ui/helpers/routes/routes.dart';
 import 'package:taskee/ui/pages/controllers.dart';
 import 'package:taskee/ui/pages/login/login_page.dart';
-import 'package:taskee/ui/pages/newTask/cubit/new_task_cubit.dart';
 
 void main() async {
   await dotenv.load(fileName: ".env");
