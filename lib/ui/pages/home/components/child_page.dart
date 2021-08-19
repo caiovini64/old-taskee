@@ -60,7 +60,7 @@ class ChildPage extends StatelessWidget with UIErrorManager, TasksManager {
             ),
           ),
           CustomFloatingButton(
-            index: 1,
+            index: taskState.index,
             onTap: () => Get.toNamed(NewTaskPage.route, arguments: taskState),
           ),
         ],

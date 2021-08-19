@@ -1,12 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:taskee/ui/helpers/states/task_state.dart';
 import 'package:taskee/ui/pages/home/components/child_page.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   static const route = '/home';
 
-  final pageController = PageController(initialPage: 0);
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  late PageController pageController;
+  final TaskState? taskState = Get.arguments;
+
+  @override
+  void initState() {
+    super.initState();
+    pageController = PageController(initialPage: taskState?.index ?? 0);
+  }
 
   @override
   Widget build(BuildContext context) {

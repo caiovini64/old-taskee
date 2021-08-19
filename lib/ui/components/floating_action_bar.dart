@@ -22,11 +22,11 @@ class CustomFloatingButton extends StatelessWidget {
                 height: 39,
                 decoration: BoxDecoration(
                   color: primaryColor,
-                  borderRadius: index == 1
+                  borderRadius: index == 0
                       ? BorderRadius.only(
                           topLeft: Radius.circular(30),
                         )
-                      : index == 2
+                      : index == 1
                           ? BorderRadius.only(topLeft: Radius.circular(0))
                           : BorderRadius.only(topRight: Radius.circular(30)),
                 ),
