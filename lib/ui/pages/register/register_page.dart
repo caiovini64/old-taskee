@@ -20,33 +20,30 @@ class RegisterPage extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => serviceLocator.get<RegisterCubit>(),
-      child: BlocConsumer<RegisterCubit, RegisterState>(
-        listener: (context, state) {
-          if (state is RegisterError) {
-            showAuthErrorMessage(context, state.error);
-          }
-          if (state is RegisterSuccess) {
-            Get.toNamed(SuccessDialog.route);
-          }
-        },
-        builder: (context, state) {
-          return Scaffold(
-            resizeToAvoidBottomInset: false,
-            appBar: AppBar(
-              backgroundColor: Colors.transparent,
-              elevation: 0,
-            ),
-            body: RegisterForm(
-              formKey: _formKey,
-              emailController: emailController,
-              passwordController: passwordController,
-              confirmPasswordController: confirmPasswordController,
-            ),
-          );
-        },
-      ),
+    return BlocConsumer<RegisterCubit, RegisterState>(
+      listener: (context, state) {
+        if (state is RegisterError) {
+          showAuthErrorMessage(context, state.error);
+        }
+        if (state is RegisterSuccess) {
+          Get.toNamed(SuccessDialog.route);
+        }
+      },
+      builder: (context, state) {
+        return Scaffold(
+          resizeToAvoidBottomInset: false,
+          appBar: AppBar(
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+          ),
+          body: RegisterForm(
+            formKey: _formKey,
+            emailController: emailController,
+            passwordController: passwordController,
+            confirmPasswordController: confirmPasswordController,
+          ),
+        );
+      },
     );
   }
 }

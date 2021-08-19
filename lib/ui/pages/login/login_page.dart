@@ -12,12 +12,9 @@ class LoginPage extends StatelessWidget
   static const route = '/login';
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => serviceLocator.get<LoginCubit>(),
-      child: Scaffold(
-        resizeToAvoidBottomInset: false,
-        body: FormLogin(),
-      ),
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      body: FormLogin(),
     );
   }
 }

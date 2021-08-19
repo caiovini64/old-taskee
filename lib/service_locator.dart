@@ -19,10 +19,10 @@ void initControllers() {
       .registerFactory(() => LoginCubit(serviceLocator<ILoginUsecase>()));
   serviceLocator
       .registerFactory(() => RegisterCubit(serviceLocator<IRegisterUsecase>()));
-  serviceLocator
-      .registerFactory(() => NewTaskCubit(serviceLocator<IAddTaskUsecase>()));
-  serviceLocator
-      .registerFactory(() => HomeCubit(serviceLocator<IGetTasksUsecase>()));
+  serviceLocator.registerLazySingleton(() => HomeCubit(
+        serviceLocator<IGetTasksUsecase>(),
+        serviceLocator<IAddTaskUsecase>(),
+      ));
 }
 
 void initUsecases() {

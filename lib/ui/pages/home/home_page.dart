@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:taskee/ui/pages/home/components/done/done_page.dart';
-import 'package:taskee/ui/pages/home/components/inProgress/in_progress_page.dart';
-import 'package:taskee/ui/pages/home/components/toDo/todo_page.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:taskee/service_locator.dart';
+import 'package:taskee/ui/helpers/states/task_state.dart';
+import 'package:taskee/ui/pages/home/components/child_page.dart';
+import 'package:taskee/ui/pages/home/cubit/home_cubit.dart';
 
 class HomePage extends StatelessWidget {
   static const route = '/home';
@@ -13,9 +15,9 @@ class HomePage extends StatelessWidget {
     return PageView(
       controller: pageController,
       children: [
-        TodoPage(),
-        InProgressPage(),
-        DonePage(),
+        ChildPage(title: 'To do', taskState: TaskState.todo),
+        ChildPage(title: 'In progress', taskState: TaskState.progress),
+        ChildPage(title: 'Done', taskState: TaskState.done),
       ],
     );
   }

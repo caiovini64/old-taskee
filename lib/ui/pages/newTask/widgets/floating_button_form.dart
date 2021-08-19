@@ -6,6 +6,7 @@ import 'package:taskee/ui/helpers/helpers.dart';
 import 'package:taskee/ui/helpers/states/task_state.dart';
 import 'package:taskee/ui/mixins/mixins.dart';
 import 'package:taskee/ui/pages/controllers.dart';
+import 'package:taskee/ui/pages/home/cubit/home_cubit.dart';
 import 'package:taskee/ui/pages/home/home_page.dart';
 
 class FloatingButtonForm extends StatelessWidget with KeyboardManager {
@@ -24,15 +25,15 @@ class FloatingButtonForm extends StatelessWidget with KeyboardManager {
 
   @override
   Widget build(BuildContext context) {
-    final controller = context.read<NewTaskCubit>();
-    return BlocBuilder<NewTaskCubit, NewTaskState>(
+    final controller = context.read<HomeCubit>();
+    return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
         return Padding(
           padding: const EdgeInsets.all(20.0),
           child: Hero(
             tag: "add",
             child: CustomElevatedButton.principal(
-              child: state is NewTaskLoading
+              child: state is HomeLoading
                   ? CircularProgressIndicator(
                       color: primaryColor,
                     )
@@ -47,7 +48,8 @@ class FloatingButtonForm extends StatelessWidget with KeyboardManager {
                   final subtitle = subtitleController.value.text;
                   controller.addTask(title, subtitle, taskState.description);
                   hideKeyboard(context);
-                  Get.toNamed(HomePage.route);
+                  // Get.back();
+                  Get.toNamed(HomePage.route, arguments: taskState);
                 }
               },
             ),
