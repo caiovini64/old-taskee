@@ -4,24 +4,24 @@ import 'package:taskee/domain/entities/entities.dart';
 import 'package:taskee/domain/usecases/get_tasks_usecase.dart';
 import 'package:taskee/service_locator.dart';
 
-part 'todo_state.dart';
+part 'home_state.dart';
 
-class TodoCubit extends Cubit<TodoState> {
+class HomeCubit extends Cubit<HomeState> {
   final IGetTasksUsecase _getTasksUsecase;
-  TodoCubit(this._getTasksUsecase) : super(TodoInitial()) {
+  HomeCubit(this._getTasksUsecase) : super(HomeInitial()) {
     getTasks();
   }
 
   final taskListSingleton = serviceLocator.get<List<TaskEntity>>();
 
   void getTasks() async {
-    emit(TodoLoading());
+    emit(HomeLoading());
     final result = await _getTasksUsecase.getTasks();
     result.fold(
-      (failure) => emit(TodoError(failure.message)),
+      (failure) => emit(HomeError(failure.message)),
       (data) {
         _saveTasksInMemory(data);
-        emit(TodoDone(taskListSingleton));
+        emit(HomeDone(taskListSingleton));
       },
     );
   }
@@ -31,7 +31,7 @@ class TodoCubit extends Cubit<TodoState> {
   }
 
   @override
-  void onChange(Change<TodoState> change) {
+  void onChange(Change<HomeState> change) {
     super.onChange(change);
     print(change);
   }

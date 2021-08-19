@@ -5,14 +5,14 @@ import 'package:get/get.dart';
 import 'package:taskee/service_locator.dart';
 import 'package:taskee/ui/components/components.dart';
 import 'package:taskee/ui/pages/newTask/new_task_page.dart';
-import 'package:taskee/ui/pages/home/cubit/todo_cubit.dart';
+import 'package:taskee/ui/pages/home/cubit/home_cubit.dart';
 import 'package:taskee/ui/pages/home/components/task_list.dart';
 
 class DonePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => serviceLocator.get<TodoCubit>(),
+      create: (context) => serviceLocator.get<HomeCubit>(),
       child: Scaffold(
         body: Stack(
           children: [
