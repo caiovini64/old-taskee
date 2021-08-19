@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:taskee/service_locator.dart';
+
 import 'package:taskee/ui/helpers/states/task_state.dart';
 import 'package:taskee/ui/pages/home/components/child_page.dart';
-import 'package:taskee/ui/pages/home/cubit/home_cubit.dart';
 
 class HomePage extends StatelessWidget {
   static const route = '/home';

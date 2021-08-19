@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
-import 'package:taskee/service_locator.dart';
 
 import 'package:taskee/ui/components/components.dart';
 import 'package:taskee/ui/mixins/mixins.dart';
 import 'package:taskee/ui/pages/controllers.dart';
 import 'package:taskee/ui/pages/register/widgets/register_form.dart';
 
+// ignore: must_be_immutable
 class RegisterPage extends StatelessWidget
     with KeyboardManager, ValidationsManager, UIErrorManager {
   static const route = '/register';

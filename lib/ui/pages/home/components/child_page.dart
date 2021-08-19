@@ -1,9 +1,7 @@
-import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 
-import 'package:taskee/service_locator.dart';
 import 'package:taskee/ui/components/components.dart';
 import 'package:taskee/ui/helpers/states/task_state.dart';
 import 'package:taskee/ui/mixins/mixins.dart';

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+
 import 'package:taskee/ui/components/components.dart';
 import 'package:taskee/ui/helpers/helpers.dart';
 import 'package:taskee/ui/helpers/states/task_state.dart';
 import 'package:taskee/ui/mixins/mixins.dart';
-import 'package:taskee/ui/pages/controllers.dart';
 import 'package:taskee/ui/pages/home/cubit/home_cubit.dart';
 import 'package:taskee/ui/pages/home/home_page.dart';
 
