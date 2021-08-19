@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
-import 'package:taskee/service_locator.dart';
-import 'package:taskee/ui/components/components.dart';
 
-import 'package:taskee/ui/helpers/theme/themes.dart';
+import 'package:taskee/service_locator.dart';
 import 'package:taskee/ui/mixins/mixins.dart';
 import 'package:taskee/ui/pages/newTask/cubit/new_task_cubit.dart';
 import 'package:taskee/ui/pages/newTask/widgets/floating_button_form.dart';
@@ -21,8 +19,6 @@ class NewTaskPage extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    final controller = context.read<NewTaskCubit>();
-    final arguments = Get.arguments;
     return BlocProvider(
       create: (context) => serviceLocator.get<NewTaskCubit>(),
       child: BlocConsumer<NewTaskCubit, NewTaskState>(

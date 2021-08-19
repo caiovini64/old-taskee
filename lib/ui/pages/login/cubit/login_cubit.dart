@@ -5,7 +5,8 @@ import 'package:meta/meta.dart';
 
 import 'package:taskee/domain/usecases/usecases.dart';
 import 'package:taskee/data/models/models.dart';
-import 'package:taskee/ui/pages/toDo/todo_page.dart';
+import 'package:taskee/ui/pages/home/components/toDo/todo_page.dart';
+import 'package:taskee/ui/pages/home/home_page.dart';
 
 part 'login_state.dart';
 
@@ -23,7 +24,7 @@ class LoginCubit extends Cubit<LoginState> {
       (right) {
         emit(LoginDone());
         _saveUser(right.email, right.id, right.token);
-        Get.toNamed(ToDoPage.route);
+        Get.toNamed(HomePage.route);
       },
     );
   }
