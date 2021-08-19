@@ -9,8 +9,7 @@ import 'package:taskee/ui/pages/home/cubit/home_cubit.dart';
 
 class TaskList extends StatelessWidget with UIErrorManager {
   final List<TaskEntity> taskList;
-  final Color taskColor;
-  const TaskList({required this.taskList, required this.taskColor});
+  const TaskList({required this.taskList});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +22,7 @@ class TaskList extends StatelessWidget with UIErrorManager {
           itemBuilder: (BuildContext context, index) {
             final task = taskList[index];
             return TaskCard(
-              cardColor: taskColor,
+              cardColor: greenCardColor,
               title: task.title,
               subtitle: task.subtitle,
               icon: IconButton(

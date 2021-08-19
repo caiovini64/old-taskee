@@ -73,12 +73,8 @@ class DonePage extends StatelessWidget with UIErrorManager {
         if (state is HomeDone)
           return TaskList(
             taskList: state.taskList,
-            taskColor: greenCardColor,
           );
-        return TaskList(
-          taskList: controller.taskListSingleton,
-          taskColor: greenCardColor,
-        );
+        return TaskList(taskList: controller.taskListSingleton);
       },
     );
   }

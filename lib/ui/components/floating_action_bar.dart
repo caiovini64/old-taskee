@@ -37,7 +37,7 @@ class CustomFloatingButton extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.only(bottom: 10),
                 child: FloatingActionButton(
-                  elevation: 0,
+                  elevation: 5,
                   heroTag: "add",
                   backgroundColor: orangeCardColor,
                   child: Icon(Icons.add, color: Colors.white),

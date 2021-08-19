@@ -70,15 +70,8 @@ class TodoPage extends StatelessWidget with UIErrorManager {
       },
       builder: (context, state) {
         final controller = context.read<HomeCubit>();
-        if (state is HomeDone)
-          return TaskList(
-            taskList: state.taskList,
-            taskColor: orangeCardColor,
-          );
-        return TaskList(
-          taskList: controller.taskListSingleton,
-          taskColor: orangeCardColor,
-        );
+        if (state is HomeDone) return TaskList(taskList: state.taskList);
+        return TaskList(taskList: controller.taskListSingleton);
       },
     );
   }
