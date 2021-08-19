@@ -6,7 +6,7 @@ import 'package:taskee/ui/pages/home/components/toDo/todo_page.dart';
 class HomePage extends StatelessWidget {
   static const route = '/home';
 
-  final pageController = PageController(initialPage: 1);
+  final pageController = PageController(initialPage: 0);
 
   @override
   Widget build(BuildContext context) {

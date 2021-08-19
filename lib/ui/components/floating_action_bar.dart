@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:taskee/ui/helpers/theme/app_colors.dart';
 
 class CustomFloatingButton extends StatelessWidget {
+  final int index;
   final Function onTap;
-  const CustomFloatingButton({Key? key, required this.onTap}) : super(key: key);
+  const CustomFloatingButton({
+    Key? key,
+    required this.onTap,
+    required this.index,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Align(
@@ -17,7 +22,13 @@ class CustomFloatingButton extends StatelessWidget {
                 height: 39,
                 decoration: BoxDecoration(
                   color: primaryColor,
-                  borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
+                  borderRadius: index == 1
+                      ? BorderRadius.only(
+                          topLeft: Radius.circular(30),
+                        )
+                      : index == 2
+                          ? BorderRadius.only(topLeft: Radius.circular(0))
+                          : BorderRadius.only(topRight: Radius.circular(30)),
                 ),
               ),
             ),

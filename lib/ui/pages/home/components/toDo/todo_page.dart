@@ -52,6 +52,7 @@ class ToDoPage extends StatelessWidget {
               ),
             ),
             CustomFloatingButton(
+              index: 1,
               onTap: () => Get.toNamed(NewTaskPage.route, arguments: 'todo'),
             ),
           ],

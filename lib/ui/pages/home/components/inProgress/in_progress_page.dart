@@ -50,6 +50,7 @@ class InProgressPage extends StatelessWidget {
               ),
             ),
             CustomFloatingButton(
+              index: 2,
               onTap: () => Get.toNamed(NewTaskPage.route, arguments: 'todo'),
             ),
           ],
