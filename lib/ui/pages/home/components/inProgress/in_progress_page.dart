@@ -4,11 +4,12 @@ import 'package:get/get.dart';
 
 import 'package:taskee/service_locator.dart';
 import 'package:taskee/ui/components/components.dart';
+import 'package:taskee/ui/mixins/mixins.dart';
 import 'package:taskee/ui/pages/newTask/new_task_page.dart';
 import 'package:taskee/ui/pages/home/cubit/home_cubit.dart';
 import 'package:taskee/ui/pages/home/components/task_list.dart';
 
-class InProgressPage extends StatelessWidget {
+class InProgressPage extends StatelessWidget with UIErrorManager {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -36,11 +37,11 @@ class InProgressPage extends StatelessWidget {
                             Align(
                               alignment: Alignment.topLeft,
                               child: Text(
-                                'In Progress'.tr,
+                                'In progress'.tr,
                                 style: Theme.of(context).textTheme.headline1,
                               ),
                             ),
-                            TaskList(),
+                            buildTaskList(context),
                           ],
                         ),
                       ),
@@ -56,6 +57,19 @@ class InProgressPage extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  buildTaskList(context) {
+    return BlocConsumer<HomeCubit, HomeState>(
+      listener: (context, state) {
+        if (state is HomeError) showErrorMessage(context, state.failure);
+      },
+      builder: (context, state) {
+        final controller = context.read<HomeCubit>();
+        if (state is HomeDone) return TaskList(state.taskList);
+        return TaskList(controller.taskListSingleton);
+      },
     );
   }
 }

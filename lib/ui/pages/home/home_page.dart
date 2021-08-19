@@ -13,7 +13,7 @@ class HomePage extends StatelessWidget {
     return PageView(
       controller: pageController,
       children: [
-        ToDoPage(),
+        TodoPage(),
         InProgressPage(),
         DonePage(),
       ],
