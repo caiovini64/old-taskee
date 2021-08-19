@@ -4,13 +4,13 @@ import 'package:get/get.dart';
 
 import 'package:taskee/service_locator.dart';
 import 'package:taskee/ui/components/components.dart';
-import 'package:taskee/ui/helpers/helpers.dart';
+import 'package:taskee/ui/helpers/states/task_state.dart';
 import 'package:taskee/ui/mixins/mixins.dart';
 import 'package:taskee/ui/pages/newTask/new_task_page.dart';
 import 'package:taskee/ui/pages/home/cubit/home_cubit.dart';
 import 'package:taskee/ui/pages/home/components/task_list.dart';
 
-class TodoPage extends StatelessWidget with UIErrorManager {
+class TodoPage extends StatelessWidget with UIErrorManager, TasksManager {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -70,8 +70,18 @@ class TodoPage extends StatelessWidget with UIErrorManager {
       },
       builder: (context, state) {
         final controller = context.read<HomeCubit>();
-        if (state is HomeDone) return TaskList(taskList: state.taskList);
-        return TaskList(taskList: controller.taskListSingleton);
+        if (state is HomeDone)
+          return TaskList(
+            taskList: filterTasks(
+              taskList: state.taskList,
+              taskState: TaskState.todo,
+            ),
+          );
+        return TaskList(
+          taskList: filterTasks(
+              taskList: controller.taskListSingleton,
+              taskState: TaskState.todo),
+        );
       },
     );
   }

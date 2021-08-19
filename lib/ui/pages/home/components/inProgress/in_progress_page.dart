@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+import 'package:get/get_state_manager/src/simple/list_notifier.dart';
 
 import 'package:taskee/service_locator.dart';
 import 'package:taskee/ui/components/components.dart';
-import 'package:taskee/ui/helpers/helpers.dart';
+import 'package:taskee/ui/helpers/states/task_state.dart';
 import 'package:taskee/ui/mixins/mixins.dart';
 import 'package:taskee/ui/pages/newTask/new_task_page.dart';
 import 'package:taskee/ui/pages/home/cubit/home_cubit.dart';
 import 'package:taskee/ui/pages/home/components/task_list.dart';
 
-class InProgressPage extends StatelessWidget with UIErrorManager {
+class InProgressPage extends StatelessWidget with UIErrorManager, TasksManager {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -68,8 +69,19 @@ class InProgressPage extends StatelessWidget with UIErrorManager {
       },
       builder: (context, state) {
         final controller = context.read<HomeCubit>();
-        if (state is HomeDone) return TaskList(taskList: state.taskList);
-        return TaskList(taskList: controller.taskListSingleton);
+        if (state is HomeDone)
+          return TaskList(
+            taskList: filterTasks(
+              taskList: state.taskList,
+              taskState: TaskState.progress,
+            ),
+          );
+        return TaskList(
+          taskList: filterTasks(
+            taskList: controller.taskListSingleton,
+            taskState: TaskState.progress,
+          ),
+        );
       },
     );
   }
