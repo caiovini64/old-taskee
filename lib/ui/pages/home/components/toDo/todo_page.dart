@@ -55,7 +55,8 @@ class TodoPage extends StatelessWidget with UIErrorManager, TasksManager {
             ),
             CustomFloatingButton(
               index: 1,
-              onTap: () => Get.toNamed(NewTaskPage.route, arguments: 'todo'),
+              onTap: () =>
+                  Get.toNamed(NewTaskPage.route, arguments: TaskState.todo),
             ),
           ],
         ),

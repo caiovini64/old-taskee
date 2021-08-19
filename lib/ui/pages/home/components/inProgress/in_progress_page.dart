@@ -54,7 +54,8 @@ class InProgressPage extends StatelessWidget with UIErrorManager, TasksManager {
             ),
             CustomFloatingButton(
               index: 2,
-              onTap: () => Get.toNamed(NewTaskPage.route, arguments: 'todo'),
+              onTap: () =>
+                  Get.toNamed(NewTaskPage.route, arguments: TaskState.progress),
             ),
           ],
         ),

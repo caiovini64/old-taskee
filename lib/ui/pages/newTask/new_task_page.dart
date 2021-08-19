@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 
 import 'package:taskee/service_locator.dart';
+import 'package:taskee/ui/helpers/states/task_state.dart';
 import 'package:taskee/ui/mixins/mixins.dart';
 import 'package:taskee/ui/pages/newTask/cubit/new_task_cubit.dart';
 import 'package:taskee/ui/pages/newTask/widgets/floating_button_form.dart';
@@ -19,6 +20,7 @@ class NewTaskPage extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
+    final TaskState taskState = Get.arguments;
     return BlocProvider(
       create: (context) => serviceLocator.get<NewTaskCubit>(),
       child: BlocConsumer<NewTaskCubit, NewTaskState>(
@@ -53,6 +55,7 @@ class NewTaskPage extends StatelessWidget
                 formKey: _formKey,
                 titleController: titleController,
                 subtitleController: subtitleController,
+                taskState: taskState,
               ),
             ),
           );

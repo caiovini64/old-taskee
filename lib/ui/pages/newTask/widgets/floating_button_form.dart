@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:taskee/ui/components/components.dart';
 import 'package:taskee/ui/helpers/helpers.dart';
+import 'package:taskee/ui/helpers/states/task_state.dart';
 import 'package:taskee/ui/mixins/mixins.dart';
 import 'package:taskee/ui/pages/controllers.dart';
 import 'package:taskee/ui/pages/home/home_page.dart';
@@ -11,17 +12,18 @@ class FloatingButtonForm extends StatelessWidget with KeyboardManager {
   final GlobalKey<FormState> formKey;
   final TextEditingController titleController;
   final TextEditingController subtitleController;
+  final TaskState taskState;
 
   const FloatingButtonForm({
     Key? key,
     required this.formKey,
     required this.titleController,
     required this.subtitleController,
+    required this.taskState,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final arguments = Get.arguments;
     final controller = context.read<NewTaskCubit>();
     return BlocBuilder<NewTaskCubit, NewTaskState>(
       builder: (context, state) {
@@ -43,7 +45,7 @@ class FloatingButtonForm extends StatelessWidget with KeyboardManager {
                 if (validate) {
                   final title = titleController.value.text;
                   final subtitle = subtitleController.value.text;
-                  controller.addTask(title, subtitle, arguments);
+                  controller.addTask(title, subtitle, taskState.description);
                   hideKeyboard(context);
                   Get.toNamed(HomePage.route);
                 }
