@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 import 'package:taskee/service_locator.dart';
 import 'package:taskee/ui/components/components.dart';
+import 'package:taskee/ui/helpers/theme/themes.dart';
 import 'package:taskee/ui/mixins/mixins.dart';
 import 'package:taskee/ui/pages/newTask/new_task_page.dart';
 import 'package:taskee/ui/pages/home/cubit/home_cubit.dart';
@@ -69,8 +70,15 @@ class DonePage extends StatelessWidget with UIErrorManager {
       },
       builder: (context, state) {
         final controller = context.read<HomeCubit>();
-        if (state is HomeDone) return TaskList(state.taskList);
-        return TaskList(controller.taskListSingleton);
+        if (state is HomeDone)
+          return TaskList(
+            taskList: state.taskList,
+            taskColor: greenCardColor,
+          );
+        return TaskList(
+          taskList: controller.taskListSingleton,
+          taskColor: greenCardColor,
+        );
       },
     );
   }
