@@ -74,7 +74,6 @@ class ChildPage extends StatelessWidget with UIErrorManager, TasksManager {
       child: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) {
           final controller = context.read<HomeCubit>();
-          if (state is HomeLoading) return CircularProgressIndicator();
           if (state is HomeDone)
             return TaskList(
               taskList: filterTasks(
