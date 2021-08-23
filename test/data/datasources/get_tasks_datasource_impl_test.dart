@@ -28,8 +28,8 @@ void main() {
   });
 
   test('should returns a list of TaskModel when succeeds', () async {
-    when(() => client.get(any())).thenAnswer(
-        (_) async => HttpResponse(data: kListTaskModel, statusCode: 200));
+    when(() => client.get(any())).thenAnswer((_) async =>
+        HttpResponse(data: kResponseListTaskModel, statusCode: 200));
     final result = await datasource.getTasks();
     expect(result, kListTaskModel);
   });
