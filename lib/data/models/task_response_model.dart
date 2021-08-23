@@ -4,6 +4,8 @@ class TaskResponseModel extends TaskResponseEntity {
   TaskResponseModel(String name) : super(name);
 
   factory TaskResponseModel.fromJson(Map<String, dynamic> json) {
-    return TaskResponseModel(json['name']);
+    return TaskResponseModel(
+      json['name'],
+    );
   }
 }
