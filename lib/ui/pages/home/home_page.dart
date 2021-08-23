@@ -1,21 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:taskee/ui/pages/home/components/done/done_page.dart';
-import 'package:taskee/ui/pages/home/components/inProgress/in_progress_page.dart';
-import 'package:taskee/ui/pages/home/components/toDo/todo_page.dart';
+import 'package:get/get.dart';
 
-class HomePage extends StatelessWidget {
+import 'package:taskee/ui/helpers/states/task_state.dart';
+import 'package:taskee/ui/pages/home/components/child_page.dart';
+
+class HomePage extends StatefulWidget {
   static const route = '/home';
 
-  final pageController = PageController(initialPage: 1);
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  late PageController pageController;
+  final TaskState? taskState = Get.arguments;
+
+  @override
+  void initState() {
+    super.initState();
+    pageController = PageController(initialPage: taskState?.index ?? 0);
+  }
 
   @override
   Widget build(BuildContext context) {
     return PageView(
       controller: pageController,
       children: [
-        ToDoPage(),
-        InProgressPage(),
-        DonePage(),
+        ChildPage(title: 'To do', taskState: TaskState.todo),
+        ChildPage(title: 'In progress', taskState: TaskState.progress),
+        ChildPage(title: 'Done', taskState: TaskState.done),
       ],
     );
   }

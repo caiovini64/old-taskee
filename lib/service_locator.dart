@@ -10,7 +10,7 @@ import 'package:taskee/domain/datasources/datasources.dart';
 import 'package:taskee/domain/entities/entities.dart';
 import 'package:taskee/domain/usecases/usecases.dart';
 import 'package:taskee/ui/pages/controllers.dart';
-import 'package:taskee/ui/pages/home/cubit/todo_cubit.dart';
+import 'package:taskee/ui/pages/home/cubit/home_cubit.dart';
 
 final serviceLocator = GetIt.instance;
 
@@ -19,10 +19,10 @@ void initControllers() {
       .registerFactory(() => LoginCubit(serviceLocator<ILoginUsecase>()));
   serviceLocator
       .registerFactory(() => RegisterCubit(serviceLocator<IRegisterUsecase>()));
-  serviceLocator
-      .registerFactory(() => NewTaskCubit(serviceLocator<IAddTaskUsecase>()));
-  serviceLocator
-      .registerFactory(() => TodoCubit(serviceLocator<IGetTasksUsecase>()));
+  serviceLocator.registerLazySingleton(() => HomeCubit(
+        serviceLocator<IGetTasksUsecase>(),
+        serviceLocator<IAddTaskUsecase>(),
+      ));
 }
 
 void initUsecases() {
