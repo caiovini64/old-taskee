@@ -7,6 +7,8 @@ import 'package:taskee/domain/usecases/usecases.dart';
 import 'package:taskee/data/helpers/helpers.dart';
 import 'package:taskee/data/usecases/usecases.dart';
 
+import '../../mock/task_mocks.dart';
+
 class MockAddTaskDatasource extends Mock implements IAddTaskDatasource {}
 
 void main() {
@@ -18,12 +20,13 @@ void main() {
     usecase = AddTaskUsecase(datasource);
   });
 
-  test('should returns a TaskModel when calls the datasource', () async {
+  test('should returns a TaskResponseModel when calls the datasource',
+      () async {
     when(() => datasource.addTask('title', 'subtitle', 'todo'))
-        .thenAnswer((_) async => 'kTaskModel');
+        .thenAnswer((_) async => kTaskResponseModel);
 
     final result = await usecase.addTask('title', 'subtitle', 'todo');
-    expect(result, Right('kTaskModel'));
+    expect(result, Right(kTaskResponseModel));
   });
 
   test(

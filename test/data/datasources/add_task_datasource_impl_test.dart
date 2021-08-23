@@ -8,6 +8,8 @@ import 'package:taskee/data/datasources/datasources.dart';
 import 'package:taskee/data/helpers/helpers.dart';
 import 'package:taskee/data/models/models.dart';
 
+import '../../mock/task_mocks.dart';
+
 class MockConnectionClient extends Mock implements IHttpClient {}
 
 void main() {
@@ -25,16 +27,16 @@ void main() {
     datasource = AddTaskDatasource(client: client, url: url, user: user);
   });
 
-  test('should returns a String', () async {
+  test('should returns a TaskResponseModel', () async {
     when(() => client.post(any(), body: {
               "title": 'title',
               "subtitle": 'subtitle',
               "state": "state",
             }))
-        .thenAnswer((_) async => HttpResponse(
-            data: '{"name":"-MgLp4Etn6NlUvFJXur5"}', statusCode: 200));
+        .thenAnswer((_) async =>
+            HttpResponse(data: '{"name":"name"}', statusCode: 200));
     final result = await datasource.addTask('title', 'subtitle', 'state');
-    expect(result, '{"name":"-MgLp4Etn6NlUvFJXur5"}');
+    expect(result, kTaskResponseModel);
   });
 
   test('should returns a ServerException when dont succeed', () async {
