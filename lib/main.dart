@@ -18,7 +18,6 @@ void main() async {
   dependencies.initDatasources();
   dependencies.initServices();
   runApp(MyApp());
-  print(Get.deviceLocale);
 }
 
 class MyApp extends StatelessWidget {

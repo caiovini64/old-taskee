@@ -69,24 +69,21 @@ class ChildPage extends StatelessWidget with UIErrorManager, TasksManager {
   }
 
   buildTaskList(BuildContext context) {
-    return BlocListener<HomeCubit, HomeState>(
-      listener: (context, state) {},
-      child: BlocBuilder<HomeCubit, HomeState>(
-        builder: (context, state) {
-          final controller = context.read<HomeCubit>();
-          if (state is HomeDone)
-            return TaskList(
-              taskList: filterTasks(
-                taskList: controller.taskListSingleton,
-                taskState: taskState,
-              ),
-            );
+    return BlocBuilder<HomeCubit, HomeState>(
+      builder: (context, state) {
+        final controller = context.read<HomeCubit>();
+        if (state is HomeDone)
           return TaskList(
             taskList: filterTasks(
-                taskList: controller.taskListSingleton, taskState: taskState),
+              taskList: controller.taskListSingleton,
+              taskState: taskState,
+            ),
           );
-        },
-      ),
+        return TaskList(
+          taskList: filterTasks(
+              taskList: controller.taskListSingleton, taskState: taskState),
+        );
+      },
     );
   }
 }
