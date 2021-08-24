@@ -26,7 +26,6 @@ class LoginDatasource implements ILoginDatasource {
     if (response.statusCode == 200) {
       final json = jsonDecode(response.data);
       final user = UserModel.fromJson(json);
-      print(user);
       return user;
     } else if (response.statusCode == 400) {
       final exception =
