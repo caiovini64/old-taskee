@@ -29,9 +29,9 @@ void main() {
 
   test('should returns a TaskModel when calls the datasource', () async {
     when(() => datasource.updateTask(any()))
-        .thenAnswer((_) async => kTaskModel);
+        .thenAnswer((_) async => kTaskModel1);
     final result = await usecase.update(kTaskEntity);
-    expect(result, Right(kTaskModel));
+    expect(result, Right(kTaskModel1));
   });
   test(
       'should returns a ServerFailure when calls to datasource throws a ServerException',
