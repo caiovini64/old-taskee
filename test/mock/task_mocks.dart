@@ -23,3 +23,5 @@ final kTaskResponseModel = TaskResponseModel('name');
 
 final kResponseListTaskModel =
     '''{"-MhiC3wpATc42UPvGW4B":{"state":"todo","subtitle":"subtitle","title":"title","id":"id"},"-Mhmc7piHP-tpKK7YPAz":{"state":"todo","subtitle":"subtitle","title":"title","id":"id"}}''';
+final kTaskJson =
+    '''{"-MhiC3wpATc42UPvGW4B":{"state":"todo","subtitle":"subtitle","title":"title","id":"id"}''';

@@ -1,36 +1,37 @@
 import 'dart:convert';
 
+import 'package:taskee/data/helpers/exceptions/exceptions.dart';
+import 'package:taskee/data/models/models.dart';
+import 'package:taskee/data/models/task_model.dart';
 import 'package:taskee/domain/adapters/adapters.dart';
 import 'package:taskee/domain/datasources/datasources.dart';
-import 'package:taskee/data/helpers/helpers.dart';
-import 'package:taskee/data/models/models.dart';
+import 'package:taskee/domain/entities/task_entity.dart';
 
-class AddTaskDatasource extends IAddTaskDatasource {
+class UpdateTaskDatasource implements IUpdateTaskDatasource {
   final IHttpClient client;
   final String url;
   final UserModel user;
 
-  AddTaskDatasource({
+  UpdateTaskDatasource({
     required this.client,
     required this.url,
     required this.user,
   });
 
   @override
-  Future<TaskResponseModel> addTask(
-      String title, String subtitle, String state) async {
+  Future<TaskModel> updateTask(TaskEntity task) async {
     final apiUrl = url + 'tasks/' + user.id + '.json';
     final response = await client.post(
       apiUrl,
       body: {
-        "title": title,
-        "subtitle": subtitle,
-        "state": state,
+        "title": task.title,
+        "subtitle": task.subtitle,
+        "state": task.state,
       },
     );
     if (response.statusCode == 200) {
       final json = jsonDecode(response.data);
-      return TaskResponseModel.fromJson(json);
+      return TaskModel.fromMap(json['name'], json.value);
     } else {
       throw ServerException();
     }
