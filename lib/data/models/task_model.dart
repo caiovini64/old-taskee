@@ -2,13 +2,15 @@ import 'package:taskee/domain/entities/entities.dart';
 
 class TaskModel extends TaskEntity {
   TaskModel({
+    required String id,
     required String title,
     required String subtitle,
     required String state,
-  }) : super(title: title, subtitle: subtitle, state: state);
+  }) : super(id: id, title: title, subtitle: subtitle, state: state);
 
   factory TaskModel.fromJson(Map<String, dynamic> json) {
     return TaskModel(
+      id: json['id'],
       title: json['title'],
       subtitle: json['subtitle'],
       state: json['state'],
@@ -17,6 +19,7 @@ class TaskModel extends TaskEntity {
 
   toJson() {
     return <String, dynamic>{
+      'id': id,
       'title': title,
       'subtitle': subtitle,
       'state': state,

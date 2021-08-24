@@ -34,7 +34,7 @@ class HomeCubit extends Cubit<HomeState> {
     result.fold(
       (failure) => emit(HomeError(failure.message)),
       (right) {
-        _saveTask(title, subtitle, state);
+        _saveTask(right.name, title, subtitle, state);
         emit(HomeDone(taskListSingleton));
       },
     );
@@ -44,8 +44,9 @@ class HomeCubit extends Cubit<HomeState> {
     if (taskListSingleton.isEmpty) taskListSingleton.addAll(taskList);
   }
 
-  void _saveTask(String title, String subtitle, String state) =>
+  void _saveTask(String id, String title, String subtitle, String state) =>
       taskListSingleton.add(TaskEntity(
+        id: id,
         title: title,
         subtitle: subtitle,
         state: state,
