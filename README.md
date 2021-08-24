@@ -55,4 +55,4 @@ All the Firebase communications were made with Rest API to avoid coupling with t
 - **[Get_it](https://pub.dev/packages/get_it)** - A service locator and singleton management
 - **[DartZ](https://pub.dev/packages/dartz)** - To functional programming
 - **[Mocktail](https://pub.dev/packages/mocktail)** - To unity tests
-- **[GetX](https://pub.dev/packages/get) - To route management
+- **[GetX](https://pub.dev/packages/get)** - To route management
