@@ -15,9 +15,8 @@ class FormLogin extends StatefulWidget {
 
 class _FormLoginState extends State<FormLogin>
     with KeyboardManager, ValidationsManager, UIErrorManager {
-  final emailController = TextEditingController();
-
-  final passwordController = TextEditingController();
+  final emailController = TextEditingController(text: 'caioj3505@gmail.com');
+  final passwordController = TextEditingController(text: '12345678');
 
   final _formKey = GlobalKey<FormState>();
 

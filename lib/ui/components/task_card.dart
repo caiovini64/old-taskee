@@ -19,6 +19,7 @@ class TaskCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10.0),
       child: Card(
+        elevation: 10,
         color: cardColor,
         child: Container(
           width: MediaQuery.of(context).size.width,

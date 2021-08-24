@@ -7,8 +7,10 @@ import 'package:taskee/data/models/models.dart';
 import 'package:taskee/data/usecases/usecases.dart';
 import 'package:taskee/domain/adapters/adapters.dart';
 import 'package:taskee/domain/datasources/datasources.dart';
+import 'package:taskee/domain/entities/entities.dart';
 import 'package:taskee/domain/usecases/usecases.dart';
 import 'package:taskee/ui/pages/controllers.dart';
+import 'package:taskee/ui/pages/home/cubit/home_cubit.dart';
 
 final serviceLocator = GetIt.instance;
 
@@ -17,8 +19,11 @@ void initControllers() {
       .registerFactory(() => LoginCubit(serviceLocator<ILoginUsecase>()));
   serviceLocator
       .registerFactory(() => RegisterCubit(serviceLocator<IRegisterUsecase>()));
-  serviceLocator
-      .registerFactory(() => NewTaskCubit(serviceLocator<IAddTaskUsecase>()));
+  serviceLocator.registerLazySingleton(() => HomeCubit(
+        serviceLocator<IGetTasksUsecase>(),
+        serviceLocator<IAddTaskUsecase>(),
+        serviceLocator<IUpdateTaskUsecase>(),
+      ));
 }
 
 void initUsecases() {
@@ -28,6 +33,10 @@ void initUsecases() {
       () => RegisterUsecase(serviceLocator<IRegisterDatasource>()));
   serviceLocator.registerFactory<IAddTaskUsecase>(
       () => AddTaskUsecase(serviceLocator<IAddTaskDatasource>()));
+  serviceLocator.registerFactory<IGetTasksUsecase>(
+      () => GetTasksUsecase(serviceLocator<IGetTasksDatasource>()));
+  serviceLocator.registerFactory<IUpdateTaskUsecase>(
+      () => UpdateTaskUsecase(serviceLocator<IUpdateTaskDatasource>()));
 }
 
 void initDatasources() {
@@ -42,8 +51,20 @@ void initDatasources() {
         url: FirebaseEndpoints.realtimeDb(),
         user: serviceLocator<UserModel>(),
       ));
+  serviceLocator.registerFactory<IGetTasksDatasource>(() => GetTasksDatasource(
+        client: serviceLocator<IHttpClient>(),
+        url: FirebaseEndpoints.realtimeDb(),
+        user: serviceLocator<UserModel>(),
+      ));
+  serviceLocator
+      .registerFactory<IUpdateTaskDatasource>(() => UpdateTaskDatasource(
+            client: serviceLocator<IHttpClient>(),
+            url: FirebaseEndpoints.realtimeDb(),
+            user: serviceLocator<UserModel>(),
+          ));
 }
 
 void initServices() {
+  serviceLocator.registerSingleton<List<TaskEntity>>([]);
   serviceLocator.registerFactory<IHttpClient>(() => HttpAdapter());
 }
