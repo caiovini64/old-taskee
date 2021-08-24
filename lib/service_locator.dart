@@ -22,6 +22,7 @@ void initControllers() {
   serviceLocator.registerLazySingleton(() => HomeCubit(
         serviceLocator<IGetTasksUsecase>(),
         serviceLocator<IAddTaskUsecase>(),
+        serviceLocator<IUpdateTaskUsecase>(),
       ));
 }
 
@@ -34,6 +35,8 @@ void initUsecases() {
       () => AddTaskUsecase(serviceLocator<IAddTaskDatasource>()));
   serviceLocator.registerFactory<IGetTasksUsecase>(
       () => GetTasksUsecase(serviceLocator<IGetTasksDatasource>()));
+  serviceLocator.registerFactory<IUpdateTaskUsecase>(
+      () => UpdateTaskUsecase(serviceLocator<IUpdateTaskDatasource>()));
 }
 
 void initDatasources() {
@@ -53,6 +56,12 @@ void initDatasources() {
         url: FirebaseEndpoints.realtimeDb(),
         user: serviceLocator<UserModel>(),
       ));
+  serviceLocator
+      .registerFactory<IUpdateTaskDatasource>(() => UpdateTaskDatasource(
+            client: serviceLocator<IHttpClient>(),
+            url: FirebaseEndpoints.realtimeDb(),
+            user: serviceLocator<UserModel>(),
+          ));
 }
 
 void initServices() {

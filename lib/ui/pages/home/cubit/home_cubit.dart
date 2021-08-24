@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:taskee/domain/datasources/datasources.dart';
 import 'package:taskee/domain/entities/entities.dart';
 import 'package:taskee/domain/usecases/usecases.dart';
 import 'package:taskee/service_locator.dart';
@@ -9,8 +10,12 @@ part 'home_state.dart';
 class HomeCubit extends Cubit<HomeState> {
   final IGetTasksUsecase _getTasksUsecase;
   final IAddTaskUsecase _addTaskUsecase;
-  HomeCubit(this._getTasksUsecase, this._addTaskUsecase)
-      : super(HomeInitial()) {
+  final IUpdateTaskUsecase _updateTaskUsecase;
+  HomeCubit(
+    this._getTasksUsecase,
+    this._addTaskUsecase,
+    this._updateTaskUsecase,
+  ) : super(HomeInitial()) {
     getTasks();
   }
 
@@ -39,6 +44,8 @@ class HomeCubit extends Cubit<HomeState> {
       },
     );
   }
+
+  void updateTaskState(TaskEntity task) async {}
 
   _saveTaskList(List<TaskEntity> taskList) {
     if (taskListSingleton.isEmpty) taskListSingleton.addAll(taskList);
