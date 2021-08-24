@@ -29,8 +29,8 @@ class LoginCubit extends Cubit<LoginState> {
   }
 
   void _saveUser(String email, String id, String token) {
-    serviceLocator.registerLazySingleton<UserModel>(
-      () => UserModel(
+    serviceLocator.registerSingleton<UserModel>(
+      UserModel(
         email: email,
         id: id,
         token: token,
