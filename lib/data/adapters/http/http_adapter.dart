@@ -20,4 +20,14 @@ class HttpAdapter implements IHttpClient {
     );
     return HttpResponse(data: response.body, statusCode: response.statusCode);
   }
+
+  @override
+  Future<HttpResponse> put(String url,
+      {required Map<String, dynamic> body}) async {
+    final http.Response response = await client.put(
+      Uri.parse(url),
+      body: jsonEncode(body),
+    );
+    return HttpResponse(data: response.body, statusCode: response.statusCode);
+  }
 }
