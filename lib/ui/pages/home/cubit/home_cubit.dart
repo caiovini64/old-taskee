@@ -22,7 +22,7 @@ class HomeCubit extends Cubit<HomeState> {
     result.fold(
       (failure) => emit(HomeError(failure.message)),
       (data) {
-        _saveTasksInMemory(data);
+        _saveTaskList(data);
         emit(HomeDone(taskListSingleton));
       },
     );
@@ -40,7 +40,7 @@ class HomeCubit extends Cubit<HomeState> {
     );
   }
 
-  _saveTasksInMemory(List<TaskEntity> taskList) {
+  _saveTaskList(List<TaskEntity> taskList) {
     if (taskListSingleton.isEmpty) taskListSingleton.addAll(taskList);
   }
 
