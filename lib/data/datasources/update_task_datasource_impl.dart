@@ -20,8 +20,8 @@ class UpdateTaskDatasource implements IUpdateTaskDatasource {
 
   @override
   Future<TaskModel> updateTask(TaskEntity task) async {
-    final apiUrl = url + 'tasks/' + user.id + '.json';
-    final response = await client.post(
+    final apiUrl = url + 'tasks/' + user.id + '/' + task.id + '.json';
+    final response = await client.patch(
       apiUrl,
       body: {
         "title": task.title,
@@ -30,8 +30,9 @@ class UpdateTaskDatasource implements IUpdateTaskDatasource {
       },
     );
     if (response.statusCode == 200) {
+      print(response.data);
       final json = jsonDecode(response.data);
-      return TaskModel.fromMap(json['name'], json.value);
+      return TaskModel.fromMap(task.id, json);
     } else {
       throw ServerException();
     }

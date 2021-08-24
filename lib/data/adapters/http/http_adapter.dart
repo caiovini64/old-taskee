@@ -22,9 +22,9 @@ class HttpAdapter implements IHttpClient {
   }
 
   @override
-  Future<HttpResponse> put(String url,
+  Future<HttpResponse> patch(String url,
       {required Map<String, dynamic> body}) async {
-    final http.Response response = await client.put(
+    final http.Response response = await client.patch(
       Uri.parse(url),
       body: jsonEncode(body),
     );
