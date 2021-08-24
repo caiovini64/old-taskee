@@ -23,8 +23,8 @@ class GetTasksDatasource implements IGetTasksDatasource {
       final taskList = <TaskModel>[];
       if (response.data != 'null') {
         final Map<String, dynamic> json = jsonDecode(response.data);
-        json.values.forEach((value) {
-          final task = TaskModel.fromJson(value);
+        json.forEach((key, value) {
+          final task = TaskModel.fromMap(key, value);
           taskList.add(task);
         });
         return taskList;
