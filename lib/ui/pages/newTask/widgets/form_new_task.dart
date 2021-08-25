@@ -7,12 +7,14 @@ class FormNewTask extends StatelessWidget with ValidationsManager {
   final GlobalKey<FormState> formKey;
   final TextEditingController titleController;
   final TextEditingController subtitleController;
+  final String title;
 
   const FormNewTask({
     Key? key,
     required this.formKey,
     required this.titleController,
     required this.subtitleController,
+    required this.title,
   }) : super(key: key);
 
   @override
@@ -24,24 +26,17 @@ class FormNewTask extends StatelessWidget with ValidationsManager {
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Align(
-                alignment: Alignment.topLeft,
-                child: Text(
-                  'Create new'.tr,
-                  style: Theme.of(context)
-                      .textTheme
-                      .headline1!
-                      .copyWith(color: Colors.white),
-                ),
-              ),
-              Align(
-                alignment: Alignment.topLeft,
-                child: Text(
-                  'Task'.tr,
-                  style: Theme.of(context)
-                      .textTheme
-                      .headline1!
-                      .copyWith(color: Colors.white),
+              Padding(
+                padding: const EdgeInsets.only(right: 50.0),
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    title,
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline1!
+                        .copyWith(color: Colors.white),
+                  ),
                 ),
               ),
               SizedBox(height: 35),

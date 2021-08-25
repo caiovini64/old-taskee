@@ -15,13 +15,13 @@ class EditTaskPage extends StatelessWidget
   static const route = '/editTask';
   EditTaskPage({Key? key}) : super(key: key);
 
+  final TaskEntity task = Get.arguments;
   final _formKey = GlobalKey<FormState>();
-  final titleController = TextEditingController();
-  final subtitleController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    final TaskEntity task = Get.arguments;
+    final titleController = TextEditingController(text: task.title);
+    final subtitleController = TextEditingController(text: task.content);
     return BlocConsumer<HomeCubit, HomeState>(
       listener: (context, state) {
         if (state is HomeError) showErrorMessage(context, state.failure);
@@ -43,6 +43,12 @@ class EditTaskPage extends StatelessWidget
             body: Padding(
               padding: const EdgeInsets.only(
                   left: 20.0, right: 20, top: 10, bottom: 20),
+              child: FormNewTask(
+                title: 'Edit Task',
+                formKey: _formKey,
+                titleController: titleController,
+                subtitleController: subtitleController,
+              ),
             ),
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.centerDocked,
@@ -51,6 +57,8 @@ class EditTaskPage extends StatelessWidget
               titleController: titleController,
               subtitleController: subtitleController,
               taskState: toState(task.state),
+              titleButton: 'Edit your Task'.tr,
+              titleColor: greenCardColor,
             ),
           ),
         );

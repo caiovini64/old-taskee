@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+import 'package:taskee/ui/helpers/helpers.dart';
 
 import 'package:taskee/ui/helpers/states/task_state.dart';
 import 'package:taskee/ui/mixins/mixins.dart';
@@ -41,6 +42,7 @@ class NewTaskPage extends StatelessWidget
               padding: const EdgeInsets.only(
                   left: 20.0, right: 20, top: 10, bottom: 20),
               child: FormNewTask(
+                title: 'Create new Task'.tr,
                 formKey: _formKey,
                 titleController: titleController,
                 subtitleController: subtitleController,
@@ -53,6 +55,8 @@ class NewTaskPage extends StatelessWidget
               titleController: titleController,
               subtitleController: subtitleController,
               taskState: taskState,
+              titleButton: 'Add new Task'.tr,
+              titleColor: primaryColor,
             ),
           ),
         );

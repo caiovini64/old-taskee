@@ -14,6 +14,9 @@ class FloatingButtonForm extends StatelessWidget with KeyboardManager {
   final TextEditingController titleController;
   final TextEditingController subtitleController;
   final TaskState taskState;
+  final bool isUpdate;
+  final String titleButton;
+  final Color titleColor;
 
   const FloatingButtonForm({
     Key? key,
@@ -21,6 +24,9 @@ class FloatingButtonForm extends StatelessWidget with KeyboardManager {
     required this.titleController,
     required this.subtitleController,
     required this.taskState,
+    required this.titleButton,
+    required this.titleColor,
+    this.isUpdate = false,
   }) : super(key: key);
 
   @override
@@ -38,8 +44,8 @@ class FloatingButtonForm extends StatelessWidget with KeyboardManager {
                       color: primaryColor,
                     )
                   : Text(
-                      'Add new Task'.tr,
-                      style: TextStyle(color: primaryColor),
+                      titleButton,
+                      style: TextStyle(color: titleColor),
                     ),
               onPressed: () {
                 final validate = formKey.currentState!.validate();
@@ -48,7 +54,6 @@ class FloatingButtonForm extends StatelessWidget with KeyboardManager {
                   final subtitle = subtitleController.value.text;
                   controller.addTask(title, subtitle, taskState.description);
                   hideKeyboard(context);
-                  // Get.back();
                   Get.toNamed(HomePage.route, arguments: taskState);
                 }
               },
