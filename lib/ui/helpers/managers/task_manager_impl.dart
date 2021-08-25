@@ -18,7 +18,7 @@ class TaskManager implements ITaskManager {
     taskList.add(TaskEntity(
       id: task.id,
       title: task.title,
-      subtitle: task.subtitle,
+      content: task.content,
       state: task.state,
     ));
   }

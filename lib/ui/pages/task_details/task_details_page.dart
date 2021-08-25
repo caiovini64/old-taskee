@@ -35,7 +35,7 @@ class TaskDetailsPage extends StatelessWidget {
                 ),
               ),
             ),
-            Text(task.subtitle),
+            Text(task.content),
           ],
         ),
       ),

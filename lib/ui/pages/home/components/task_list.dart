@@ -30,7 +30,7 @@ class TaskList extends StatelessWidget with UIErrorManager {
               child: TaskCard(
                 cardColor: greenCardColor,
                 title: task.title,
-                subtitle: task.subtitle,
+                subtitle: task.content,
                 icon: IconButton(
                   icon: Icon(
                     task.state == TaskState.done.description

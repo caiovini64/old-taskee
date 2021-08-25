@@ -47,7 +47,7 @@ class HomeCubit extends Cubit<HomeState> {
         final task = TaskEntity(
           id: right.name,
           title: title,
-          subtitle: subtitle,
+          content: subtitle,
           state: state,
         );
         _taskManager.saveTask(task);
@@ -61,7 +61,7 @@ class HomeCubit extends Cubit<HomeState> {
     final taskUpdated = TaskEntity(
       id: task.id,
       title: task.title,
-      subtitle: task.subtitle,
+      content: task.content,
       state: newState.description,
     );
     emit(HomeLoading());

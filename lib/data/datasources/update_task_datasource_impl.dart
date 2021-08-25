@@ -25,7 +25,7 @@ class UpdateTaskDatasource implements IUpdateTaskDatasource {
       apiUrl,
       body: {
         "title": task.title,
-        "subtitle": task.subtitle,
+        "subtitle": task.content,
         "state": task.state,
       },
     );
