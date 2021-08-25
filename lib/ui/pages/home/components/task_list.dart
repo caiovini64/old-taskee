@@ -26,7 +26,7 @@ class TaskList extends StatelessWidget with UIErrorManager {
           itemBuilder: (BuildContext context, index) {
             final task = taskList[index];
             return GestureDetector(
-              onTap: () => Get.toNamed(TaskDetailsPage.route),
+              onTap: () => Get.toNamed(TaskDetailsPage.route, arguments: task),
               child: TaskCard(
                 cardColor: greenCardColor,
                 title: task.title,
