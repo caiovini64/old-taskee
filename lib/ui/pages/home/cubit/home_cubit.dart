@@ -3,6 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:taskee/domain/entities/entities.dart';
 import 'package:taskee/domain/usecases/usecases.dart';
 import 'package:taskee/service_locator.dart';
+import 'package:taskee/ui/helpers/managers/task_manager_impl.dart';
 import 'package:taskee/ui/helpers/states/task_state.dart';
 import 'package:taskee/ui/helpers/managers/task_manager.dart';
 
@@ -47,7 +48,7 @@ class HomeCubit extends Cubit<HomeState> {
         final task = TaskEntity(
           id: right.name,
           title: title,
-          subtitle: subtitle,
+          content: subtitle,
           state: state,
         );
         _taskManager.saveTask(task);
@@ -56,15 +57,34 @@ class HomeCubit extends Cubit<HomeState> {
     );
   }
 
-  void updateTaskState(TaskEntity task) async {
-    final TaskState newState = _taskManager.updateTaskState(task);
+  void updateTaskState(TaskEntity task, StateTaskUpdate stateTaskUpdate) async {
+    final TaskState newState =
+        _taskManager.updateTaskState(task, stateTaskUpdate);
     final taskUpdated = TaskEntity(
       id: task.id,
       title: task.title,
-      subtitle: task.subtitle,
+      content: task.content,
       state: newState.description,
     );
     emit(HomeLoading());
+    final result = await _updateTaskUsecase.update(taskUpdated);
+    result.fold(
+      (failure) => emit(HomeError(failure.message)),
+      (right) {
+        _taskManager.updateTask(right);
+        emit(HomeDone(taskListSingleton));
+      },
+    );
+  }
+
+  void updateTask(TaskEntity task) async {
+    emit(HomeLoading());
+    final taskUpdated = TaskEntity(
+      id: task.id,
+      title: task.title,
+      content: task.content,
+      state: task.state,
+    );
     final result = await _updateTaskUsecase.update(taskUpdated);
     result.fold(
       (failure) => emit(HomeError(failure.message)),

@@ -5,6 +5,7 @@ class TaskCard extends StatelessWidget {
   final String title;
   final String subtitle;
   final Widget icon;
+  final Widget iconBack;
 
   const TaskCard({
     Key? key,
@@ -12,6 +13,7 @@ class TaskCard extends StatelessWidget {
     required this.title,
     required this.subtitle,
     required this.icon,
+    required this.iconBack,
   }) : super(key: key);
 
   @override
@@ -23,10 +25,11 @@ class TaskCard extends StatelessWidget {
         color: cardColor,
         child: Container(
           width: MediaQuery.of(context).size.width,
-          padding: EdgeInsets.only(left: 20, right: 20, bottom: 30, top: 20),
+          padding: EdgeInsets.only(left: 10, right: 5, bottom: 30, top: 20),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              iconBack,
               Expanded(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,

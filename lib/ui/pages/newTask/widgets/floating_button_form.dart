@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+import 'package:taskee/domain/entities/entities.dart';
 
 import 'package:taskee/ui/components/components.dart';
 import 'package:taskee/ui/helpers/helpers.dart';
@@ -14,6 +15,10 @@ class FloatingButtonForm extends StatelessWidget with KeyboardManager {
   final TextEditingController titleController;
   final TextEditingController subtitleController;
   final TaskState taskState;
+  final String taskId;
+  final bool isUpdate;
+  final String titleButton;
+  final Color titleColor;
 
   const FloatingButtonForm({
     Key? key,
@@ -21,6 +26,10 @@ class FloatingButtonForm extends StatelessWidget with KeyboardManager {
     required this.titleController,
     required this.subtitleController,
     required this.taskState,
+    required this.titleButton,
+    required this.titleColor,
+    this.taskId = '',
+    this.isUpdate = false,
   }) : super(key: key);
 
   @override
@@ -38,17 +47,25 @@ class FloatingButtonForm extends StatelessWidget with KeyboardManager {
                       color: primaryColor,
                     )
                   : Text(
-                      'Add new Task'.tr,
-                      style: TextStyle(color: primaryColor),
+                      titleButton,
+                      style: TextStyle(color: titleColor),
                     ),
               onPressed: () {
                 final validate = formKey.currentState!.validate();
                 if (validate) {
                   final title = titleController.value.text;
                   final subtitle = subtitleController.value.text;
-                  controller.addTask(title, subtitle, taskState.description);
+                  final TaskEntity taskUpdated = TaskEntity(
+                    title: title,
+                    content: subtitle,
+                    state: taskState.description,
+                    id: taskId,
+                  );
+                  isUpdate
+                      ? controller.updateTask(taskUpdated)
+                      : controller.addTask(
+                          title, subtitle, taskState.description);
                   hideKeyboard(context);
-                  // Get.back();
                   Get.toNamed(HomePage.route, arguments: taskState);
                 }
               },

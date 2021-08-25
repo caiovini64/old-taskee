@@ -6,7 +6,7 @@ class TaskModel extends TaskEntity {
     required String title,
     required String subtitle,
     required String state,
-  }) : super(id: id, title: title, subtitle: subtitle, state: state);
+  }) : super(id: id, title: title, content: subtitle, state: state);
 
   factory TaskModel.fromMap(key, value) {
     return TaskModel(
@@ -21,7 +21,7 @@ class TaskModel extends TaskEntity {
     return <String, dynamic>{
       'id': id,
       'title': title,
-      'subtitle': subtitle,
+      'subtitle': content,
       'state': state,
     };
   }
