@@ -9,8 +9,11 @@ import 'package:taskee/domain/adapters/adapters.dart';
 import 'package:taskee/domain/datasources/datasources.dart';
 import 'package:taskee/domain/entities/entities.dart';
 import 'package:taskee/domain/usecases/usecases.dart';
+import 'package:taskee/ui/helpers/managers/task_manager_impl.dart';
 import 'package:taskee/ui/pages/controllers.dart';
 import 'package:taskee/ui/pages/home/cubit/home_cubit.dart';
+
+import 'ui/helpers/managers/task_manager.dart';
 
 final serviceLocator = GetIt.instance;
 
@@ -23,6 +26,7 @@ void initControllers() {
         serviceLocator<IGetTasksUsecase>(),
         serviceLocator<IAddTaskUsecase>(),
         serviceLocator<IUpdateTaskUsecase>(),
+        serviceLocator<ITaskManager>(),
       ));
 }
 
@@ -67,4 +71,6 @@ void initDatasources() {
 void initServices() {
   serviceLocator.registerSingleton<List<TaskEntity>>([]);
   serviceLocator.registerFactory<IHttpClient>(() => HttpAdapter());
+  serviceLocator.registerFactory<ITaskManager>(
+      () => TaskManager(serviceLocator<List<TaskEntity>>()));
 }

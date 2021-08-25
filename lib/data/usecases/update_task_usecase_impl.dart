@@ -15,7 +15,7 @@ class UpdateTaskUsecase implements IUpdateTaskUsecase {
     try {
       final result = await datasource.updateTask(task);
       return Right(result);
-    } on ServerException catch (e) {
+    } on ServerException catch (_) {
       return Left(ServerFailure());
     }
   }
