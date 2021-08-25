@@ -75,6 +75,24 @@ class HomeCubit extends Cubit<HomeState> {
     );
   }
 
+  void updateTask(TaskEntity task) async {
+    emit(HomeLoading());
+    final taskUpdated = TaskEntity(
+      id: task.id,
+      title: task.title,
+      content: task.content,
+      state: task.state,
+    );
+    final result = await _updateTaskUsecase.update(taskUpdated);
+    result.fold(
+      (failure) => emit(HomeError(failure.message)),
+      (right) {
+        _taskManager.updateTask(right);
+        emit(HomeDone(taskListSingleton));
+      },
+    );
+  }
+
   void deleteTask(TaskEntity task) async {
     emit(HomeLoading());
     final result = await _deleteTaskUsecase.deleteTask(task);

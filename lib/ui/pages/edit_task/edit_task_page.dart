@@ -53,12 +53,14 @@ class EditTaskPage extends StatelessWidget
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.centerDocked,
             floatingActionButton: FloatingButtonForm(
+              isUpdate: true,
               formKey: _formKey,
               titleController: titleController,
               subtitleController: subtitleController,
               taskState: toState(task.state),
               titleButton: 'Edit your Task'.tr,
               titleColor: greenCardColor,
+              taskId: task.id,
             ),
           ),
         );
