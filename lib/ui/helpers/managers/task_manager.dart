@@ -5,4 +5,5 @@ abstract class ITaskManager {
   saveTask(TaskEntity task);
   updateTask(TaskEntity task);
   updateTaskState(TaskEntity task);
+  deleteTask(TaskEntity task);
 }

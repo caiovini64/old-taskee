@@ -33,4 +33,11 @@ class TaskManager implements ITaskManager {
     final taskIndex = taskList.indexWhere((element) => element.id == task.id);
     taskList[taskIndex] = task;
   }
+
+  @override
+  deleteTask(TaskEntity task) {
+    final taskIndex = taskList.indexWhere((element) => element.id == task.id);
+    final deletedTask = taskList[taskIndex];
+    taskList.remove(deletedTask);
+  }
 }
