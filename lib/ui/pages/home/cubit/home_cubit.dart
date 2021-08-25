@@ -75,6 +75,18 @@ class HomeCubit extends Cubit<HomeState> {
     );
   }
 
+  void deleteTask(TaskEntity task) async {
+    emit(HomeLoading());
+    final result = await _deleteTaskUsecase.deleteTask(task);
+    result.fold(
+      (failure) => emit(HomeError(failure.message)),
+      (right) {
+        _taskManager.deleteTask(task);
+        emit(HomeDone(taskListSingleton));
+      },
+    );
+  }
+
   @override
   void onChange(Change<HomeState> change) {
     super.onChange(change);
