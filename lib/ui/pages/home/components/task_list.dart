@@ -31,11 +31,21 @@ class TaskList extends StatelessWidget with UIErrorManager {
                 cardColor: greenCardColor,
                 title: task.title,
                 subtitle: task.content,
+                iconBack: Visibility(
+                  visible: task.state != TaskState.todo.description,
+                  child: IconButton(
+                    icon: Icon(
+                      Icons.arrow_back_ios,
+                      color: Colors.white,
+                    ),
+                    onPressed: () {},
+                  ),
+                ),
                 icon: IconButton(
                   icon: Icon(
                     task.state == TaskState.done.description
                         ? Icons.delete
-                        : Icons.arrow_forward_outlined,
+                        : Icons.arrow_forward_ios_outlined,
                     color: Colors.white,
                   ),
                   onPressed: () {
