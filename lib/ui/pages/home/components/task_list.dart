@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:taskee/domain/entities/entities.dart';
 import 'package:taskee/ui/components/components.dart';
 import 'package:taskee/ui/helpers/helpers.dart';
+import 'package:taskee/ui/helpers/states/task_state.dart';
 import 'package:taskee/ui/mixins/mixins.dart';
 import 'package:taskee/ui/pages/home/cubit/home_cubit.dart';
 
@@ -28,11 +29,17 @@ class TaskList extends StatelessWidget with UIErrorManager {
               subtitle: task.subtitle,
               icon: IconButton(
                 icon: Icon(
-                  Icons.arrow_forward_outlined,
+                  task.state == TaskState.done.description
+                      ? Icons.delete
+                      : Icons.arrow_forward_outlined,
                   color: Colors.white,
                 ),
                 onPressed: () {
-                  controller.updateTaskState(task);
+                  if (task.state == TaskState.done.description) {
+                    controller.deleteTask(task);
+                  } else {
+                    controller.updateTaskState(task);
+                  }
                 },
               ),
             );

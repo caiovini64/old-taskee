@@ -26,6 +26,7 @@ void initControllers() {
         serviceLocator<IGetTasksUsecase>(),
         serviceLocator<IAddTaskUsecase>(),
         serviceLocator<IUpdateTaskUsecase>(),
+        serviceLocator<IDeleteTaskUsecase>(),
         serviceLocator<ITaskManager>(),
       ));
 }
@@ -41,6 +42,8 @@ void initUsecases() {
       () => GetTasksUsecase(serviceLocator<IGetTasksDatasource>()));
   serviceLocator.registerFactory<IUpdateTaskUsecase>(
       () => UpdateTaskUsecase(serviceLocator<IUpdateTaskDatasource>()));
+  serviceLocator.registerFactory<IDeleteTaskUsecase>(
+      () => DeleteTaskUsecase(serviceLocator<IDeleteTaskDatasource>()));
 }
 
 void initDatasources() {
@@ -62,6 +65,12 @@ void initDatasources() {
       ));
   serviceLocator
       .registerFactory<IUpdateTaskDatasource>(() => UpdateTaskDatasource(
+            client: serviceLocator<IHttpClient>(),
+            url: FirebaseEndpoints.realtimeDb(),
+            user: serviceLocator<UserModel>(),
+          ));
+  serviceLocator
+      .registerFactory<IDeleteTaskDatasource>(() => DeleteTaskDatasource(
             client: serviceLocator<IHttpClient>(),
             url: FirebaseEndpoints.realtimeDb(),
             user: serviceLocator<UserModel>(),

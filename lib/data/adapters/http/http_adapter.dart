@@ -30,4 +30,10 @@ class HttpAdapter implements IHttpClient {
     );
     return HttpResponse(data: response.body, statusCode: response.statusCode);
   }
+
+  @override
+  Future<HttpResponse> delete(String url) async {
+    final http.Response response = await client.delete(Uri.parse(url));
+    return HttpResponse(data: response.body, statusCode: response.statusCode);
+  }
 }
