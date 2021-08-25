@@ -7,7 +7,7 @@ class TaskManager implements ITaskManager {
   TaskManager(this.taskList);
 
   @override
-  checkTaskState(TaskEntity task) {
+  updateTaskState(TaskEntity task) {
     if (task.state == TaskState.todo.description) return TaskState.progress;
     if (task.state == TaskState.progress.description) return TaskState.done;
     return TaskState.progress;

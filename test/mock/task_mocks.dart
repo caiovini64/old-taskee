@@ -7,6 +7,13 @@ final kTaskEntity = TaskEntity(
   subtitle: 'subtitle',
   state: 'todo',
 );
+
+final kTaskEntityProgress = TaskEntity(
+  id: 'id',
+  title: 'title',
+  subtitle: 'subtitle',
+  state: 'inProgress',
+);
 final kTaskModel1 = TaskModel(
   id: 'id',
   title: 'title',
