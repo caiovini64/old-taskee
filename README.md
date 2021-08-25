@@ -27,8 +27,8 @@
 - [x] The user can create an account
 - [x] The user can create tasks
 - [x] The user can update the state of your tasks 
-- [ ] The user can delete your tasks
-- [ ] The user can update your tasks
+- [x] The user can delete your tasks
+- [x] The user can update your tasks
 
 
 ## 📐 Architecture
