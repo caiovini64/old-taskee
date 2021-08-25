@@ -3,13 +3,13 @@ import 'package:get/get.dart';
 import 'package:taskee/ui/components/components.dart';
 import 'package:taskee/ui/mixins/mixins.dart';
 
-class FormNewTask extends StatelessWidget with ValidationsManager {
+class FormTask extends StatelessWidget with ValidationsManager {
   final GlobalKey<FormState> formKey;
   final TextEditingController titleController;
   final TextEditingController subtitleController;
   final String title;
 
-  const FormNewTask({
+  const FormTask({
     Key? key,
     required this.formKey,
     required this.titleController,

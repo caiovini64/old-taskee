@@ -7,7 +7,7 @@ import 'package:taskee/ui/helpers/states/task_state.dart';
 import 'package:taskee/ui/mixins/mixins.dart';
 import 'package:taskee/ui/pages/home/cubit/home_cubit.dart';
 import 'package:taskee/ui/pages/newTask/widgets/floating_button_form.dart';
-import 'package:taskee/ui/pages/newTask/widgets/form_new_task.dart';
+import 'package:taskee/ui/pages/newTask/widgets/form_task.dart';
 
 class NewTaskPage extends StatelessWidget
     with ValidationsManager, KeyboardManager, UIErrorManager {
@@ -41,7 +41,7 @@ class NewTaskPage extends StatelessWidget
             body: Padding(
               padding: const EdgeInsets.only(
                   left: 20.0, right: 20, top: 10, bottom: 20),
-              child: FormNewTask(
+              child: FormTask(
                 title: 'Create new Task'.tr,
                 formKey: _formKey,
                 titleController: titleController,
