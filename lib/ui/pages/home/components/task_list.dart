@@ -7,8 +7,8 @@ import 'package:taskee/ui/components/components.dart';
 import 'package:taskee/ui/helpers/helpers.dart';
 import 'package:taskee/ui/helpers/states/task_state.dart';
 import 'package:taskee/ui/mixins/mixins.dart';
-import 'package:taskee/ui/pages/edit_task/edit_task_page.dart';
 import 'package:taskee/ui/pages/home/cubit/home_cubit.dart';
+import 'package:taskee/ui/pages/task_details/task_details_page.dart';
 
 class TaskList extends StatelessWidget with UIErrorManager {
   final List<TaskEntity> taskList;
@@ -26,7 +26,7 @@ class TaskList extends StatelessWidget with UIErrorManager {
           itemBuilder: (BuildContext context, index) {
             final task = taskList[index];
             return GestureDetector(
-              onTap: () => Get.toNamed(EditTaskPage.route),
+              onTap: () => Get.toNamed(TaskDetailsPage.route),
               child: TaskCard(
                 cardColor: greenCardColor,
                 title: task.title,
