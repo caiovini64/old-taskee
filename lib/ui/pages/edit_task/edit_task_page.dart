@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:taskee/domain/entities/entities.dart';
+import 'package:taskee/ui/helpers/helpers.dart';
 
 import 'package:taskee/ui/helpers/states/task_state.dart';
 import 'package:taskee/ui/mixins/mixins.dart';
@@ -33,6 +34,7 @@ class EditTaskPage extends StatelessWidget
             }
           },
           child: Scaffold(
+            backgroundColor: greenCardColor,
             resizeToAvoidBottomInset: false,
             appBar: AppBar(
               backgroundColor: Colors.transparent,

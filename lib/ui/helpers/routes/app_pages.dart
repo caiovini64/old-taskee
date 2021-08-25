@@ -45,7 +45,7 @@ class AppPages {
       name: Routes.EDIT_TASK,
       page: () => EditTaskPage(),
       fullscreenDialog: true,
-      transition: Transition.leftToRight,
+      transition: Transition.rightToLeft,
     ),
   ];
 }
