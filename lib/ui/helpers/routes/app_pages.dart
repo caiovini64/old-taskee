@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:taskee/ui/components/success_dialog.dart';
 import 'package:taskee/ui/helpers/routes/app_routes.dart';
+import 'package:taskee/ui/pages/edit_task/edit_task_page.dart';
 import 'package:taskee/ui/pages/home/home_page.dart';
 import 'package:taskee/ui/pages/login/login_page.dart';
 import 'package:taskee/ui/pages/newTask/new_task_page.dart';
@@ -35,10 +36,16 @@ class AppPages {
       fullscreenDialog: true,
     ),
     GetPage(
-      name: Routes.EDIT_TASK,
+      name: Routes.TASK_DETAILS,
       page: () => TaskDetailsPage(),
       fullscreenDialog: true,
       transition: Transition.size,
+    ),
+    GetPage(
+      name: Routes.EDIT_TASK,
+      page: () => EditTaskPage(),
+      fullscreenDialog: true,
+      transition: Transition.leftToRight,
     ),
   ];
 }

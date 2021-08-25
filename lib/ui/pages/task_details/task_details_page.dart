@@ -5,7 +5,7 @@ import 'package:taskee/ui/helpers/helpers.dart';
 import 'package:taskee/ui/pages/task_details/widgets/custom_floating_button_edit.dart';
 
 class TaskDetailsPage extends StatelessWidget {
-  static const route = '/editTask';
+  static const route = '/taskDetails';
   final TaskEntity task = Get.arguments;
   @override
   Widget build(BuildContext context) {

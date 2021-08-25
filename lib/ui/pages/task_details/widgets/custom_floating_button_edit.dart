@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:taskee/domain/entities/entities.dart';
 import 'package:taskee/ui/helpers/helpers.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:taskee/ui/pages/edit_task/edit_task_page.dart';
 import 'package:taskee/ui/pages/home/cubit/home_cubit.dart';
 
 class CustomFloatingButtonEdit extends StatelessWidget {
@@ -24,7 +25,7 @@ class CustomFloatingButtonEdit extends StatelessWidget {
             color: greenCardColor,
             size: 25,
           ),
-          onPressed: () {},
+          onPressed: () => Get.toNamed(EditTaskPage.route, arguments: task),
         ),
         SizedBox(height: 10),
         FloatingActionButton(
