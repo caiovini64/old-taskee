@@ -4,8 +4,15 @@ import 'package:taskee/data/models/models.dart';
 final kTaskEntity = TaskEntity(
   id: 'id',
   title: 'title',
-  subtitle: 'subtitle',
+  content: 'subtitle',
   state: 'todo',
+);
+
+final kTaskEntityProgress = TaskEntity(
+  id: 'id',
+  title: 'title',
+  content: 'subtitle',
+  state: 'inProgress',
 );
 final kTaskModel1 = TaskModel(
   id: 'id',

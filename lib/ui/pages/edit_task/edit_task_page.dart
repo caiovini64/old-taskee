@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+import 'package:taskee/domain/entities/entities.dart';
 import 'package:taskee/ui/helpers/helpers.dart';
 
 import 'package:taskee/ui/helpers/states/task_state.dart';
@@ -9,18 +10,18 @@ import 'package:taskee/ui/pages/home/cubit/home_cubit.dart';
 import 'package:taskee/ui/pages/newTask/widgets/floating_button_form.dart';
 import 'package:taskee/ui/pages/newTask/widgets/form_task.dart';
 
-class NewTaskPage extends StatelessWidget
-    with ValidationsManager, KeyboardManager, UIErrorManager {
-  static const route = '/newTask';
-  NewTaskPage({Key? key}) : super(key: key);
+class EditTaskPage extends StatelessWidget
+    with ValidationsManager, KeyboardManager, UIErrorManager, TasksManager {
+  static const route = '/editTask';
+  EditTaskPage({Key? key}) : super(key: key);
 
+  final TaskEntity task = Get.arguments;
   final _formKey = GlobalKey<FormState>();
-  final titleController = TextEditingController();
-  final subtitleController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    final TaskState taskState = Get.arguments;
+    final titleController = TextEditingController(text: task.title);
+    final subtitleController = TextEditingController(text: task.content);
     return BlocConsumer<HomeCubit, HomeState>(
       listener: (context, state) {
         if (state is HomeError) showErrorMessage(context, state.failure);
@@ -33,6 +34,7 @@ class NewTaskPage extends StatelessWidget
             }
           },
           child: Scaffold(
+            backgroundColor: greenCardColor,
             resizeToAvoidBottomInset: false,
             appBar: AppBar(
               backgroundColor: Colors.transparent,
@@ -42,7 +44,7 @@ class NewTaskPage extends StatelessWidget
               padding: const EdgeInsets.only(
                   left: 20.0, right: 20, top: 10, bottom: 20),
               child: FormTask(
-                title: 'Create new Task'.tr,
+                title: 'Edit Task',
                 formKey: _formKey,
                 titleController: titleController,
                 subtitleController: subtitleController,
@@ -51,12 +53,14 @@ class NewTaskPage extends StatelessWidget
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.centerDocked,
             floatingActionButton: FloatingButtonForm(
+              isUpdate: true,
               formKey: _formKey,
               titleController: titleController,
               subtitleController: subtitleController,
-              taskState: taskState,
-              titleButton: 'Add new Task'.tr,
-              titleColor: primaryColor,
+              taskState: toState(task.state),
+              titleButton: 'Edit your Task'.tr,
+              titleColor: greenCardColor,
+              taskId: task.id,
             ),
           ),
         );

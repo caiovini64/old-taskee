@@ -8,4 +8,10 @@ mixin TasksManager {
         .where((element) => element.state.contains(taskState.description))
         .toList();
   }
+
+  toState(String taskState) {
+    if (taskState == TaskState.todo.description) return TaskState.todo;
+    if (taskState == TaskState.progress.description) return TaskState.progress;
+    if (taskState == TaskState.done.description) return TaskState.done;
+  }
 }
