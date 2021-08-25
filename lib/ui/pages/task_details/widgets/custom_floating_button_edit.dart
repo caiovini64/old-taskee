@@ -24,7 +24,7 @@ class CustomFloatingButtonEdit extends StatelessWidget {
           heroTag: 'btn2',
           backgroundColor: orangeCardColor,
           child: Icon(
-            Icons.close,
+            Icons.delete,
             color: Colors.white,
             size: 30,
           ),
