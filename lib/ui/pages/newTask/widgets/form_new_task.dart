@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:taskee/ui/components/components.dart';
-import 'package:taskee/ui/presentation/mixins/mixins.dart';
+import 'package:taskee/ui/mixins/mixins.dart';
 
 class FormNewTask extends StatelessWidget with ValidationsManager {
   final GlobalKey<FormState> formKey;

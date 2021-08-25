@@ -4,7 +4,7 @@ import 'package:taskee/domain/entities/entities.dart';
 import 'package:taskee/domain/usecases/usecases.dart';
 import 'package:taskee/service_locator.dart';
 import 'package:taskee/ui/helpers/states/task_state.dart';
-import 'package:taskee/ui/presentation/managers/task_manager.dart';
+import 'package:taskee/ui/helpers/managers/task_manager.dart';
 
 part 'home_state.dart';
 

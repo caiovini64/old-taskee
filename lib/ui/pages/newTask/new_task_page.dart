@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 
 import 'package:taskee/ui/helpers/states/task_state.dart';
-import 'package:taskee/ui/presentation/mixins/mixins.dart';
+import 'package:taskee/ui/mixins/mixins.dart';
 import 'package:taskee/ui/pages/home/cubit/home_cubit.dart';
 import 'package:taskee/ui/pages/newTask/widgets/floating_button_form.dart';
 import 'package:taskee/ui/pages/newTask/widgets/form_new_task.dart';

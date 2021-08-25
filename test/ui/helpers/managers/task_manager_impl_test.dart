@@ -3,7 +3,7 @@ import 'package:mocktail/mocktail.dart';
 import 'package:taskee/domain/entities/entities.dart';
 import 'package:taskee/ui/helpers/managers/task_manager_impl.dart';
 import 'package:taskee/ui/helpers/states/task_state.dart';
-import 'package:taskee/ui/presentation/managers/task_manager.dart';
+import 'package:taskee/ui/helpers/managers/task_manager.dart';
 
 import '../../../mock/task_mocks.dart';
 

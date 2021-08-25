@@ -1,6 +1,6 @@
 import 'package:taskee/domain/entities/task_entity.dart';
 import 'package:taskee/ui/helpers/states/task_state.dart';
-import 'package:taskee/ui/presentation/managers/task_manager.dart';
+import 'package:taskee/ui/helpers/managers/task_manager.dart';
 
 class TaskManager implements ITaskManager {
   final List<TaskEntity> taskList;

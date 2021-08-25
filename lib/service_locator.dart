@@ -13,7 +13,7 @@ import 'package:taskee/ui/helpers/managers/task_manager_impl.dart';
 import 'package:taskee/ui/pages/controllers.dart';
 import 'package:taskee/ui/pages/home/cubit/home_cubit.dart';
 
-import 'ui/presentation/managers/task_manager.dart';
+import 'ui/helpers/managers/task_manager.dart';
 
 final serviceLocator = GetIt.instance;
 
