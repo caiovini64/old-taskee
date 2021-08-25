@@ -38,6 +38,7 @@ class AppPages {
       name: Routes.EDIT_TASK,
       page: () => EditTaskPage(),
       fullscreenDialog: true,
+      transition: Transition.size,
     ),
   ];
 }
