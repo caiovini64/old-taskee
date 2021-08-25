@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:taskee/ui/mixins/mixins.dart';
+import 'package:taskee/ui/presentation/mixins/mixins.dart';
 import 'package:taskee/ui/pages/login/widgets/form_login.dart';
 
 class LoginPage extends StatelessWidget

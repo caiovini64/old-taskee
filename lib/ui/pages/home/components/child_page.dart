@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 import 'package:taskee/ui/components/components.dart';
 import 'package:taskee/ui/helpers/states/task_state.dart';
-import 'package:taskee/ui/mixins/mixins.dart';
+import 'package:taskee/ui/presentation/mixins/mixins.dart';
 import 'package:taskee/ui/pages/newTask/new_task_page.dart';
 import 'package:taskee/ui/pages/home/cubit/home_cubit.dart';
 import 'package:taskee/ui/pages/home/components/task_list.dart';

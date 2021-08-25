@@ -1,7 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
-import 'package:taskee/domain/datasources/datasources.dart';
 import 'package:taskee/domain/entities/entities.dart';
 import 'package:taskee/domain/usecases/usecases.dart';
 import 'package:taskee/service_locator.dart';
