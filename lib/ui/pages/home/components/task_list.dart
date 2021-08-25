@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:taskee/domain/entities/entities.dart';
 import 'package:taskee/ui/components/components.dart';
 import 'package:taskee/ui/helpers/helpers.dart';
+import 'package:taskee/ui/helpers/managers/task_manager_impl.dart';
 import 'package:taskee/ui/helpers/states/task_state.dart';
 import 'package:taskee/ui/mixins/mixins.dart';
 import 'package:taskee/ui/pages/home/cubit/home_cubit.dart';
@@ -38,7 +39,9 @@ class TaskList extends StatelessWidget with UIErrorManager {
                       Icons.arrow_back_ios,
                       color: Colors.white,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      controller.updateTaskState(task, StateTaskUpdate.back);
+                    },
                   ),
                 ),
                 icon: IconButton(
@@ -52,7 +55,7 @@ class TaskList extends StatelessWidget with UIErrorManager {
                     if (task.state == TaskState.done.description) {
                       controller.deleteTask(task);
                     } else {
-                      controller.forwardTaskState(task);
+                      controller.updateTaskState(task, StateTaskUpdate.forward);
                     }
                   },
                 ),

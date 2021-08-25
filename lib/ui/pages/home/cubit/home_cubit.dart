@@ -3,6 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:taskee/domain/entities/entities.dart';
 import 'package:taskee/domain/usecases/usecases.dart';
 import 'package:taskee/service_locator.dart';
+import 'package:taskee/ui/helpers/managers/task_manager_impl.dart';
 import 'package:taskee/ui/helpers/states/task_state.dart';
 import 'package:taskee/ui/helpers/managers/task_manager.dart';
 
@@ -56,8 +57,9 @@ class HomeCubit extends Cubit<HomeState> {
     );
   }
 
-  void forwardTaskState(TaskEntity task) async {
-    final TaskState newState = _taskManager.updateTaskState(task);
+  void updateTaskState(TaskEntity task, StateTaskUpdate stateTaskUpdate) async {
+    final TaskState newState =
+        _taskManager.updateTaskState(task, stateTaskUpdate);
     final taskUpdated = TaskEntity(
       id: task.id,
       title: task.title,

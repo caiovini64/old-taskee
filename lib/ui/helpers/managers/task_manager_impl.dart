@@ -2,15 +2,26 @@ import 'package:taskee/domain/entities/task_entity.dart';
 import 'package:taskee/ui/helpers/states/task_state.dart';
 import 'package:taskee/ui/helpers/managers/task_manager.dart';
 
+enum StateTaskUpdate {
+  forward,
+  back,
+}
+
 class TaskManager implements ITaskManager {
   final List<TaskEntity> taskList;
   TaskManager(this.taskList);
 
   @override
-  updateTaskState(TaskEntity task) {
-    if (task.state == TaskState.todo.description) return TaskState.progress;
-    if (task.state == TaskState.progress.description) return TaskState.done;
-    return TaskState.progress;
+  updateTaskState(TaskEntity task, StateTaskUpdate stateTaskUpdate) {
+    if (stateTaskUpdate == StateTaskUpdate.forward) {
+      if (task.state == TaskState.todo.description) return TaskState.progress;
+      if (task.state == TaskState.progress.description) return TaskState.done;
+      return TaskState.progress;
+    } else {
+      if (task.state == TaskState.progress.description) return TaskState.todo;
+      if (task.state == TaskState.done.description) return TaskState.progress;
+      return TaskState.todo;
+    }
   }
 
   @override
