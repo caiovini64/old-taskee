@@ -1,10 +1,10 @@
 
+
 <h1 align="center">
     📌<a> Taskee </a>
 </h1>
 
-![Frame 1 (1)](https://user-images.githubusercontent.com/45527157/128557946-b05f0d22-1afa-452a-a6a5-5bf406b24f5b.jpg)
-
+![Frame 1 (2)](https://user-images.githubusercontent.com/45527157/130799112-690c5802-d1ed-48c4-8704-0772b0c04aa0.jpg)
 
 
 
@@ -26,9 +26,10 @@
 - [x] The user can sign in with your account
 - [x] The user can create an account
 - [x] The user can create tasks
+- [x] The user can update the state of your tasks 
 - [ ] The user can delete your tasks
 - [ ] The user can update your tasks
-- [ ] The user can update the state of your tasks 
+
 
 ## 📐 Architecture
 
@@ -54,3 +55,4 @@ All the Firebase communications were made with Rest API to avoid coupling with t
 - **[Get_it](https://pub.dev/packages/get_it)** - A service locator and singleton management
 - **[DartZ](https://pub.dev/packages/dartz)** - To functional programming
 - **[Mocktail](https://pub.dev/packages/mocktail)** - To unity tests
+- **[GetX](https://pub.dev/packages/get)** - To route management
