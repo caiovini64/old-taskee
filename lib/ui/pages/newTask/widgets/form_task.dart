@@ -52,6 +52,7 @@ class FormTask extends StatelessWidget with ValidationsManager {
               CustomField(
                 labelText: 'Content'.tr,
                 height: 150,
+                maxLines: 10,
                 controller: subtitleController,
                 inputType: TextInputType.multiline,
                 obscureText: false,
