@@ -12,11 +12,13 @@ class HomeCubit extends Cubit<HomeState> {
   final IGetTasksUsecase _getTasksUsecase;
   final IAddTaskUsecase _addTaskUsecase;
   final IUpdateTaskUsecase _updateTaskUsecase;
+  final IDeleteTaskUsecase _deleteTaskUsecase;
   final ITaskManager _taskManager;
   HomeCubit(
     this._getTasksUsecase,
     this._addTaskUsecase,
     this._updateTaskUsecase,
+    this._deleteTaskUsecase,
     this._taskManager,
   ) : super(HomeInitial()) {
     getTasks();
