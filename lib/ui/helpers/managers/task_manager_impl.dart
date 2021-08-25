@@ -24,8 +24,8 @@ class TaskManager implements ITaskManager {
   }
 
   @override
-  saveTaskList(List<TaskEntity> taskList) {
-    if (taskList.isEmpty) taskList.addAll(taskList);
+  saveTaskList(List<TaskEntity> tasks) {
+    if (taskList.isEmpty) taskList.addAll(tasks);
   }
 
   @override
