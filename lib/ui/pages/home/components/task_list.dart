@@ -52,7 +52,7 @@ class TaskList extends StatelessWidget with UIErrorManager {
                     if (task.state == TaskState.done.description) {
                       controller.deleteTask(task);
                     } else {
-                      controller.updateTaskState(task);
+                      controller.forwardTaskState(task);
                     }
                   },
                 ),

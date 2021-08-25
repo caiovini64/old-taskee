@@ -56,7 +56,7 @@ class HomeCubit extends Cubit<HomeState> {
     );
   }
 
-  void updateTaskState(TaskEntity task) async {
+  void forwardTaskState(TaskEntity task) async {
     final TaskState newState = _taskManager.updateTaskState(task);
     final taskUpdated = TaskEntity(
       id: task.id,
