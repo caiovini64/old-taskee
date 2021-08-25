@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:taskee/domain/entities/entities.dart';
 import 'package:taskee/ui/helpers/helpers.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:taskee/ui/pages/home/cubit/home_cubit.dart';
 
 class CustomFloatingButtonEdit extends StatelessWidget {
-  const CustomFloatingButtonEdit({Key? key}) : super(key: key);
+  final TaskEntity task;
+  const CustomFloatingButtonEdit({Key? key, required this.task})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final controller = context.read<HomeCubit>();
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
@@ -28,7 +35,10 @@ class CustomFloatingButtonEdit extends StatelessWidget {
             color: Colors.white,
             size: 30,
           ),
-          onPressed: () {},
+          onPressed: () {
+            controller.deleteTask(task);
+            Get.close(1);
+          },
         ),
       ],
     );

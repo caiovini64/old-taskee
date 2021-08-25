@@ -39,7 +39,7 @@ class TaskDetailsPage extends StatelessWidget {
           ],
         ),
       ),
-      floatingActionButton: CustomFloatingButtonEdit(),
+      floatingActionButton: CustomFloatingButtonEdit(task: task),
     );
   }
 }
