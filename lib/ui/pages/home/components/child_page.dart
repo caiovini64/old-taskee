@@ -26,7 +26,7 @@ class ChildPage extends StatelessWidget with UIErrorManager, TasksManager {
                 SizedBox(height: 100),
                 Expanded(
                   child: SingleChildScrollView(
-                    scrollDirection: Axis.vertical,
+                    physics: NeverScrollableScrollPhysics(),
                     child: Container(
                       height: MediaQuery.of(context).size.height,
                       width: MediaQuery.of(context).size.width,
@@ -49,6 +49,12 @@ class ChildPage extends StatelessWidget with UIErrorManager, TasksManager {
                               title.tr,
                               style: Theme.of(context).textTheme.headline1,
                             ),
+                          ),
+                          SizedBox(height: 2),
+                          Divider(
+                            color: Colors.black.withOpacity(0.3),
+                            height: 2,
+                            thickness: 1,
                           ),
                           buildTaskList(context),
                         ],

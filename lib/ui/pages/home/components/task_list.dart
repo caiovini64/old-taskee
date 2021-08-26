@@ -19,51 +19,56 @@ class TaskList extends StatelessWidget with UIErrorManager {
   Widget build(BuildContext context) {
     final controller = context.read<HomeCubit>();
     return Expanded(
-      child: Visibility(
-        visible: taskList.isNotEmpty,
-        child: ListView.builder(
-          physics: ClampingScrollPhysics(),
-          itemCount: taskList.length,
-          itemBuilder: (BuildContext context, index) {
-            final task = taskList[index];
-            return GestureDetector(
-              onTap: () => Get.toNamed(TaskDetailsPage.route, arguments: task),
-              child: TaskCard(
-                cardColor: greenCardColor,
-                title: task.title,
-                subtitle: task.content,
-                iconBack: Visibility(
-                  visible: task.state != TaskState.todo.description,
-                  child: IconButton(
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 90.0),
+        child: Visibility(
+          visible: taskList.isNotEmpty,
+          child: ListView.builder(
+            physics: BouncingScrollPhysics(),
+            itemCount: taskList.length,
+            itemBuilder: (BuildContext context, index) {
+              final task = taskList[index];
+              return GestureDetector(
+                onTap: () =>
+                    Get.toNamed(TaskDetailsPage.route, arguments: task),
+                child: TaskCard(
+                  cardColor: greenCardColor,
+                  title: task.title,
+                  subtitle: task.content,
+                  iconBack: Visibility(
+                    visible: task.state != TaskState.todo.description,
+                    child: IconButton(
+                      icon: Icon(
+                        Icons.arrow_back_ios,
+                        color: Colors.white,
+                      ),
+                      onPressed: () {
+                        controller.updateTaskState(task, StateTaskUpdate.back);
+                      },
+                    ),
+                  ),
+                  icon: IconButton(
                     icon: Icon(
-                      Icons.arrow_back_ios,
+                      task.state == TaskState.done.description
+                          ? Icons.delete
+                          : Icons.arrow_forward_ios_outlined,
                       color: Colors.white,
                     ),
                     onPressed: () {
-                      controller.updateTaskState(task, StateTaskUpdate.back);
+                      if (task.state == TaskState.done.description) {
+                        controller.deleteTask(task);
+                      } else {
+                        controller.updateTaskState(
+                            task, StateTaskUpdate.forward);
+                      }
                     },
                   ),
                 ),
-                icon: IconButton(
-                  icon: Icon(
-                    task.state == TaskState.done.description
-                        ? Icons.delete
-                        : Icons.arrow_forward_ios_outlined,
-                    color: Colors.white,
-                  ),
-                  onPressed: () {
-                    if (task.state == TaskState.done.description) {
-                      controller.deleteTask(task);
-                    } else {
-                      controller.updateTaskState(task, StateTaskUpdate.forward);
-                    }
-                  },
-                ),
-              ),
-            );
-          },
+              );
+            },
+          ),
+          replacement: Container(),
         ),
-        replacement: Container(),
       ),
     );
   }
