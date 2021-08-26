@@ -11,7 +11,7 @@ import 'package:taskee/domain/entities/entities.dart';
 import 'package:taskee/domain/usecases/usecases.dart';
 import 'package:taskee/ui/helpers/managers/task_manager_impl.dart';
 import 'package:taskee/ui/pages/controllers.dart';
-import 'package:taskee/ui/pages/home/cubit/home_cubit.dart';
+import 'package:taskee/ui/pages/home/cubit/task_cubit.dart';
 
 import 'ui/helpers/managers/task_manager.dart';
 

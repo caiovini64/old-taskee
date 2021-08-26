@@ -7,7 +7,7 @@ import 'package:taskee/ui/helpers/managers/task_manager_impl.dart';
 import 'package:taskee/ui/helpers/states/task_state.dart';
 import 'package:taskee/ui/helpers/managers/task_manager.dart';
 
-part 'home_state.dart';
+part 'task_state.dart';
 
 class TaskCubit extends Cubit<TaskState> {
   final IGetTasksUsecase _getTasksUsecase;

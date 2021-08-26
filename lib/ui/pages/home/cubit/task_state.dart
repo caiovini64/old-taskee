@@ -1,4 +1,4 @@
-part of 'home_cubit.dart';
+part of 'task_cubit.dart';
 
 abstract class TaskState extends Equatable {
   const TaskState();

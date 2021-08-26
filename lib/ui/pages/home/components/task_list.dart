@@ -8,7 +8,7 @@ import 'package:taskee/ui/helpers/helpers.dart';
 import 'package:taskee/ui/helpers/managers/task_manager_impl.dart';
 import 'package:taskee/ui/helpers/states/task_state.dart';
 import 'package:taskee/ui/mixins/mixins.dart';
-import 'package:taskee/ui/pages/home/cubit/home_cubit.dart';
+import 'package:taskee/ui/pages/home/cubit/task_cubit.dart';
 import 'package:taskee/ui/pages/task_details/task_details_page.dart';
 
 class TaskList extends StatelessWidget with UIErrorManager {
