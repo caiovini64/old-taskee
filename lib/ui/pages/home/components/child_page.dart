@@ -26,7 +26,7 @@ class ChildPage extends StatelessWidget with UIErrorManager, TasksManager {
                 SizedBox(height: 100),
                 Expanded(
                   child: SingleChildScrollView(
-                    scrollDirection: Axis.vertical,
+                    physics: NeverScrollableScrollPhysics(),
                     child: Container(
                       height: MediaQuery.of(context).size.height,
                       width: MediaQuery.of(context).size.width,
