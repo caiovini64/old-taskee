@@ -3,15 +3,16 @@ import 'package:taskee/ui/helpers/states/task_state.dart';
 
 mixin TasksManager {
   filterTasks(
-      {required List<TaskEntity> taskList, required TaskState taskState}) {
+      {required List<TaskEntity> taskList, required TaskStatus taskState}) {
     return taskList
         .where((element) => element.state.contains(taskState.description))
         .toList();
   }
 
   toState(String taskState) {
-    if (taskState == TaskState.todo.description) return TaskState.todo;
-    if (taskState == TaskState.progress.description) return TaskState.progress;
-    if (taskState == TaskState.done.description) return TaskState.done;
+    if (taskState == TaskStatus.todo.description) return TaskStatus.todo;
+    if (taskState == TaskStatus.progress.description)
+      return TaskStatus.progress;
+    if (taskState == TaskStatus.done.description) return TaskStatus.done;
   }
 }

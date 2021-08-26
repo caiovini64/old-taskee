@@ -8,7 +8,7 @@ import 'package:taskee/core/translations/app_translations.dart';
 import 'package:taskee/ui/helpers/helpers.dart';
 import 'package:taskee/ui/helpers/routes/routes.dart';
 import 'package:taskee/ui/pages/controllers.dart';
-import 'package:taskee/ui/pages/home/cubit/home_cubit.dart';
+import 'package:taskee/ui/pages/home/cubit/task_cubit.dart';
 import 'package:taskee/ui/pages/login/login_page.dart';
 
 void main() async {
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => dependencies.serviceLocator.get<HomeCubit>(),
+          create: (context) => dependencies.serviceLocator.get<TaskCubit>(),
         ),
         BlocProvider(
           create: (context) => dependencies.serviceLocator.get<LoginCubit>(),

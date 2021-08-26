@@ -7,43 +7,43 @@ import 'package:taskee/ui/helpers/managers/task_manager_impl.dart';
 import 'package:taskee/ui/helpers/states/task_state.dart';
 import 'package:taskee/ui/helpers/managers/task_manager.dart';
 
-part 'home_state.dart';
+part 'task_state.dart';
 
-class HomeCubit extends Cubit<HomeState> {
+class TaskCubit extends Cubit<TaskState> {
   final IGetTasksUsecase _getTasksUsecase;
   final IAddTaskUsecase _addTaskUsecase;
   final IUpdateTaskUsecase _updateTaskUsecase;
   final IDeleteTaskUsecase _deleteTaskUsecase;
   final ITaskManager _taskManager;
-  HomeCubit(
+  TaskCubit(
     this._getTasksUsecase,
     this._addTaskUsecase,
     this._updateTaskUsecase,
     this._deleteTaskUsecase,
     this._taskManager,
-  ) : super(HomeInitial()) {
+  ) : super(TaskInitial()) {
     getTasks();
   }
 
   final taskListSingleton = serviceLocator.get<List<TaskEntity>>();
 
   void getTasks() async {
-    emit(HomeLoading());
+    emit(TaskLoading());
     final result = await _getTasksUsecase.getTasks();
     result.fold(
-      (failure) => emit(HomeError(failure.message)),
+      (failure) => emit(TaskError(failure.message)),
       (data) {
         _taskManager.saveTaskList(data);
-        emit(HomeDone(taskListSingleton));
+        emit(TaskDone(taskListSingleton));
       },
     );
   }
 
   void addTask(String title, String subtitle, String state) async {
-    emit(HomeLoading());
+    emit(TaskLoading());
     final result = await _addTaskUsecase.addTask(title, subtitle, state);
     result.fold(
-      (failure) => emit(HomeError(failure.message)),
+      (failure) => emit(TaskError(failure.message)),
       (right) {
         final task = TaskEntity(
           id: right.name,
@@ -52,13 +52,13 @@ class HomeCubit extends Cubit<HomeState> {
           state: state,
         );
         _taskManager.saveTask(task);
-        emit(HomeDone(taskListSingleton));
+        emit(TaskDone(taskListSingleton));
       },
     );
   }
 
   void updateTaskState(TaskEntity task, StateTaskUpdate stateTaskUpdate) async {
-    final TaskState newState =
+    final TaskStatus newState =
         _taskManager.updateTaskState(task, stateTaskUpdate);
     final taskUpdated = TaskEntity(
       id: task.id,
@@ -66,19 +66,19 @@ class HomeCubit extends Cubit<HomeState> {
       content: task.content,
       state: newState.description,
     );
-    emit(HomeLoading());
+    emit(TaskLoading());
     final result = await _updateTaskUsecase.update(taskUpdated);
     result.fold(
-      (failure) => emit(HomeError(failure.message)),
+      (failure) => emit(TaskError(failure.message)),
       (right) {
         _taskManager.updateTask(right);
-        emit(HomeDone(taskListSingleton));
+        emit(TaskDone(taskListSingleton));
       },
     );
   }
 
   void updateTask(TaskEntity task) async {
-    emit(HomeLoading());
+    emit(TaskLoading());
     final taskUpdated = TaskEntity(
       id: task.id,
       title: task.title,
@@ -87,28 +87,28 @@ class HomeCubit extends Cubit<HomeState> {
     );
     final result = await _updateTaskUsecase.update(taskUpdated);
     result.fold(
-      (failure) => emit(HomeError(failure.message)),
+      (failure) => emit(TaskError(failure.message)),
       (right) {
         _taskManager.updateTask(right);
-        emit(HomeDone(taskListSingleton));
+        emit(TaskDone(taskListSingleton));
       },
     );
   }
 
   void deleteTask(TaskEntity task) async {
-    emit(HomeLoading());
+    emit(TaskLoading());
     final result = await _deleteTaskUsecase.deleteTask(task);
     result.fold(
-      (failure) => emit(HomeError(failure.message)),
+      (failure) => emit(TaskError(failure.message)),
       (right) {
         _taskManager.deleteTask(task);
-        emit(HomeDone(taskListSingleton));
+        emit(TaskDone(taskListSingleton));
       },
     );
   }
 
   @override
-  void onChange(Change<HomeState> change) {
+  void onChange(Change<TaskState> change) {
     super.onChange(change);
     print(change);
   }

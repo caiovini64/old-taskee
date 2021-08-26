@@ -1,17 +1,17 @@
-enum TaskState {
+enum TaskStatus {
   todo,
   progress,
   done,
 }
 
-extension TaskStateExtension on TaskState {
+extension TaskStateExtension on TaskStatus {
   String get description {
     switch (this) {
-      case TaskState.todo:
+      case TaskStatus.todo:
         return 'todo';
-      case TaskState.progress:
+      case TaskStatus.progress:
         return 'inProgress';
-      case TaskState.done:
+      case TaskStatus.done:
         return 'done';
     }
   }
