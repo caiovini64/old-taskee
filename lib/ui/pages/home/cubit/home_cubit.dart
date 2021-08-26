@@ -58,7 +58,7 @@ class TaskCubit extends Cubit<HomeState> {
   }
 
   void updateTaskState(TaskEntity task, StateTaskUpdate stateTaskUpdate) async {
-    final TaskState newState =
+    final TaskStatus newState =
         _taskManager.updateTaskState(task, stateTaskUpdate);
     final taskUpdated = TaskEntity(
       id: task.id,

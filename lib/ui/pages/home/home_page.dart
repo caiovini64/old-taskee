@@ -13,7 +13,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   late PageController pageController;
-  final TaskState? taskState = Get.arguments;
+  final TaskStatus? taskState = Get.arguments;
 
   @override
   void initState() {
@@ -26,9 +26,9 @@ class _HomePageState extends State<HomePage> {
     return PageView(
       controller: pageController,
       children: [
-        ChildPage(title: 'To do', taskState: TaskState.todo),
-        ChildPage(title: 'In progress', taskState: TaskState.progress),
-        ChildPage(title: 'Done', taskState: TaskState.done),
+        ChildPage(title: 'To do', taskState: TaskStatus.todo),
+        ChildPage(title: 'In progress', taskState: TaskStatus.progress),
+        ChildPage(title: 'Done', taskState: TaskStatus.done),
       ],
     );
   }

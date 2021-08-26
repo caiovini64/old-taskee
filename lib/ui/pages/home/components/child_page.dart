@@ -11,7 +11,7 @@ import 'package:taskee/ui/mixins/mixins.dart';
 
 class ChildPage extends StatelessWidget with UIErrorManager, TasksManager {
   final String title;
-  final TaskState taskState;
+  final TaskStatus taskState;
 
   const ChildPage({Key? key, required this.title, required this.taskState})
       : super(key: key);

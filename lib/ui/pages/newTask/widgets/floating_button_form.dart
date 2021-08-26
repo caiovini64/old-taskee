@@ -14,7 +14,7 @@ class FloatingButtonForm extends StatelessWidget with KeyboardManager {
   final GlobalKey<FormState> formKey;
   final TextEditingController titleController;
   final TextEditingController subtitleController;
-  final TaskState taskState;
+  final TaskStatus taskState;
   final String taskId;
   final bool isUpdate;
   final String titleButton;

@@ -20,7 +20,7 @@ class NewTaskPage extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    final TaskState taskState = Get.arguments;
+    final TaskStatus taskState = Get.arguments;
     return BlocConsumer<TaskCubit, HomeState>(
       listener: (context, state) {
         if (state is HomeError) showErrorMessage(context, state.failure);

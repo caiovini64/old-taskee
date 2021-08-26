@@ -21,12 +21,12 @@ void main() {
   test('should return TaskState.progress when task state was todo ', () async {
     final result =
         taskManager.updateTaskState(kTaskEntity, StateTaskUpdate.forward);
-    expect(result, TaskState.progress);
+    expect(result, TaskStatus.progress);
   });
 
   test('should return TaskState.done when task state was progress ', () async {
     final result = taskManager.updateTaskState(
         kTaskEntityProgress, StateTaskUpdate.forward);
-    expect(result, TaskState.done);
+    expect(result, TaskStatus.done);
   });
 }

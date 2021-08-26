@@ -14,13 +14,13 @@ class TaskManager implements ITaskManager {
   @override
   updateTaskState(TaskEntity task, StateTaskUpdate stateTaskUpdate) {
     if (stateTaskUpdate == StateTaskUpdate.forward) {
-      if (task.state == TaskState.todo.description) return TaskState.progress;
-      if (task.state == TaskState.progress.description) return TaskState.done;
-      return TaskState.progress;
+      if (task.state == TaskStatus.todo.description) return TaskStatus.progress;
+      if (task.state == TaskStatus.progress.description) return TaskStatus.done;
+      return TaskStatus.progress;
     } else {
-      if (task.state == TaskState.progress.description) return TaskState.todo;
-      if (task.state == TaskState.done.description) return TaskState.progress;
-      return TaskState.todo;
+      if (task.state == TaskStatus.progress.description) return TaskStatus.todo;
+      if (task.state == TaskStatus.done.description) return TaskStatus.progress;
+      return TaskStatus.todo;
     }
   }
 
