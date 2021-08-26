@@ -50,6 +50,12 @@ class ChildPage extends StatelessWidget with UIErrorManager, TasksManager {
                               style: Theme.of(context).textTheme.headline1,
                             ),
                           ),
+                          SizedBox(height: 2),
+                          Divider(
+                            color: Colors.black.withOpacity(0.3),
+                            height: 2,
+                            thickness: 1,
+                          ),
                           buildTaskList(context),
                         ],
                       ),
