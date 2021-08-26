@@ -22,7 +22,7 @@ class TaskList extends StatelessWidget with UIErrorManager {
       child: Visibility(
         visible: taskList.isNotEmpty,
         child: ListView.builder(
-          physics: ClampingScrollPhysics(),
+          physics: NeverScrollableScrollPhysics(),
           itemCount: taskList.length,
           itemBuilder: (BuildContext context, index) {
             final task = taskList[index];
