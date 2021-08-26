@@ -35,14 +35,14 @@ class FloatingButtonForm extends StatelessWidget with KeyboardManager {
   @override
   Widget build(BuildContext context) {
     final controller = context.read<TaskCubit>();
-    return BlocBuilder<TaskCubit, HomeState>(
+    return BlocBuilder<TaskCubit, TaskState>(
       builder: (context, state) {
         return Padding(
           padding: const EdgeInsets.all(20.0),
           child: Hero(
             tag: "add",
             child: CustomElevatedButton.principal(
-              child: state is HomeLoading
+              child: state is TaskLoading
                   ? CircularProgressIndicator(
                       color: primaryColor,
                     )

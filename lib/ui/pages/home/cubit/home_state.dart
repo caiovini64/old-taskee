@@ -1,22 +1,22 @@
 part of 'home_cubit.dart';
 
-abstract class HomeState extends Equatable {
-  const HomeState();
+abstract class TaskState extends Equatable {
+  const TaskState();
 
   @override
   List<Object> get props => [];
 }
 
-class HomeInitial extends HomeState {}
+class TaskInitial extends TaskState {}
 
-class HomeLoading extends HomeState {}
+class TaskLoading extends TaskState {}
 
-class HomeError extends HomeState {
+class TaskError extends TaskState {
   final String failure;
-  HomeError(this.failure);
+  TaskError(this.failure);
 }
 
-class HomeDone extends HomeState {
+class TaskDone extends TaskState {
   final List<TaskEntity> taskList;
-  HomeDone(this.taskList);
+  TaskDone(this.taskList);
 }

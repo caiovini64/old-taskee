@@ -21,9 +21,9 @@ class NewTaskPage extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     final TaskStatus taskState = Get.arguments;
-    return BlocConsumer<TaskCubit, HomeState>(
+    return BlocConsumer<TaskCubit, TaskState>(
       listener: (context, state) {
-        if (state is HomeError) showErrorMessage(context, state.failure);
+        if (state is TaskError) showErrorMessage(context, state.failure);
       },
       builder: (context, state) {
         return GestureDetector(

@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:taskee/domain/entities/entities.dart';
 import 'package:taskee/ui/helpers/helpers.dart';
 
-import 'package:taskee/ui/helpers/states/task_state.dart';
 import 'package:taskee/ui/mixins/mixins.dart';
 import 'package:taskee/ui/pages/home/cubit/home_cubit.dart';
 import 'package:taskee/ui/pages/newTask/widgets/floating_button_form.dart';
@@ -22,9 +21,9 @@ class EditTaskPage extends StatelessWidget
   Widget build(BuildContext context) {
     final titleController = TextEditingController(text: task.title);
     final subtitleController = TextEditingController(text: task.content);
-    return BlocConsumer<TaskCubit, HomeState>(
+    return BlocConsumer<TaskCubit, TaskState>(
       listener: (context, state) {
-        if (state is HomeError) showErrorMessage(context, state.failure);
+        if (state is TaskError) showErrorMessage(context, state.failure);
       },
       builder: (context, state) {
         return GestureDetector(
