@@ -34,8 +34,8 @@ class FloatingButtonForm extends StatelessWidget with KeyboardManager {
 
   @override
   Widget build(BuildContext context) {
-    final controller = context.read<HomeCubit>();
-    return BlocBuilder<HomeCubit, HomeState>(
+    final controller = context.read<TaskCubit>();
+    return BlocBuilder<TaskCubit, HomeState>(
       builder: (context, state) {
         return Padding(
           padding: const EdgeInsets.all(20.0),

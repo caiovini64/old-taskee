@@ -22,7 +22,7 @@ class EditTaskPage extends StatelessWidget
   Widget build(BuildContext context) {
     final titleController = TextEditingController(text: task.title);
     final subtitleController = TextEditingController(text: task.content);
-    return BlocConsumer<HomeCubit, HomeState>(
+    return BlocConsumer<TaskCubit, HomeState>(
       listener: (context, state) {
         if (state is HomeError) showErrorMessage(context, state.failure);
       },

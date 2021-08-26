@@ -9,13 +9,13 @@ import 'package:taskee/ui/helpers/managers/task_manager.dart';
 
 part 'home_state.dart';
 
-class HomeCubit extends Cubit<HomeState> {
+class TaskCubit extends Cubit<HomeState> {
   final IGetTasksUsecase _getTasksUsecase;
   final IAddTaskUsecase _addTaskUsecase;
   final IUpdateTaskUsecase _updateTaskUsecase;
   final IDeleteTaskUsecase _deleteTaskUsecase;
   final ITaskManager _taskManager;
-  HomeCubit(
+  TaskCubit(
     this._getTasksUsecase,
     this._addTaskUsecase,
     this._updateTaskUsecase,

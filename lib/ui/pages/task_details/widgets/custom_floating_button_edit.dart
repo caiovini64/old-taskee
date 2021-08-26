@@ -13,7 +13,7 @@ class CustomFloatingButtonEdit extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = context.read<HomeCubit>();
+    final controller = context.read<TaskCubit>();
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [

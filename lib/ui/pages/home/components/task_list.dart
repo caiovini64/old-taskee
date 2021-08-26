@@ -17,7 +17,7 @@ class TaskList extends StatelessWidget with UIErrorManager {
 
   @override
   Widget build(BuildContext context) {
-    final controller = context.read<HomeCubit>();
+    final controller = context.read<TaskCubit>();
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.only(bottom: 90.0),

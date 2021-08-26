@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => dependencies.serviceLocator.get<HomeCubit>(),
+          create: (context) => dependencies.serviceLocator.get<TaskCubit>(),
         ),
         BlocProvider(
           create: (context) => dependencies.serviceLocator.get<LoginCubit>(),

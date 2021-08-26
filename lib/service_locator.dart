@@ -22,7 +22,7 @@ void initControllers() {
       .registerFactory(() => LoginCubit(serviceLocator<ILoginUsecase>()));
   serviceLocator
       .registerFactory(() => RegisterCubit(serviceLocator<IRegisterUsecase>()));
-  serviceLocator.registerLazySingleton(() => HomeCubit(
+  serviceLocator.registerLazySingleton(() => TaskCubit(
         serviceLocator<IGetTasksUsecase>(),
         serviceLocator<IAddTaskUsecase>(),
         serviceLocator<IUpdateTaskUsecase>(),
