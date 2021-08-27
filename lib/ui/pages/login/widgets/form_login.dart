@@ -58,13 +58,6 @@ class _FormLoginState extends State<FormLogin>
                             ],
                           ),
                         ),
-                        // child: Text(
-                        //   'Taskee'.tr,
-                        //   style: Theme.of(context)
-                        //       .textTheme
-                        //       .headline1!
-                        //       .copyWith(color: Colors.white),
-                        // ),
                       ),
                       SizedBox(height: 50),
                       CustomField(
