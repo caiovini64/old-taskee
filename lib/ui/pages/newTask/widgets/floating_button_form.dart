@@ -7,14 +7,14 @@ import 'package:taskee/ui/components/components.dart';
 import 'package:taskee/ui/helpers/helpers.dart';
 import 'package:taskee/ui/helpers/states/task_state.dart';
 import 'package:taskee/ui/mixins/mixins.dart';
-import 'package:taskee/ui/pages/home/cubit/home_cubit.dart';
+import 'package:taskee/ui/pages/home/cubit/task_cubit.dart';
 import 'package:taskee/ui/pages/home/home_page.dart';
 
 class FloatingButtonForm extends StatelessWidget with KeyboardManager {
   final GlobalKey<FormState> formKey;
   final TextEditingController titleController;
   final TextEditingController subtitleController;
-  final TaskState taskState;
+  final TaskStatus taskState;
   final String taskId;
   final bool isUpdate;
   final String titleButton;
@@ -34,15 +34,15 @@ class FloatingButtonForm extends StatelessWidget with KeyboardManager {
 
   @override
   Widget build(BuildContext context) {
-    final controller = context.read<HomeCubit>();
-    return BlocBuilder<HomeCubit, HomeState>(
+    final controller = context.read<TaskCubit>();
+    return BlocBuilder<TaskCubit, TaskState>(
       builder: (context, state) {
         return Padding(
           padding: const EdgeInsets.all(20.0),
           child: Hero(
             tag: "add",
             child: CustomElevatedButton.principal(
-              child: state is HomeLoading
+              child: state is TaskLoading
                   ? CircularProgressIndicator(
                       color: primaryColor,
                     )

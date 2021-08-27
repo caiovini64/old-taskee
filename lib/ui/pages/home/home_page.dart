@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:taskee/core/functions/will_pop.dart';
 
 import 'package:taskee/ui/helpers/states/task_state.dart';
 import 'package:taskee/ui/pages/home/components/child_page.dart';
@@ -13,7 +14,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   late PageController pageController;
-  final TaskState? taskState = Get.arguments;
+  final TaskStatus? taskState = Get.arguments;
 
   @override
   void initState() {
@@ -23,13 +24,16 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return PageView(
-      controller: pageController,
-      children: [
-        ChildPage(title: 'To do', taskState: TaskState.todo),
-        ChildPage(title: 'In progress', taskState: TaskState.progress),
-        ChildPage(title: 'Done', taskState: TaskState.done),
-      ],
+    return WillPopScope(
+      onWillPop: onWillPop,
+      child: PageView(
+        controller: pageController,
+        children: [
+          ChildPage(title: 'To do', taskState: TaskStatus.todo),
+          ChildPage(title: 'In progress', taskState: TaskStatus.progress),
+          ChildPage(title: 'Done', taskState: TaskStatus.done),
+        ],
+      ),
     );
   }
 }

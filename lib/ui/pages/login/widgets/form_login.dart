@@ -1,6 +1,8 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:taskee/ui/components/components.dart';
 import 'package:taskee/ui/helpers/helpers.dart';
@@ -36,7 +38,7 @@ class _FormLoginState extends State<FormLogin>
           key: _formKey,
           child: Column(
             children: [
-              SizedBox(height: 100),
+              SizedBox(height: 150),
               Expanded(
                 child: Container(
                   height: MediaQuery.of(context).size.height,
@@ -46,16 +48,18 @@ class _FormLoginState extends State<FormLogin>
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Align(
-                        alignment: Alignment.topLeft,
-                        child: Text(
-                          'Welcome!'.tr,
-                          style: Theme.of(context)
-                              .textTheme
-                              .headline1!
-                              .copyWith(color: Colors.white),
+                        alignment: Alignment.center,
+                        child: DefaultTextStyle(
+                          style: GoogleFonts.majorMonoDisplay(
+                              textStyle: TextStyle(fontSize: 30)),
+                          child: AnimatedTextKit(
+                            animatedTexts: [
+                              WavyAnimatedText('Taskee'),
+                            ],
+                          ),
                         ),
                       ),
-                      SizedBox(height: 100),
+                      SizedBox(height: 50),
                       CustomField(
                         labelText: 'Email',
                         semanticsLabel: 'Email text field'.tr,

@@ -4,7 +4,7 @@ import 'package:taskee/domain/entities/entities.dart';
 import 'package:taskee/ui/helpers/helpers.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:taskee/ui/pages/edit_task/edit_task_page.dart';
-import 'package:taskee/ui/pages/home/cubit/home_cubit.dart';
+import 'package:taskee/ui/pages/home/cubit/task_cubit.dart';
 
 class CustomFloatingButtonEdit extends StatelessWidget {
   final TaskEntity task;
@@ -13,7 +13,7 @@ class CustomFloatingButtonEdit extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = context.read<HomeCubit>();
+    final controller = context.read<TaskCubit>();
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [

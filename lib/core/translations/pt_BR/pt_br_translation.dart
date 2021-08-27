@@ -22,4 +22,15 @@ final Map<String, String> ptBR = {
   'Email not found.': 'Email não encontrado.',
   'Invalid password.': 'Senha incorreta.',
   'User disabled.': 'Usuário desabilitado.',
+  'In progress': 'Em progresso',
+  'Done': 'Feito',
+  'Create new Task': 'Criar nova Tarefa',
+  'Edit Task': 'Editar Tarefa',
+  'Edit your Task': 'Editar sua Tarefa',
+  'Do you want to exit the App?': 'Você deseja deixar o app?',
+  'Are you sure?': 'Você tem certeza?',
+  'No': 'Não',
+  'Yes': 'Sim',
+  'Content text field': 'Campo de Conteúdo',
+  'Title text field': 'Campo de título'
 };

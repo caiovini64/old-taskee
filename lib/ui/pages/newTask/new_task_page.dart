@@ -5,7 +5,7 @@ import 'package:taskee/ui/helpers/helpers.dart';
 
 import 'package:taskee/ui/helpers/states/task_state.dart';
 import 'package:taskee/ui/mixins/mixins.dart';
-import 'package:taskee/ui/pages/home/cubit/home_cubit.dart';
+import 'package:taskee/ui/pages/home/cubit/task_cubit.dart';
 import 'package:taskee/ui/pages/newTask/widgets/floating_button_form.dart';
 import 'package:taskee/ui/pages/newTask/widgets/form_task.dart';
 
@@ -20,10 +20,10 @@ class NewTaskPage extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    final TaskState taskState = Get.arguments;
-    return BlocConsumer<HomeCubit, HomeState>(
+    final TaskStatus taskState = Get.arguments;
+    return BlocConsumer<TaskCubit, TaskState>(
       listener: (context, state) {
-        if (state is HomeError) showErrorMessage(context, state.failure);
+        if (state is TaskError) showErrorMessage(context, state.failure);
       },
       builder: (context, state) {
         return GestureDetector(
