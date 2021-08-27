@@ -7,12 +7,12 @@ import 'package:taskee/service_locator.dart';
 Future<bool> onWillPop() async {
   return (await Get.dialog(
     AlertDialog(
-      title: Text('Are you sure?'),
-      content: Text('Do you want to exit an App'),
+      title: Text('Are you sure?'.tr),
+      content: Text('Do you want to exit the App?'.tr),
       actions: [
         TextButton(
           onPressed: () => Get.back(result: false),
-          child: Text('No'),
+          child: Text('No'.tr),
         ),
         TextButton(
           onPressed: () {
@@ -20,7 +20,7 @@ Future<bool> onWillPop() async {
             serviceLocator.unregister<UserModel>();
             serviceLocator.unregister<List<TaskEntity>>();
           },
-          child: Text('Yes'),
+          child: Text('Yes'.tr),
         ),
       ],
     ),

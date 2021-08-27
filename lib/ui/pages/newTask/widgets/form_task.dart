@@ -31,7 +31,7 @@ class FormTask extends StatelessWidget with ValidationsManager {
                 child: Align(
                   alignment: Alignment.topLeft,
                   child: Text(
-                    title,
+                    title.tr,
                     style: Theme.of(context)
                         .textTheme
                         .headline1!
