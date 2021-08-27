@@ -31,4 +31,6 @@ final Map<String, String> ptBR = {
   'Are you sure?': 'Você tem certeza?',
   'No': 'Não',
   'Yes': 'Sim',
+  'Content text field': 'Campo de Conteúdo',
+  'Title text field': 'Campo de título'
 };
