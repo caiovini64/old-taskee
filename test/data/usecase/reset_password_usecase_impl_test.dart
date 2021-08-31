@@ -59,5 +59,21 @@ void main() {
       final result = await usecase.confirmPasswordReset(code, password);
       expect(result, Right('email'));
     });
+    test(
+        'should returns a ServerFailure when calls to datasource throws a ServerException',
+        () async {
+      when(() => datasource.confirmPasswordReset(any(), any()))
+          .thenThrow(ServerException());
+      final result = await usecase.confirmPasswordReset(code, password);
+      expect(result, Left(ServerFailure()));
+    });
+    test(
+        'should returns a AuthenticationFailure when calls to datasource throws a AuthenticationException',
+        () async {
+      when(() => datasource.confirmPasswordReset(any(), any()))
+          .thenThrow(AuthenticationException(code: 404, message: 'error'));
+      final result = await usecase.confirmPasswordReset(code, password);
+      expect(result, Left(AuthenticationFailure(code: 404, message: 'error')));
+    });
   });
 }
