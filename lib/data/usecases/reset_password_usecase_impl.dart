@@ -1,6 +1,8 @@
+import 'package:taskee/data/helpers/exceptions/exceptions.dart';
 import 'package:taskee/domain/datasources/datasources.dart';
 import 'package:taskee/domain/helpers/failures/failure.dart';
 import 'package:dartz/dartz.dart';
+import 'package:taskee/domain/helpers/failures/failures.dart';
 import 'package:taskee/domain/usecases/usecases.dart';
 
 class ResetPasswordUsecase implements IResetPasswordUsecase {
@@ -9,8 +11,15 @@ class ResetPasswordUsecase implements IResetPasswordUsecase {
 
   @override
   Future<Either<Failure, String>> sendPasswordResetEmail(String email) async {
-    final result = await datasource.sendPasswordResetEmail(email);
-    return Right(result);
+    try {
+      final result = await datasource.sendPasswordResetEmail(email);
+      return Right(result);
+    } on ServerException catch (_) {
+      return Left(ServerFailure());
+    } on AuthenticationException catch (error) {
+      return Left(
+          AuthenticationFailure(code: error.code, message: error.message));
+    }
   }
 
   @override
