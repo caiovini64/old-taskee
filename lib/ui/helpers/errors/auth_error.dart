@@ -7,6 +7,8 @@ enum AuthError {
   emailNotFound,
   invalidPassword,
   userDisabled,
+  invalid_code,
+  expired_code,
 }
 
 extension AuthErrorExtension on AuthError {
@@ -24,6 +26,10 @@ extension AuthErrorExtension on AuthError {
         return 'Invalid password.'.tr;
       case AuthError.userDisabled:
         return 'User disabled.'.tr;
+      case AuthError.invalid_code:
+        return 'Invalid Code.'.tr;
+      case AuthError.expired_code:
+        return 'Expired Code.'.tr;
     }
   }
 }

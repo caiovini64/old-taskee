@@ -32,5 +32,7 @@ final Map<String, String> ptBR = {
   'No': 'Não',
   'Yes': 'Sim',
   'Content text field': 'Campo de Conteúdo',
-  'Title text field': 'Campo de título'
+  'Title text field': 'Campo de título',
+  'Invalid Code.': 'Código inválido.',
+  'Expired Code.': 'Código expirado.'
 };
