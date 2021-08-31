@@ -24,8 +24,8 @@ class ResetPasswordUsecase implements IResetPasswordUsecase {
 
   @override
   Future<Either<Failure, String>> confirmPasswordReset(
-      String code, String newPassword) {
-    // TODO: implement confirmPasswordReset
-    throw UnimplementedError();
+      String code, String newPassword) async {
+    final result = await datasource.confirmPasswordReset(code, newPassword);
+    return Right(result);
   }
 }

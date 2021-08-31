@@ -15,34 +15,49 @@ void main() {
   late IResetPasswordUsecase usecase;
   late IResetPasswordDatasource datasource;
   late String email;
+  late String password;
+  late String code;
 
   setUp(() {
     datasource = MockResetPasswordDatasource();
     usecase = ResetPasswordUsecase(datasource);
     email = faker.internet.email();
+    password = faker.internet.password();
+    code = faker.internet.password();
   });
 
-  test('should returns a String when calls to datasource succeeds', () async {
-    when(() => datasource.sendPasswordResetEmail(any()))
-        .thenAnswer((_) async => 'email');
-    final result = await usecase.sendPasswordResetEmail(email);
-    expect(result, Right('email'));
+  group('sendPasswordResetEmail', () {
+    test('should returns a String when calls to datasource succeeds', () async {
+      when(() => datasource.sendPasswordResetEmail(any()))
+          .thenAnswer((_) async => 'email');
+      final result = await usecase.sendPasswordResetEmail(email);
+      expect(result, Right('email'));
+    });
+
+    test(
+        'should returns a ServerFailure when calls to datasource throws a ServerException',
+        () async {
+      when(() => datasource.sendPasswordResetEmail(any()))
+          .thenThrow(ServerException());
+      final result = await usecase.sendPasswordResetEmail(email);
+      expect(result, Left(ServerFailure()));
+    });
+    test(
+        'should returns a AuthenticationFailure when calls to datasource throws a AuthenticationException',
+        () async {
+      when(() => datasource.sendPasswordResetEmail(any()))
+          .thenThrow(AuthenticationException(code: 404, message: 'error'));
+      final result = await usecase.sendPasswordResetEmail(email);
+      expect(result, Left(AuthenticationFailure(code: 404, message: 'error')));
+    });
   });
 
-  test(
-      'should returns a ServerFailure when calls to datasource throws a ServerException',
-      () async {
-    when(() => datasource.sendPasswordResetEmail(any()))
-        .thenThrow(ServerException());
-    final result = await usecase.sendPasswordResetEmail(email);
-    expect(result, Left(ServerFailure()));
-  });
-  test(
-      'should returns a AuthenticationFailure when calls to datasource throws a AuthenticationException',
-      () async {
-    when(() => datasource.sendPasswordResetEmail(any()))
-        .thenThrow(AuthenticationException(code: 404, message: 'error'));
-    final result = await usecase.sendPasswordResetEmail(email);
-    expect(result, Left(AuthenticationFailure(code: 404, message: 'error')));
+  group('confirmPasswordReset', () {
+    test('should returns a String when calls to datasource succeeds', () async {
+      when(() => datasource.confirmPasswordReset(any(), any()))
+          .thenAnswer((_) async => 'email');
+      final result = await usecase.confirmPasswordReset(code, password);
+      expect(result, Right('email'));
+    });
   });
 }
